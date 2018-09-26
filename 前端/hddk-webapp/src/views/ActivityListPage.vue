@@ -90,7 +90,8 @@
         overflow hidden
 
         .content {
-            margin-top: 20px;
+            padding-top: 20px;
+            overflow auto
         }
     }
 </style>
