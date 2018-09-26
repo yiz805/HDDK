@@ -12,12 +12,12 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="TeacherServerTest.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/com/test/serviceTest/TeacherServerTest.java">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="TeacherController.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/hddk/controller/TeacherController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="79">
-              <caret line="26" column="9" lean-forward="true" selection-start-line="26" selection-start-column="9" selection-end-line="26" selection-end-column="9" />
+            <state relative-caret-position="449">
+              <caret line="37" column="32" selection-start-line="37" selection-start-column="32" selection-end-line="37" selection-end-column="32" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -25,34 +25,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TeacherMapper.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/hddk/mapper/impl/TeacherMapper.xml">
+      <file leaf-file-name="ActivityMapper.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/hddk/mapper/ActivityMapper.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="75">
-              <caret line="3" column="46" selection-start-line="3" selection-start-column="46" selection-end-line="3" selection-end-column="46" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TeacherService.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/hddk/service/impl/TeacherService.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="333">
-              <caret line="14" column="45" selection-start-line="14" selection-start-column="29" selection-end-line="14" selection-end-column="45" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#424#425#0" expanded="true" />
-                <element signature="e#483#484#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TeacherMapper.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/hddk/mapper/TeacherMapper.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="200">
-              <caret line="9" column="53" selection-start-line="9" selection-start-column="53" selection-end-line="9" selection-end-column="53" />
+            <state relative-caret-position="334">
+              <caret line="21" column="27" selection-start-line="21" selection-start-column="27" selection-end-line="21" selection-end-column="27" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -60,22 +37,27 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="applicationContext.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/applicationContext.xml">
+      <file leaf-file-name="ActivityService.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/hddk/service/ActivityService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="167">
-              <caret line="39" column="22" selection-start-line="39" selection-start-column="22" selection-end-line="39" selection-end-column="22" />
+            <state relative-caret-position="273">
+              <caret line="14" column="27" selection-start-line="14" selection-start-column="27" selection-end-line="14" selection-end-column="27" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TeacherControllerTest.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/com/test/controllerTest/TeacherControllerTest.java">
+      <file leaf-file-name="ActivityServiceImpl.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/hddk/service/impl/ActivityServiceImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="349">
-              <caret line="18" column="32" lean-forward="true" selection-start-line="18" selection-start-column="32" selection-end-line="18" selection-end-column="32" />
+            <state relative-caret-position="248">
+              <caret line="29" column="34" selection-start-line="29" selection-start-column="34" selection-end-line="29" selection-end-column="34" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#1225#1226#0" expanded="true" />
+                <element signature="e#1288#1289#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -100,35 +82,57 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/resources/log4j.properties" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/log4j.xml" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" />
         <option value="$PROJECT_DIR$/src/main/resources/spring-mvc.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/com/hddk/domain/Teacher.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/hddk/mapper/ActivityMapper.java" />
         <option value="$PROJECT_DIR$/src/test/java/com/test/Teat.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/hddk/service/TeacherService.java" />
         <option value="$PROJECT_DIR$/src/test/java/com/test/BaseControllerTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/hddk/util/ajaxResult/ActionConstants.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/hddk/util/ActionConstants.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/hddk/service/impl/TeacherService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/hddk/service/ITeacherService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/hddk/domain/Classes.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/hddk/controller/TeacherController.java" />
-        <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/resources/jdbc.properties" />
         <option value="$PROJECT_DIR$/src/test/java/com/test/controllerTest/BaseControllerTest.java" />
         <option value="$PROJECT_DIR$/src/test/java/com/test/TeacherConreollerTest.java" />
         <option value="$PROJECT_DIR$/src/test/java/com/test/controllerTest/BlogControllerTest.java" />
         <option value="$PROJECT_DIR$/src/test/java/com/test/base/BaseControllerTest.java" />
         <option value="$PROJECT_DIR$/src/test/java/com/test/serviceTest/UserServerTest.java" />
-        <option value="$PROJECT_DIR$/src/test/java/com/test/controllerTest/TeacherControllerTest.java" />
         <option value="$PROJECT_DIR$/src/test/java/com/test/serviceTest/Test.java" />
         <option value="$PROJECT_DIR$/src/test/java/com/test/util/DBTool.java" />
-        <option value="$PROJECT_DIR$/src/test/java/com/test/serviceTest/TeacherServerTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/hddk/mapper/impl/TeacherMapper.xml" />
-        <option value="$PROJECT_DIR$/src/main/resources/applicationContext.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hddk/domain/Teacher.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hddk/domain/Classes.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hddk/domain/Student.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hddk/domain/sign.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hddk/domain/Sign.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hddk/service/TeacherService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hddk/service/impl/TeacherServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/test/java/com/test/controllerTest/TeacherControllerTest.java" />
+        <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/hddk/mapper/TeacherMapper.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hddk/domain/Field.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hddk/mapper/impl/mybatisConfig.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hddk/mapper/impl/ActivityMapper.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hddk/domain/Activity.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/mybatis-config.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hddk/entity/Sign.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hddk/entity/Student.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hddk/entity/Activity.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hddk/mapper/SqlProvider.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hddk/service/SignService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hddk/mapper/StudentMapper.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hddk/service/impl/StudentServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hddk/service/StudentService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hddk/mapper/SignMapper.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hddk/service/impl/SignServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hddk/service/FiledService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hddk/service/impl/FiledServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hddk/mapper/FieldMapper.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hddk/service/impl/FieldServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/test/java/com/test/serviceTest/TeacherServerTest.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/applicationContext.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hddk/mapper/ActivityMapper.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hddk/service/ActivityService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hddk/service/impl/ActivityServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hddk/controller/TeacherController.java" />
       </list>
     </option>
   </component>
@@ -165,7 +169,7 @@
   <component name="NodePackageJsonFileManager">
     <packageJsonPaths />
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
     <option name="width" value="1382" />
@@ -176,8 +180,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
@@ -228,7 +230,7 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="hddk" type="462c0819:PsiDirectoryNode" />
-              <item name="domain" type="462c0819:PsiDirectoryNode" />
+              <item name="entity" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="NetHDDK" type="b2602c69:ProjectViewProjectNode" />
@@ -238,16 +240,6 @@
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="hddk" type="462c0819:PsiDirectoryNode" />
               <item name="mapper" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="NetHDDK" type="b2602c69:ProjectViewProjectNode" />
-              <item name="NetHDDK" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="hddk" type="462c0819:PsiDirectoryNode" />
-              <item name="mapper" type="462c0819:PsiDirectoryNode" />
-              <item name="impl" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="NetHDDK" type="b2602c69:ProjectViewProjectNode" />
@@ -303,7 +295,7 @@
               <item name="test" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="serviceTest" type="462c0819:PsiDirectoryNode" />
+              <item name="controllerTest" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="NetHDDK" type="b2602c69:ProjectViewProjectNode" />
@@ -312,19 +304,21 @@
               <item name="test" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="util" type="462c0819:PsiDirectoryNode" />
+              <item name="serviceTest" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file://E:/Project/HDDK/后台/NetHDDK/src/test/java/com/test/util/DBTool.java" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../taxcloud-manager" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="project.structure.last.edited" value="Modules" />
@@ -334,13 +328,16 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\Project\HDDK\后台\NetHDDK\src\main\resources\mapper" />
       <recent name="E:\Project\HDDK\后台\NetHDDK\src\main\resources" />
+      <recent name="E:\Project\HDDK\后台\NetHDDK\src\main\java\com\hddk\mapper" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.test.controllerTest" />
       <recent name="com.test" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\Project\HDDK\后台\NetHDDK\src\main\resources\mapper" />
       <recent name="E:\Project\HDDK\后台\NetHDDK\src\test\java\com\test" />
       <recent name="E:\Project\HDDK\后台\NetHDDK\src\main\java\com\hddk\util" />
     </key>
@@ -357,18 +354,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.TeacherControllerTest.getBlogDetails">
-    <configuration name="Test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.test.serviceTest.Test" />
-      <module name="NetHDDK" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.test.serviceTest.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-    </configuration>
+  <component name="RunManager" selected="JUnit.TeacherServerTest.testGetActivityAndField">
     <configuration default="true" type="Application" factoryName="Application">
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
     </configuration>
@@ -395,30 +381,7 @@
       </option>
       <patterns />
     </configuration>
-    <configuration name="TeacherControllerTest.getBlogDetails" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="NetHDDK" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.test.controllerTest.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="com.test.controllerTest" />
-      <option name="MAIN_CLASS_NAME" value="com.test.controllerTest.TeacherControllerTest" />
-      <option name="METHOD_NAME" value="getBlogDetails" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <patterns />
-    </configuration>
-    <configuration name="TeacherServerTest.testGetTeacherByT_id" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="TeacherServerTest.testAddActivity" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="NetHDDK" />
       <extension name="coverage">
         <pattern>
@@ -430,7 +393,99 @@
       <option name="ALTERNATIVE_JRE_PATH" />
       <option name="PACKAGE_NAME" value="com.test.serviceTest" />
       <option name="MAIN_CLASS_NAME" value="com.test.serviceTest.TeacherServerTest" />
-      <option name="METHOD_NAME" value="testGetTeacherByT_id" />
+      <option name="METHOD_NAME" value="testAddActivity" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <patterns />
+    </configuration>
+    <configuration name="TeacherServerTest.testGetActivityAndField" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="NetHDDK" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.test.serviceTest.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="com.test.serviceTest" />
+      <option name="MAIN_CLASS_NAME" value="com.test.serviceTest.TeacherServerTest" />
+      <option name="METHOD_NAME" value="testGetActivityAndField" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <patterns />
+    </configuration>
+    <configuration name="TeacherServerTest.testGetActivityField" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="NetHDDK" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.test.serviceTest.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="com.test.serviceTest" />
+      <option name="MAIN_CLASS_NAME" value="com.test.serviceTest.TeacherServerTest" />
+      <option name="METHOD_NAME" value="testGetActivityField" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <patterns />
+    </configuration>
+    <configuration name="TeacherServerTest.testGetAllActivityAndField" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="NetHDDK" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.test.serviceTest.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="com.test.serviceTest" />
+      <option name="MAIN_CLASS_NAME" value="com.test.serviceTest.TeacherServerTest" />
+      <option name="METHOD_NAME" value="testGetAllActivityAndField" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <patterns />
+    </configuration>
+    <configuration name="TeacherServerTest.testGetSignUpStu" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="NetHDDK" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.test.serviceTest.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="com.test.serviceTest" />
+      <option name="MAIN_CLASS_NAME" value="com.test.serviceTest.TeacherServerTest" />
+      <option name="METHOD_NAME" value="testGetSignUpStu" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
@@ -553,15 +608,19 @@
     <list>
       <item itemvalue="JUnit.TeacherConreollerTest.testGetTeacher" />
       <item itemvalue="Tomcat Server.Unnamed" />
-      <item itemvalue="JUnit.TeacherServerTest.testGetTeacherByT_id" />
-      <item itemvalue="JUnit.TeacherControllerTest.getBlogDetails" />
-      <item itemvalue="Application.Test" />
+      <item itemvalue="JUnit.TeacherServerTest.testAddActivity" />
+      <item itemvalue="JUnit.TeacherServerTest.testGetSignUpStu" />
+      <item itemvalue="JUnit.TeacherServerTest.testGetAllActivityAndField" />
+      <item itemvalue="JUnit.TeacherServerTest.testGetActivityField" />
+      <item itemvalue="JUnit.TeacherServerTest.testGetActivityAndField" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.TeacherControllerTest.getBlogDetails" />
-        <item itemvalue="JUnit.TeacherServerTest.testGetTeacherByT_id" />
-        <item itemvalue="Application.Test" />
+        <item itemvalue="JUnit.TeacherServerTest.testGetActivityAndField" />
+        <item itemvalue="JUnit.TeacherServerTest.testGetAllActivityAndField" />
+        <item itemvalue="JUnit.TeacherServerTest.testGetActivityField" />
+        <item itemvalue="JUnit.TeacherServerTest.testGetSignUpStu" />
+        <item itemvalue="JUnit.TeacherServerTest.testAddActivity" />
       </list>
     </recent_temporary>
   </component>
@@ -576,44 +635,48 @@
       <option name="presentableId" value="Default" />
       <updated>1537329053636</updated>
       <workItem from="1537329060398" duration="14760000" />
-      <workItem from="1537349557473" duration="2194000" />
+      <workItem from="1537349557473" duration="3473000" />
+      <workItem from="1537407099423" duration="15068000" />
+      <workItem from="1537492265750" duration="25585000" />
+      <workItem from="1537838055435" duration="31961000" />
+      <workItem from="1537924433252" duration="880000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="TeacherConreollerTest_testGetTeacher - 2018.09.19 at 17h 31m 20s.xml">
-      <configuration name="TeacherConreollerTest.testGetTeacher" configurationId="JUnit" />
+    <history-entry file="TeacherServerTest_testGetActivityAndField - 2018.09.25 at 20h 36m 06s.xml">
+      <configuration name="TeacherServerTest.testGetActivityAndField" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="TeacherConreollerTest_testGetTeacher - 2018.09.19 at 17h 31m 31s.xml">
-      <configuration name="TeacherConreollerTest.testGetTeacher" configurationId="JUnit" />
+    <history-entry file="TeacherServerTest_testGetActivityAndField - 2018.09.25 at 20h 38m 00s.xml">
+      <configuration name="TeacherServerTest.testGetActivityAndField" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="UserServerTest_testGetTeacherByT_id - 2018.09.19 at 17h 41m 54s.xml">
-      <configuration name="UserServerTest.testGetTeacherByT_id" configurationId="JUnit" />
+    <history-entry file="TeacherServerTest_testGetActivityAndField - 2018.09.25 at 20h 48m 06s.xml">
+      <configuration name="TeacherServerTest.testGetActivityAndField" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="UserServerTest_testGetTeacherByT_id - 2018.09.19 at 17h 42m 47s.xml">
-      <configuration name="UserServerTest.testGetTeacherByT_id" configurationId="JUnit" />
+    <history-entry file="TeacherServerTest_testGetActivityAndField - 2018.09.25 at 20h 48m 07s.xml">
+      <configuration name="TeacherServerTest.testGetActivityAndField" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="TeacherControllerTest_getBlogDetails - 2018.09.19 at 17h 44m 38s.xml">
-      <configuration name="TeacherControllerTest.getBlogDetails" configurationId="JUnit" />
+    <history-entry file="TeacherServerTest_testGetActivityAndField - 2018.09.25 at 20h 48m 32s.xml">
+      <configuration name="TeacherServerTest.testGetActivityAndField" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="TeacherServerTest_testGetTeacherByT_id - 2018.09.19 at 17h 45m 20s.xml">
-      <configuration name="TeacherServerTest.testGetTeacherByT_id" configurationId="JUnit" />
+    <history-entry file="TeacherServerTest_testGetActivityAndField - 2018.09.25 at 20h 51m 36s.xml">
+      <configuration name="TeacherServerTest.testGetActivityAndField" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="TeacherServerTest_testGetTeacherByT_id - 2018.09.19 at 17h 53m 26s.xml">
-      <configuration name="TeacherServerTest.testGetTeacherByT_id" configurationId="JUnit" />
+    <history-entry file="TeacherServerTest_testGetActivityAndField - 2018.09.25 at 20h 51m 56s.xml">
+      <configuration name="TeacherServerTest.testGetActivityAndField" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="TeacherServerTest_testGetTeacherByT_id - 2018.09.19 at 17h 59m 12s.xml">
-      <configuration name="TeacherServerTest.testGetTeacherByT_id" configurationId="JUnit" />
+    <history-entry file="TeacherServerTest_testGetActivityAndField - 2018.09.25 at 20h 52m 02s.xml">
+      <configuration name="TeacherServerTest.testGetActivityAndField" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="TeacherServerTest_testGetTeacherByT_id - 2018.09.19 at 18h 05m 04s.xml">
-      <configuration name="TeacherServerTest.testGetTeacherByT_id" configurationId="JUnit" />
+    <history-entry file="TeacherServerTest_testGetActivityAndField - 2018.09.25 at 20h 54m 30s.xml">
+      <configuration name="TeacherServerTest.testGetActivityAndField" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="TeacherServerTest_testGetTeacherByT_id - 2018.09.19 at 18h 08m 48s.xml">
-      <configuration name="TeacherServerTest.testGetTeacherByT_id" configurationId="JUnit" />
+    <history-entry file="TeacherServerTest_testGetActivityAndField - 2018.09.25 at 20h 55m 53s.xml">
+      <configuration name="TeacherServerTest.testGetActivityAndField" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="16954000" />
+    <option name="totallyTimeSpent" value="91727000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="784" extended-state="6" />
@@ -630,23 +693,22 @@
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info id="UI Designer" order="2" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.16257669" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.40030676" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Messages" order="7" weight="0.48312885" />
       <window_info anchor="right" id="Palette&#9;" order="3" />
       <window_info id="Image Layers" order="2" />
       <window_info anchor="bottom" id="Java Enterprise" order="7" />
       <window_info anchor="right" id="Capture Analysis" order="3" />
       <window_info anchor="bottom" id="Version Control" order="7" show_stripe_button="false" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.29447854" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.3082822" />
       <window_info anchor="bottom" id="Spring" order="7" />
       <window_info anchor="bottom" id="Terminal" order="7" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25340393" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2685325" />
       <window_info id="Web" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.3297546" />
       <window_info anchor="right" id="Theme Preview" order="3" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="right" id="Bean Validation" order="3" />
+      <window_info anchor="bottom" id="Messages" order="7" weight="0.3190184" />
       <window_info anchor="right" id="JSF" order="3" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
@@ -654,6 +716,7 @@
       <window_info anchor="right" id="CDI" order="3" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.3297546" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -664,12 +727,18 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="2" />
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/com/test/serviceTest/TeacherServerTest.java</url>
+          <line>88</line>
+          <properties />
+          <option name="timeStamp" value="9" />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="10" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/resources/spring.xml" />
-    <entry file="file://$PROJECT_DIR$/src/main/resources/spring-mybatis.xml" />
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-14">
@@ -684,71 +753,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/spring-mvc.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="219">
-          <caret line="9" column="61" selection-start-line="9" selection-start-column="61" selection-end-line="9" selection-end-column="61" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/com/test/Teat.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hddk/mapper/ActivityMapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="3" selection-start-line="3" selection-end-line="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hddk/util/AjaxResult.java">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/hddk/util/ResultCode.java">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/hddk/util/ActionConstants.java">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/log4j.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="9" column="7" selection-start-line="9" selection-start-column="7" selection-end-line="9" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hddk/service/ITeacherService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="125">
-          <caret line="5" column="11" selection-start-line="5" selection-start-column="11" selection-end-line="5" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hddk/domain/Teacher.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="399">
-          <caret line="38" column="5" selection-start-line="38" selection-start-column="5" selection-end-line="38" selection-end-column="5" />
-          <folding>
-            <element signature="e#326#327#0" expanded="true" />
-            <element signature="e#353#354#0" expanded="true" />
-            <element signature="e#391#392#0" expanded="true" />
-            <element signature="e#423#424#0" expanded="true" />
-            <element signature="e#456#457#0" expanded="true" />
-            <element signature="e#485#486#0" expanded="true" />
-            <element signature="e#529#530#0" expanded="true" />
-            <element signature="e#565#566#0" expanded="true" />
-            <element signature="e#595#596#0" expanded="true" />
-            <element signature="e#621#622#0" expanded="true" />
-            <element signature="e#659#660#0" expanded="true" />
-            <element signature="e#689#690#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="344">
-          <caret line="128" column="21" selection-start-line="128" selection-start-column="21" selection-end-line="128" selection-end-column="21" />
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/jdbc.properties">
       <provider selected="true" editor-type-id="text-editor">
@@ -757,137 +767,277 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hddk/domain/Classes.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="15" column="30" selection-start-line="15" selection-start-column="30" selection-end-line="15" selection-end-column="30" />
-          <folding>
-            <element signature="e#303#304#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hddk/controller/TeacherController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="349">
-          <caret line="22" selection-start-line="22" selection-end-line="22" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/test/BaseControllerTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="28" column="30" lean-forward="true" selection-start-line="28" selection-start-column="30" selection-end-line="28" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/test/controllerTest/BaseControllerTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="199">
-          <caret line="24" column="13" selection-start-line="24" selection-start-column="13" selection-end-line="24" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/test/TeacherConreollerTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="100">
-          <caret line="4" selection-start-line="4" selection-end-line="4" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/test/controllerTest/BlogControllerTest.java">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/test/controllerTest/UserControllerTest.java">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/test/base/BaseControllerTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="23" column="69" selection-start-line="23" selection-start-column="69" selection-end-line="23" selection-end-column="69" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/test/controllerTest/TeacherControllerTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="349">
-          <caret line="18" column="32" lean-forward="true" selection-start-line="18" selection-start-column="32" selection-end-line="18" selection-end-column="32" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/test/BaseControllerTest.java" />
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/test/controllerTest/BaseControllerTest.java" />
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/test/TeacherConreollerTest.java" />
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/test/controllerTest/BlogControllerTest.java" />
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/test/controllerTest/UserControllerTest.java" />
     <entry file="file://$PROJECT_DIR$/src/test/java/com/test/util/DBTool.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="128">
           <caret line="14" column="77" selection-start-line="14" selection-start-column="77" selection-end-line="14" selection-end-column="77" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/test/base/BaseControllerTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="520">
+          <caret line="34" column="47" lean-forward="true" selection-start-line="34" selection-start-column="47" selection-end-line="34" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hddk/domain/Teacher.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/TeacherMapper.xml" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hddk/service/impl/TeacherServiceImpl.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hddk/service/TeacherService.java" />
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/test/controllerTest/TeacherControllerTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="533">
+          <caret line="26" column="28" selection-start-line="26" selection-start-column="28" selection-end-line="26" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://D:/maven/repository/junit/junit/4.12/junit-4.12.jar!/org/junit/internal/runners/model/ReflectiveCallable.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="9" column="62" selection-start-line="9" selection-start-column="62" selection-end-line="9" selection-end-column="62" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://D:/maven/repository/org/mybatis/mybatis/3.2.8/mybatis-3.2.8.jar!/org/apache/ibatis/binding/MapperMethod.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="84">
+          <caret line="12" column="111" selection-start-line="12" selection-start-column="111" selection-end-line="12" selection-end-column="111" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hddk/mapper/TeacherMapper.java" />
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="595">
+          <caret line="49" column="20" selection-start-line="49" selection-start-column="20" selection-end-line="49" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/test/serviceTest/Test.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hddk/util/AjaxResult.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1274">
+          <caret line="117" column="23" selection-start-line="117" selection-start-column="19" selection-end-line="117" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hddk/mapper/impl/TeacherMapper.xml" />
+    <entry file="file://$PROJECT_DIR$/src/main/resources/log4j.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="9" column="7" selection-start-line="9" selection-start-column="7" selection-end-line="9" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hddk/entity/Classes.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="22" column="39" selection-start-line="22" selection-start-column="39" selection-end-line="22" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/spring-mvc.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="9" column="61" selection-start-line="9" selection-start-column="61" selection-end-line="9" selection-end-column="61" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hddk/entity/Student.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="265">
+          <caret line="11" column="29" lean-forward="true" selection-start-line="11" selection-start-column="29" selection-end-line="11" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/ActivityMapper.xml" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hddk/mapper/SqlProvider.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="14" column="23" lean-forward="true" selection-start-line="14" selection-start-column="23" selection-end-line="14" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hddk/entity/Sign.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="233">
+          <caret line="10" column="30" selection-start-line="10" selection-start-column="19" selection-end-line="10" selection-end-column="30" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#718#719#0" expanded="true" />
-            <element signature="e#769#770#0" expanded="true" />
+            <element signature="e#1412#1413#0" expanded="true" />
+            <element signature="e#1446#1447#0" expanded="true" />
+            <element signature="e#1500#1501#0" expanded="true" />
+            <element signature="e#1546#1547#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/test/serviceTest/Test.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hddk/service/impl/SignServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
+        <state relative-caret-position="239">
+          <caret line="12" column="14" lean-forward="true" selection-start-line="12" selection-start-column="14" selection-end-line="12" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hddk/service/impl/StudentServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="364">
+          <caret line="18" column="59" selection-start-line="18" selection-start-column="59" selection-end-line="18" selection-end-column="59" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#236#237#0" expanded="true" />
-            <element signature="e#271#272#0" expanded="true" />
+            <element signature="e#526#527#0" expanded="true" />
+            <element signature="e#592#593#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hddk/mapper/StudentMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="325">
+          <caret line="13" column="1" lean-forward="true" selection-start-line="13" selection-start-column="1" selection-end-line="13" selection-end-column="1" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hddk/entity/Field.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-150">
+          <caret line="3" column="31" lean-forward="true" selection-start-line="3" selection-start-column="31" selection-end-line="3" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hddk/mapper/SignMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="17" selection-start-line="17" selection-end-line="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hddk/mapper/FieldMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="15" column="8" selection-start-line="15" selection-start-column="4" selection-end-line="15" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hddk/service/impl/FieldServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="19">
+          <caret line="16" column="36" lean-forward="true" selection-start-line="16" selection-start-column="36" selection-end-line="16" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://D:/maven/repository/org/mybatis/mybatis/3.2.8/mybatis-3.2.8.jar!/org/apache/ibatis/binding/MapperProxy.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="92">
+          <caret line="17" selection-start-line="17" selection-end-line="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/test/serviceTest/TeacherServerTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1850">
+          <caret line="89" selection-start-line="89" selection-end-line="89" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mybatis-config.xml" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hddk/service/FieldService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="250">
+          <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hddk/service/SignService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="8" column="34" selection-start-line="8" selection-start-column="34" selection-end-line="8" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hddk/service/StudentService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="9" column="54" selection-start-line="9" selection-start-column="54" selection-end-line="9" selection-end-column="54" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/applicationContext.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="167">
-          <caret line="39" column="22" selection-start-line="39" selection-start-column="22" selection-end-line="39" selection-end-column="22" />
+        <state relative-caret-position="175">
+          <caret line="35" column="73" selection-start-line="35" selection-start-column="73" selection-end-line="35" selection-end-column="73" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/test/serviceTest/TeacherServerTest.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hddk/entity/Activity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="79">
-          <caret line="26" column="9" lean-forward="true" selection-start-line="26" selection-start-column="9" selection-end-line="26" selection-end-column="9" />
+        <state relative-caret-position="450">
+          <caret line="19" column="63" selection-start-line="19" selection-start-column="63" selection-end-line="19" selection-end-column="63" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2134#2135#0" expanded="true" />
+            <element signature="e#2168#2169#0" expanded="true" />
+            <element signature="e#4111#4112#0" expanded="true" />
+            <element signature="e#4145#4146#0" expanded="true" />
+            <element signature="e#4200#4201#0" expanded="true" />
+            <element signature="e#4246#4247#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hddk/mapper/ActivityMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="334">
+          <caret line="21" column="27" selection-start-line="21" selection-start-column="27" selection-end-line="21" selection-end-column="27" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hddk/mapper/impl/TeacherMapper.xml">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hddk/service/ActivityService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="3" column="46" selection-start-line="3" selection-start-column="46" selection-end-line="3" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hddk/service/impl/TeacherService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="333">
-          <caret line="14" column="45" selection-start-line="14" selection-start-column="29" selection-end-line="14" selection-end-column="45" />
+        <state relative-caret-position="273">
+          <caret line="14" column="27" selection-start-line="14" selection-start-column="27" selection-end-line="14" selection-end-column="27" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#424#425#0" expanded="true" />
-            <element signature="e#483#484#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hddk/mapper/TeacherMapper.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hddk/service/impl/ActivityServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="9" column="53" selection-start-line="9" selection-start-column="53" selection-end-line="9" selection-end-column="53" />
+        <state relative-caret-position="248">
+          <caret line="29" column="34" selection-start-line="29" selection-start-column="34" selection-end-line="29" selection-end-column="34" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1225#1226#0" expanded="true" />
+            <element signature="e#1288#1289#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hddk/controller/TeacherController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="449">
+          <caret line="37" column="32" selection-start-line="37" selection-start-column="32" selection-end-line="37" selection-end-column="32" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
