@@ -1,22 +1,24 @@
 <template>
     <div id="activity-list-page">
-        <Scroll @scroll="scroll" class="wrapper">
+        <Scroll @scroll="scroll" class="wrapper" :data="activities">
             <div class="content">
                 <ActivityListItem v-for="activity in activities" :key="activity.id" :activity="activity" @click.native="openActivityDetails(activity)"/>
             </div>
         </Scroll>
+
+        <transition name="slide">
+            <router-view />
+        </transition>
     </div>
 </template>
 
 <script>
     import ActivityListItem from '../components/ActivityListItem/ActivityListItem'
-    import Scroll from '../components/Scroll'
 
     export default {
         name: "ActivityList",
         components: {
-            ActivityListItem,
-            Scroll
+            ActivityListItem
         },
         data() {
             return {
@@ -27,59 +29,28 @@
                         status: '报名中',
                         time: '2018.09.26',
                         personLimit: 300,
-                        signUpNumber: 175
-                    },
-                    {
-                        id: 2,
-                        title: '测试活动二',
-                        status: '报名中',
-                        time: '2018.09.26',
-                        personLimit: 300,
-                        signUpNumber: 24
-                    },
-                    {
-                        id: 3,
-                        title: '测试活动三',
-                        status: '报名中',
-                        time: '2018.09.26',
-                        personLimit: 300,
-                        signUpNumber: 289
-                    },
-                    {
-                        id: 4,
-                        title: '测试活动三',
-                        status: '报名中',
-                        time: '2018.09.26',
-                        personLimit: 300,
-                        signUpNumber: 289
-                    },
-                    {
-                        id: 5,
-                        title: '测试活动三',
-                        status: '报名中',
-                        time: '2018.09.26',
-                        personLimit: 300,
-                        signUpNumber: 289
-                    },
-                    {
-                        id: 6,
-                        title: '测试活动三',
-                        status: '报名中',
-                        time: '2018.09.26',
-                        personLimit: 300,
-                        signUpNumber: 289
+                        signUpNumber: 175,
+                        description: "这是一个测试活动来着，每一个活动都会有一个活动简介"
                     }
                 ],
                 scrollY: 0
             }
         },
         methods: {
-            openActivityDetails: (activity) => {
-
+            openActivityDetails(activity) {
+                this.$router.push({name: "activity", params: {id: '1'}})
             },
             scroll(pos) {
                 this.scrollY = pos.y
+            },
+            getActivities() {
+                this.$http.get('/api/activities').then((res) => {
+                    this.activities = res.data.activities
+                });
             }
+        },
+        mounted() {
+            this.getActivities();
         }
     }
 </script>
@@ -93,5 +64,13 @@
             padding-top: 20px;
             overflow auto
         }
+    }
+
+    .slide-enter-active, .slide-leave-active {
+        transition all .35s ease-in-out
+    }
+
+    .slide-enter, .slide-leave-to {
+        transform: translateY(100%);
     }
 </style>

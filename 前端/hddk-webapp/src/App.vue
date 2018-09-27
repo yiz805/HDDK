@@ -1,6 +1,6 @@
 <template>
     <div id="app">
-        <TopBar title="活动大咖"/>
+        <TopBar :title="topBarTitle" :show-arrow="!isHome"/>
         <router-view/>
     </div>
 </template>
@@ -13,6 +13,29 @@
         components: {
             Scroll,
             TopBar
+        },
+        data() {
+            return {
+                isHome: this.$route.name === "home"
+            }
+        },
+        computed: {
+            topBarTitle() {
+                if (this.isHome) {
+                    return "活动大咖";
+                } else {
+                    return "活动详情"
+                }
+            }
+        },
+        watch: {
+            "$route": function(to) {
+                if (to.name !== "home") {
+                    this.isHome = false
+                } else {
+                    this.isHome = true
+                }
+            }
         }
     }
 </script>
@@ -25,7 +48,7 @@
     }
 
     #app {
-        background #f8f8f8;
+        background linear-gradient(0deg, #6aa9f8, #9de4f8);
         min-height: 100vh
     }
 </style>
