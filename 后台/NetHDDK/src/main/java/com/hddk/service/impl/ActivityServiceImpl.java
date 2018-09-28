@@ -1,6 +1,7 @@
 package com.hddk.service.impl;
 
 import com.hddk.entity.Activity;
+import com.hddk.entity.ActivityQueryVo;
 import com.hddk.entity.Student;
 import com.hddk.mapper.ActivityMapper;
 import com.hddk.service.ActivityService;
@@ -17,8 +18,8 @@ public class ActivityServiceImpl implements ActivityService {
 
     public void addActivity(Activity activity) {
         //设置默认值
-        activity.setA_state("0");//活动状态:草稿
-        activity.setSignInState("0");//签到状态:未开始签到
+        activity.setA_state(0);//活动状态:草稿
+        activity.setSignInState(0);//签到状态:未开始签到
         activity.setSignInTimes(0);//签到数为0
         activityMapper.addActivity(activity);
     }
@@ -39,7 +40,11 @@ public class ActivityServiceImpl implements ActivityService {
         return activityMapper.getSignUpStu(activity_id);
     }
 
-    public Activity getActivityAndFiled(int a_id) {
-        return activityMapper.getActivityAndFiled(a_id);
+    public Activity getActivityAndField(int a_id) {
+        return activityMapper.getActivityAndField(a_id);
+    }
+
+    public List<ActivityQueryVo> getTotalSignUpStu() {
+        return activityMapper.getTotalSignUpStu();
     }
 }

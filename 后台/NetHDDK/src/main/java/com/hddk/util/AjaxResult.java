@@ -1,11 +1,12 @@
 package com.hddk.util;
+
+import com.fasterxml.jackson.annotation.JsonInclude;
+
 /**
-
- *  create by Liujishuai on 2015年9月21日
-
+ * create by Liujishuai on 2015年9月21日
  */
 public class AjaxResult {
-	  /**
+    /**
      * 请求结果是否成功
      */
     private String ErrorCode = ResultCode.SUCCESS.getCode();
@@ -18,13 +19,15 @@ public class AjaxResult {
     /**
      * 请求结果
      */
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private Object Data = null;
 
 
     /**
      * Instantiates a new Ajax result.
      */
-    private AjaxResult(){}
+    private AjaxResult() {
+    }
 
     public String getErrorCode() {
         return ErrorCode;
@@ -42,6 +45,7 @@ public class AjaxResult {
         Message = message;
     }
 
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     public Object getData() {
         return Data;
     }
@@ -54,22 +58,23 @@ public class AjaxResult {
      * 获取正确结果模板
      *
      * @param message 请求返回信息
-     * @param obj 请求结果
+     * @param obj     请求结果
      * @return AjaxResult
      */
-    public static AjaxResult getOK(String message, Object obj){
+    public static AjaxResult getOK(String message, Object obj) {
         AjaxResult result = new AjaxResult();
         result.setMessage(message);
         result.setData(obj);
         return result;
     }
+
     /**
      * 获取正确结果模板
      *
      * @param obj 请求结果
      * @return AjaxResult
      */
-    public static AjaxResult getOK(Object obj){
+    public static AjaxResult getOK(Object obj) {
         AjaxResult result = new AjaxResult();
         result.setMessage(ActionConstants.DEFAULT_SUCCESS_RETURNMSG);
         result.setData(obj);
@@ -80,10 +85,10 @@ public class AjaxResult {
      * 获取错误结果模板
      *
      * @param message 请求返回信息
-     * @param obj 请求结果
+     * @param obj     请求结果
      * @return AjaxResult
      */
-    public static AjaxResult getError(ResultCode errorCode, String message, Object obj){
+    public static AjaxResult getError(ResultCode errorCode, String message, Object obj) {
         AjaxResult result = new AjaxResult();
         result.setErrorCode(errorCode.getCode());
         result.setMessage(message);
@@ -96,8 +101,8 @@ public class AjaxResult {
      *
      * @return AjaxResult
      */
-    public static AjaxResult getOK(){
-        return getOK(ActionConstants.DEFAULT_SUCCESS_RETURNMSG,null);
+    public static AjaxResult getOK() {
+        return getOK(ActionConstants.DEFAULT_SUCCESS_RETURNMSG, null);
     }
 
 
@@ -106,7 +111,7 @@ public class AjaxResult {
      *
      * @return AjaxResult
      */
-    public static AjaxResult getError(ResultCode resultCode){
+    public static AjaxResult getError(ResultCode resultCode) {
         return getError(resultCode, ActionConstants.DEFAULT_FAILED_RETURNMSG, null);
     }
 

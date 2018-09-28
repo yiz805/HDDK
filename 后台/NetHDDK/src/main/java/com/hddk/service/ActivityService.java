@@ -1,6 +1,7 @@
 package com.hddk.service;
 
 import com.hddk.entity.Activity;
+import com.hddk.entity.ActivityQueryVo;
 import com.hddk.entity.Student;
 import org.springframework.stereotype.Service;
 
@@ -18,5 +19,7 @@ public interface ActivityService {
 
     List<Student> getSignUpStu(int activity_id);
 
-    Activity getActivityAndFiled(int a_id);
+    Activity getActivityAndField(int a_id);
+
+    List<ActivityQueryVo> getTotalSignUpStu();
 }

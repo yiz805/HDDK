@@ -2,6 +2,7 @@ package com.test.serviceTest;
 
 
 import com.hddk.entity.Activity;
+import com.hddk.entity.ActivityQueryVo;
 import com.hddk.entity.Field;
 import com.hddk.entity.Student;
 import com.hddk.service.FieldService;
@@ -37,16 +38,16 @@ public class TeacherServerTest {
         activity.setDescription("啊啊啊啊");
         activity.setScore(2D);
         activity.setTips("");
-        activity.setA_state("0");
-        activity.setNeedStuSignUp("1");
-        activity.setReleaseState("0");
-        activity.setNeedStuSignUp("1");
+        activity.setA_state(0);
+        activity.setNeedStuSignUp(1);
+        activity.setReleaseState(0);
+        activity.setNeedStuSignUp(1);
         Date signupStatTime = new Date();
         activity.setSignUpStartTime(signupStatTime);
         activity.setSignUpEndTime(signupStatTime);
         activity.setStartTime(signupStatTime);
         activity.setEndTime(signupStatTime);
-        activity.setSignInState("0");
+        activity.setSignInState(0);
         activity.setSignInTimes(1);
         activityService.addActivity(activity);
     }
@@ -57,10 +58,10 @@ public class TeacherServerTest {
         System.out.println(activities.get(0));
     }
 
-    @Test
-    public void testDeleteActivity() {
-        activityService.deleteActivity(2L);
-    }
+//    @Test
+//    public void testDeleteActivity() {
+//        activityService.deleteActivity(2L);
+//    }
 
     @Test
     public void testUpdateActivity() {
@@ -70,23 +71,22 @@ public class TeacherServerTest {
         activity.setDescription("啊啊啊啊");
         activity.setScore(2D);
         activity.setTips("asdf");
-        activity.setA_state("0");
-        activity.setNeedStuSignUp("1");
-        activity.setReleaseState("0");
-        activity.setNeedStuSignUp("1");
+        activity.setA_state(0);
+        activity.setNeedStuSignUp(1);
+        activity.setReleaseState(0);
         Date signupStatTime = new Date();
         activity.setSignUpStartTime(signupStatTime);
         activity.setSignUpEndTime(signupStatTime);
         activity.setStartTime(signupStatTime);
         activity.setEndTime(signupStatTime);
-        activity.setSignInState("0");
+        activity.setSignInState(0);
 
         activityService.updateActivity(activity);
     }
 
     @Test
     public void testGetActivityAndField() {
-        Activity activity = activityService.getActivityAndFiled(1);
+        Activity activity = activityService.getActivityAndField(1);
         System.out.println(activity.getFields().get(0).getF_info());
     }
 
@@ -94,5 +94,11 @@ public class TeacherServerTest {
     public void testGetActivityField() {
         List<Field> fields = fieldService.getFieldByA_id(1);
         System.out.println(fields.get(0).getF_info());
+    }
+
+    @Test
+    public void testGetTotal(){
+        List<ActivityQueryVo> total=activityService.getTotalSignUpStu();
+        System.out.println(total.get(0).getStartTime());
     }
 }

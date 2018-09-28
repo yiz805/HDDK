@@ -4,23 +4,25 @@ import java.util.Date;
 
 public class Sign {
     private Long id;
-    private String signState;//签到状态?'0':报名,'1':过审,'2':签到
+    private int signState;//签到状态?'0':报名,'1':过审,'2':签到
     private Date signTime;//签到时间
     private Activity activity;
     private Student student;
-    private String personState;//是否为签到负责人,'0':否,'1':是
+    private Sign sign;
+    private int personState;//是否为签到负责人,'0':否,'1':是
 
-    public Sign(Long id, String signState, Date signTime, Activity activity, Student student, String personState) {
+
+    public Sign(Long id, int signState, Date signTime, Activity activity, Student student, Sign sign, int personState) {
         this.id = id;
         this.signState = signState;
         this.signTime = signTime;
         this.activity = activity;
         this.student = student;
+        this.sign = sign;
         this.personState = personState;
     }
 
     public Sign() {
-
     }
 
     public Long getId() {
@@ -31,11 +33,11 @@ public class Sign {
         this.id = id;
     }
 
-    public String getSignState() {
+    public int getSignState() {
         return signState;
     }
 
-    public void setSignState(String signState) {
+    public void setSignState(int signState) {
         this.signState = signState;
     }
 
@@ -63,11 +65,19 @@ public class Sign {
         this.student = student;
     }
 
-    public String getPersonState() {
+    public int getPersonState() {
         return personState;
     }
 
-    public void setPersonState(String personState) {
+    public void setPersonState(int personState) {
         this.personState = personState;
+    }
+
+    public Sign getSign() {
+        return sign;
+    }
+
+    public void setSign(Sign sign) {
+        this.sign = sign;
     }
 }

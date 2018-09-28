@@ -9,22 +9,22 @@ public class Activity {
     private Double score;//思政分
     private String description;//活动描述
     private String tips;//注意事项
-    private String releaseState;//活动发布方式:'0':直接发布,'1':定时发布
+    private int releaseState;//活动发布方式:'0':直接发布,'1':定时发布
     private Date releaseTime;//活动发布时间
-    private String needStuSignUp;//是否需要学生报名?'0':否,'1':是
+    private int needStuSignUp;//是否需要学生报名?'0':否,'1':是
     private Date signUpStartTime;//报名开始时间
     private Date signUpEndTime;//报名结束时间
     private Date startTime;//活动开始时间
     private Date endTime;//活动结束时间
-    private String signInState;//活动签到状态?'0':签到未开始,'1':正在签到
-    private String a_state;//活动状态?'0':草稿,"1":未开始,'2':报名中,'3':正在进行,'4':结束
+    private int signInState;//活动签到状态?'0':签到未开始,'1':正在签到
+    private int a_state;//活动状态?'0':草稿,"1":未开始,'2':报名中,'3':正在进行,'4':结束
     private List<Field> fields;//场地
     private Integer signInTimes;//签到次数
 
     public Activity() {
     }
 
-    public Activity(Integer a_id, String theme, Double score, String description, String tips, String releaseState, Date releaseTime, String needStuSignUp, Date signUpStartTime, Date signUpEndTime, Date startTime, Date endTime, String signInState, String a_state, List<Field> fields, Integer signInTimes) {
+    public Activity(Integer a_id, String theme, Double score, String description, String tips, int releaseState, Date releaseTime, int needStuSignUp, Date signUpStartTime, Date signUpEndTime, Date startTime, Date endTime, int signInState, int a_state, List<Field> fields, Integer signInTimes) {
         this.a_id = a_id;
         this.theme = theme;
         this.score = score;
@@ -83,11 +83,11 @@ public class Activity {
         this.tips = tips;
     }
 
-    public String getReleaseState() {
+    public int getReleaseState() {
         return releaseState;
     }
 
-    public void setReleaseState(String releaseState) {
+    public void setReleaseState(int releaseState) {
         this.releaseState = releaseState;
     }
 
@@ -99,11 +99,11 @@ public class Activity {
         this.releaseTime = releaseTime;
     }
 
-    public String getNeedStuSignUp() {
+    public int getNeedStuSignUp() {
         return needStuSignUp;
     }
 
-    public void setNeedStuSignUp(String needStuSignUp) {
+    public void setNeedStuSignUp(int needStuSignUp) {
         this.needStuSignUp = needStuSignUp;
     }
 
@@ -139,19 +139,19 @@ public class Activity {
         this.endTime = endTime;
     }
 
-    public String getSignInState() {
+    public int getSignInState() {
         return signInState;
     }
 
-    public void setSignInState(String signInState) {
+    public void setSignInState(int signInState) {
         this.signInState = signInState;
     }
 
-    public String getA_state() {
+    public int getA_state() {
         return a_state;
     }
 
-    public void setA_state(String a_state) {
+    public void setA_state(int a_state) {
         this.a_state = a_state;
     }
 
