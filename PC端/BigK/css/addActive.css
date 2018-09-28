@@ -1,0 +1,177 @@
+#shade{
+    position:fixed;
+    top:0;
+    left:0;
+    z-index:2;
+    width:100%;
+    height:100%;
+    background-color:#000;
+	opacity:0.3;
+    /*兼容IE8及以下版本浏览器*/
+    filter: alpha(opacity=30);
+    display:none;
+}
+#addAction{
+	margin-top: 20px;
+	width: 720px;
+	background-color: white;
+	z-index:3;
+	position:absolute;/*因为这个，所以不能高度自适应*/
+	top: 40px;
+    left: 50%;
+    transform: translate(-50%,0);
+	border: 1px solid #DDD;
+	display:none;
+	border-radius:5px;
+	z-index: 5;
+	padding-bottom: 30px;
+}
+#close{
+	height: 10px;
+	width: 20px;
+	float: right;
+	position:absolute;
+	top: 15px;
+	right: 20px;
+}
+.modal-title{
+	text-align: center;
+	margin-top: 20px;
+}
+.group{
+	margin-top: 20px;
+}
+.modal-footer{
+	height: 30px;
+	width: 500px;
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	left: 0;
+	margin:auto;
+}
+.center-block{
+	text-align: center;
+}
+.btn{
+	height: 30px;
+	width: 60px;
+	margin-left: 20px;
+	margin-right: 20px;
+}
+.insert1{
+	/*height: 100px;*/
+	width: 100%;
+	border: 1px solid black;
+	border-radius: 5px;
+/*	position: absolute;
+	left: 50%;
+	transform: translate(-50%);*/
+	margin-top: 20px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+.form-control{
+	width: 300px;
+	height: 25px;
+}
+.group1{
+	height: 40px;
+}
+.group1_left{
+	height: 40px;
+	width: 130px;
+	float: left;
+	margin-left: 120px;
+}
+.group1_right{
+	margin-left: 200px;
+}
+.group1_right input{
+	margin-top: 5px;
+}
+.group1_right textarea{
+	height: 40px;
+	width: 300px;
+} 
+.group1_left label{
+	line-height: 40px;
+}
+.group2{
+	height: 40px;
+	margin-top: 5px;
+}
+.group2_left{
+	height: 40px;
+	width: 130px;
+	float: left;
+	margin-left: 120px;
+}
+.group2_right{
+	margin-left: 200px;
+}
+.group2_inp{
+	height: 28px;
+	width: 100px;
+}
+.group3{
+	height: 40px;
+	margin-top: 5px;
+}
+.group3_left{
+	float: left;
+	margin-left: 120px;
+}
+.group3 input{
+	width: 110px;
+	margin-left: 10px;
+}
+.group4{
+	width: 64%;
+	border: 1px solid black;
+	border-radius: 10px;
+	margin-left: 110px;
+	margin-bottom: 10px;
+}
+.group4_left{
+	margin-left: 10px;
+	margin-top: 10px;
+	height: 40px;
+	width: 130px;
+	float: left;
+}
+.group4_right{
+	margin-top: 5px;
+}
+.group5_left{
+	margin-left: 10px;
+	float: left;
+	margin-bottom: 5px;
+}
+.group5_right{
+	margin-left: 10px;
+	margin-bottom: 5px;
+}
+.group5_left input{
+	margin-left: 10px;
+	width: 100px;
+}
+.group5_right input{
+	margin-left: 10px;
+	width: 100px;
+}
+#addbtn{
+	height: 20px;
+	width: 20px;
+	border-radius: 10px;
+	position: absolute;
+	bottom: 100px;
+	left: 50px;
+	font-size: 10px;
+	background-color: #ddd;
+}
+#setdata1{
+	display: none;
+	float: right;
+	margin-right: 120px;
+}

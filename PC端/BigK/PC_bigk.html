@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<link rel="stylesheet" type="text/css" href="iconfont.css">
+<script src="https://cdn.bootcss.com/vue/2.5.17-beta.0/vue.js"></script>
+<script type="text/javascript" src="js/jquery.js"></script>
+<style type="text/css">
+*{
+	margin: 0;
+    padding: 0;
+    list-style: none;
+    text-decoration: none;
+}
+body{
+	background-color: #f5f5f5;
+	height: 100%
+}
+button{
+	outline:none;
+}
+</style>
+<link rel="stylesheet" type="text/css" href="css/mainActive.css">
+<link rel="stylesheet" type="text/css" href="css/addActive.css">
+<body>
+	<div id="right">
+		<div id="right_top">
+			<img src="logo.png" id="logo">
+			<em>活动大咖</em>
+			<p>
+				<i class="icon iconfont icon-bangzhuzhongxin"></i>管理员登陆
+			</p>
+		</div>
+		<div id="right_doSth">
+			<div id="color">
+				<ul>
+					<li id="blue"></li>
+					<li>草稿-></li>
+					<li id="red"></li>
+					<li>正在进行-></li>
+					<li id="green"></li>
+					<li>已完成-></li>
+					<li id="yellow"></li>
+					<li>活动结束</li>
+				</ul>
+			</div>
+		</div>
+		<div id="right_main">
+			<div class="myDiv0">
+				<div id="add">+</div>
+			</div>
+		</div>
+	</div>
+	<div id="bottom">天津理工大学@2018年9月</div>
+	<div id="addAction">
+        <div class="modal-header">
+          	<button type="button" id="close" data-dismiss="modal">X</button>
+          	<h2 class="modal-title">添加新活动</h2>
+       	</div>
+        <div id="addPersonModal" class="addlist">
+	        <div class="addList_group">
+		        <div class="group">
+		        	<div class="group1">
+		        		<div class="group1_left">
+		        			<label>活动主题:*</label>
+		        		</div>
+		        		<div class="group1_right">
+		        			<input class="form-control" type="text" maxlength="15" name="text">
+		        		</div>
+		        	</div>
+		        	<div class="group1">
+		        		<div class="group1_left">
+		        			<label>默认思政分:*</label>
+		        		</div>
+		        		<div class="group1_right">
+		        			<input class="form-control" type="text" name="text">
+		        		</div>
+		        	</div>
+		        	<div class="group1">
+		        		<div class="group1_left">
+		        			<label>活动描述:*</label>
+		        		</div>
+		        		<div class="group1_right">
+		        			<textarea maxlength="500" class="textarea"></textarea>
+		        		</div>
+		        	</div>
+		        	<div class="group1">
+		        		<div class="group1_left">
+		        			<label>注意事项:*</label>
+		        		</div>
+		        		<div class="group1_right">
+		        			<input class="form-control" type="text" maxlength="100" name="text">
+		        		</div>
+		        	</div>
+		        	<div class="group2">
+		        		<div class="group2_left">
+		        			<label>发布时间:*</label>
+		        		</div>
+		        		<div class="group2_right">
+		        				<input type="radio" name="radio" value="0"><label>手动立即发布</label>
+					            <input type="radio" name="radio" value="1" id="setdata"><label>系统定时发布</label>
+					            <input class="group2_inp" type="text" id="setdata1" name="text">
+		        		</div>
+		        	</div>
+		        	<div class="group3">
+		        		<div class="group3_left">
+		        			<label>报名开始时间:</label><input class="form-control" type="text" name="text">
+		        		</div>
+		        		<div class="group3_right">
+		        			<label>报名截止时间:</label><input class="form-control" type="text" name="text">
+		        		</div>
+		        	</div>
+		        	<div class="group3">
+		        		<div class="group3_left">
+		        			<label>活动开始时间:</label><input class="form-control" type="text" name="text">
+		        		</div>
+		        		<div class="group3_right">
+		        			<label>活动截止时间:</label><input class="form-control" type="text" name="text">
+		        		</div>
+		        	</div>
+		        	<form class="group4">
+		        		<div class="group4_left">
+		        			<label>活动举办地点:*</label>
+		        		</div>
+		        		<div class="group4_right">
+		        			<input class="form-control" type="text" maxlength="20" name="text">
+		        		</div>
+		        		<br>
+		        		<div class="group4_left">
+		        			<label>报名人数上限:*</label>
+		        		</div>
+		        		<div class="group4_right">
+		        			<input class="form-control" type="text" name="text">
+		        		</div>
+		        		<br>
+		        		<div class="group5_left">
+		        			<label>活动负责人:</label><input class="form-control" type="text" name="text">
+		        		</div>
+		        		<div class="group5_right">
+		        			<label>负责人联系方式:</label><input class="form-control" type="text" name="text">
+		        		</div>
+		        	</form>
+		        	
+		        	<button id="addbtn">+</button>
+		
+
+		            </div>
+		        </div>
+	        </div>
+	        <div class="modal-footer">
+	          	<div class="center-block">
+		            <button id="cancelAdd" type="button" class="btn btn_default" data-dismiss="modal">取消</button>
+		           	<button id="addAct" type="button" class="btn btn_success" data-dismiss="modal">保存</button>
+		        </div>
+		    </div>
+      	</div>
+    </div>
+    <div id="shade"></div>
+</body>
+<script type="text/javascript" src="js/main.js"></script>
+<script type="text/javascript">
+window.onload = ()=>{
+	//页面加载查询所有活动
+	$.ajax({
+		// async : false,	
+		type: "POST",
+		url: "http://192.168.3.153:8080/teacher/getAllActivity",
+		data:"",
+		dataType:'json',
+        // jsonp:'callback',
+        // jsonpCallback:"successCallback",
+	    success:function(data){
+	    	// var info_list = [];
+	    	$.each(data,function(index,value){
+	    		
+	    		for (var i = 0; i < value.length; i++) {
+	    			console.log(value[i])
+	    			$('#right_main').append(`
+						<div class="myDiv" data-actionid="${value[i].a_id}" data-actionState="${value[i].a_state}">
+							<i class="icon iconfont icon-shanchu"></i>
+							<span class="myDiv_spa">${value[i].theme}</span>
+							<div class="dis">
+								<p class="myDiv_p">报名时间: 
+									<em class="em">
+										${value[i].signUpStartTime}										
+									</em>
+								</p>
+								<p class="myDiv_p">活动时间: 
+									<em class="em">
+										${value[i].startTime}
+									</em>
+								</p>
+								<p class="myDiv_p">报名人数: <em class="em">${value[i].num}</em></p>
+							</div>
+							<button class="btn1">
+								<i class="icon iconfont icon-31qiandao"></i>编辑
+							</button>
+						</div>
+					`);
+	    		}	
+	    	});
+	    }, 
+	    error:function(XMLHttpRequest, textStatus, errorThrown){ 
+	        console.log(XMLHttpRequest.status)
+	        console.log(XMLHttpRequest.readyState)
+	        console.log(textStatus)
+	    }       
+    }); 
+
+	//----增加活动----
+	var showShade = document.getElementsByClassName("myDiv0");
+	var closeShade = document.getElementById("close");
+	for (let i = 0; i < showShade.length; i++) {
+		showShade[i].onclick = () =>{
+			alert("------------")
+			showShade()
+		}
+	}
+		closeShade.onclick =()=>{
+			closeShade()
+		}
+	var showShade = function () {
+		document.getElementById("shade").style.display = 'block';
+		document.getElementById("addAction").style.display = 'block';
+	};
+	var closeShade = function () {
+		document.getElementById("shade").style.display = 'none';
+		document.getElementById("addAction").style.display = 'none';
+		location.reload(); 
+	};
+
+	//增加活动---增加分会场
+	document.getElementById("addbtn").onclick = () =>{
+		var a1 = document.getElementsByClassName("group4");
+		var a2 = a1[0].cloneNode(true);
+		a2.reset();
+		var a3 = document.getElementsByClassName("group");
+		if (a1.length >=3) {
+			alert("bukeyi")
+			return false;
+		}
+		a3[0].appendChild(a2);
+	}
+	//增加活动---向后台发送数据
+	$("#addAct").click(function(ev){
+		ev.stopPropagation();
+		var action1 =[]
+		$("input[name='text']").each(function(){
+			action1.push($(this).val())
+		});
+		var checked = $('input[name="radio"]:checked').val();
+		var description = $(".textarea").val();
+		function Activity(theme,score,description,tips,releaseState,releaseTime,signUpStartTime,signUpEndTime,starTime,endTime,fields){
+			this.theme = action1[0];
+			this.score = action1[1];
+			this.description = description;
+			this.tips = action1[2];
+			this.releaseState = releaseState;
+			this.releaseTime = action1[3];
+			this.signUpStartTime = action1[4];
+			this.signUpEndTime = action1[5];
+			this.starTime = action1[6];
+			this.endTime = action1[7];
+		}
+		var a1 = new Activity();
+			a1.description = description;
+			a1.releaseState = checked;
+
+		var aaa = $(".group4 input");
+		console.log(aaa.length)
+		switch(aaa.length)
+			{
+			    case 4:
+			        var fields111 ={
+						f_info:aaa[0].value,
+						signUpNumLimit:aaa[1].value,
+						t_name:aaa[2].value,
+						t_tel:aaa[3].value
+					};
+					a1.fields = {
+						fields1:fields111,
+					}
+			        break;
+			    case 8:
+			        var fields111 ={
+						f_info:aaa[0].value,
+						signUpNumLimit:aaa[1].value,
+						t_name:aaa[2].value,
+						t_tel:aaa[3].value
+					};
+					var fields222 ={
+						f_info:aaa[4].value,
+						signUpNumLimit:aaa[5].value,
+						t_name:aaa[6].value,
+						t_tel:aaa[7].value
+					};
+					a1.fields = {
+						fields1:fields111,
+						fields2:fields222,
+					}
+			        break;
+			    case 12:
+			        var fields111 ={
+						f_info:aaa[0].value,
+						signUpNumLimit:aaa[1].value,
+						t_name:aaa[2].value,
+						t_tel:aaa[3].value
+					};
+					var fields222 ={
+						f_info:aaa[4].value,
+						signUpNumLimit:aaa[5].value,
+						t_name:aaa[6].value,
+						t_tel:aaa[7].value
+					};
+					var fields333 ={
+						f_info:aaa[8].value,
+						signUpNumLimit:aaa[9].value,
+						t_name:aaa[10].value,
+						t_tel:aaa[11].value
+					};
+					a1.fields = {
+						fields1:fields111,
+						fields2:fields222,
+						fields3:fields333
+					}
+			        break;
+			}
+		console.log(a1)
+
+		$.ajax({
+             type: "POST",
+             url: "http://192.168.3.153:8080/teacher/getAllActivity",
+             data: {a1},
+             dataType: "json",
+             success: function(data){
+                         //保存成功啊！
+                      }
+         });
+
+		alert("保存成功")
+	});
+
+	//-----删除活动------
+	$('.icon-shanchu').click(function(ev){
+		ev.stopPropagation();
+		console.log(this)
+		var actionId = this.parentNode.getAttribute('data-actionid');
+			$.ajax({
+	            type: "GET",
+	            url: "xxxAction?actionId",
+	            // data:"actionId="+actionId	,
+	            dataType: "json",
+	            success: function(data){
+	                    	
+	                    }
+	        });
+		console.log(actionId)	
+	});
+
+	//-----单选按钮-----
+	var setD = document.getElementById("setdata");
+		setD.onclick = ()=>{
+			document.getElementById("setdata1").style.display = 'block';
+		}
+	
+	//-----查看详情-----
+	$(".myDiv").click(function(){
+		console.log(this)
+		showShade();//遮照层
+		let actionId = this.getAttribute('data-actionid');
+			$.ajax({
+				type: "GET",
+	            url: "xxxAction?actionId",
+	            // data:"actionId="+actionId	,
+	            dataType: "json",
+	            success: function(data){
+	                    	//查询出所有的数据
+	                    	//将遮照层的节点删除，用es6模版来动态生成。	
+	                    	//生成一个人员名单按钮
+	                    }
+			});
+		alert("详情")
+	});
+
+	//-----编辑-----
+	$(".btn1").click(function(ev){
+		alert("编辑")
+		ev.stopPropagation();
+		showShade();
+		$.ajax({
+				type: "GET",
+	            url: "xxxAction?actionId",
+	            // data:"actionId="+actionId	,
+	            dataType: "json",
+	            success: function(data){
+	                    	//根据id查数据，查完添加到输入框
+	                    }
+			});
+	})
+
+}
+</script>
+</html>
