@@ -9,7 +9,7 @@
 	opacity:0.3;
     /*兼容IE8及以下版本浏览器*/
     filter: alpha(opacity=30);
-    display:none;
+    /*display:none;*/
 }
 #addAction{
 	margin-top: 20px;
@@ -21,7 +21,7 @@
     left: 50%;
     transform: translate(-50%,0);
 	border: 1px solid #DDD;
-	display:none;
+	/*display:none;*/
 	border-radius:5px;
 	z-index: 5;
 	padding-bottom: 30px;

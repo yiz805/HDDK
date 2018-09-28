@@ -72,7 +72,7 @@
                                     </div>
                                 </div>
                                 <div id="right_main">
-                                    <div :data-actionid="baseinfo.actionId" :data-actionstate="baseinfo.actionState" class="myDiv" v-for="baseinfo in info_list" v-on:click="showAllInfo">
+                                    <div class="myDiv" v-for="baseinfo in info_list" :data-actionid="baseinfo.actionId" :data-actionstate="baseinfo.actionState" v-on:click="showAllInfo">
                                         <i class="icon iconfont icon-shanchu" v-on:click="deleAction">
                                         </i>
                                         <span class="myDiv_spa">
@@ -340,7 +340,7 @@
                         });
                         var checked = $('input[name="radio"]:checked').val();
                         var description = $(".textarea").val();
-                        function Activity(theme,score,description,tips,releaseState,releaseTime,signUpStartTime,signUpEndTime,starTime,endTime,fields){
+                        function Activity(theme,score,description,tips,releaseState,releaseTime,signUpStartTime,signUpEndTime,starTime,endTime){
                             this.theme = action1[0];
                             this.score = action1[1];
                             this.description = description;
@@ -415,13 +415,17 @@
                                     // }
                                     break;
                             }
-                        console.log(activity)
+                       
+
+                        // alert(JSON.stringify(activity))
+                        // var a ={activity:{JSON.stringify(activity)}}
+                        // var activity={"activity"=JSON.stringify(activity)};
                         $.ajax({
                             type: "POST",
                             dataType: "json",
                             url: "http://192.168.3.153:8080/teacher/addActivity",
                             contentType : "application/x-www-form-urlencoded",
-                            data : {activity},
+                            data : JSON.stringify(activity),
                             success: function(data){
                                 alert("success")
                             },

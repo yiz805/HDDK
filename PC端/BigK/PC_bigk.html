@@ -215,7 +215,6 @@ window.onload = ()=>{
 	var closeShade = document.getElementById("close");
 	for (let i = 0; i < showShade.length; i++) {
 		showShade[i].onclick = () =>{
-			alert("------------")
 			showShade()
 		}
 	}
@@ -332,11 +331,11 @@ window.onload = ()=>{
 
 		$.ajax({
              type: "POST",
-             url: "http://192.168.3.153:8080/teacher/getAllActivity",
+             url: "http://192.168.3.153:8080/teacher/addActivity",
              data: {a1},
              dataType: "json",
              success: function(data){
-                         //保存成功啊！
+                      alert("--")
                       }
          });
 
