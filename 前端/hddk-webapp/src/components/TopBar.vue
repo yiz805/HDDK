@@ -3,10 +3,10 @@
         <div class="person">
             <slot></slot>
         </div>
-        <div class="title">{{ title }}</div>
+        <div class="title" :style="{color: color}">{{ title }}</div>
         <transition name="fade">
             <div class="back-arrow" v-show="showArrow" @click="arrowClick">
-                <i class="el-icon-circle-close"></i>
+                <font-icon icon="times-circle" />
             </div>
         </transition>
         <div class="clear"></div>
@@ -21,6 +21,10 @@
             showArrow: {
                 type: Boolean,
                 default: false
+            },
+            color: {
+                type: String,
+                default: "auto"
             }
         },
         methods: {

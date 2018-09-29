@@ -1,16 +1,14 @@
 <template>
     <div id="activity-preview">
-        <div class="flag-color" :style="{background: randomColor}"></div>
-        <div class="right-block">
-            <div class="ac-info">
-                <div class="title">{{ activity.title }}</div>
-                <div class="ac-status">{{ activity.status }}</div>
-                <div class="clear"></div>
-            </div>
-            <div class="ac-time">{{ activity.time }}</div>
-            <div class="ac-description">{{ activity.description }}</div>
+        <div class="flag-color" v-show="showFlag"></div>
+
+        <div class="ac-info">
+            <div class="title">{{ activity.title }}</div>
+            <div class="ac-status">{{ activity.status }}</div>
+            <div class="clear"></div>
         </div>
-        <div class="clear"></div>
+        <div class="ac-time">{{ activity.time }}</div>
+        <div class="ac-description">{{ activity.description }}</div>
     </div>
 </template>
 
@@ -18,37 +16,15 @@
     export default {
         name: "ActivityPreview",
         props: {
-            activity: Object
+            activity: Object,
+            showFlag: {
+                type: Boolean,
+                default: true
+            }
         },
         data() {
             return {
                 randomNum: Math.floor(Math.random() * 10 + 1)
-            }
-        },
-        computed: {
-            randomColor() {
-                switch (this.randomNum) {
-                    case 1:
-                        return "#44cef6";
-                    case 2:
-                        return "#177cb0";
-                    case 3:
-                        return "#db5a6b";
-                    case 4:
-                        return "#21a675";
-                    case 5:
-                        return "#c0ebd7";
-                    case 6:
-                        return "#f35336";
-                    case 7:
-                        return "#725e82";
-                    case 8:
-                        return "#549688";
-                    case 9:
-                        return "#758a99";
-                    case 10:
-                        return "#41555d";
-                }
             }
         }
     }
@@ -58,17 +34,19 @@
     @import "../../assets/stylus/common.styl"
 
     #activity-preview {
+        padding: 45px 25px;
 
         .flag-color {
             width: 30px
-            height: 130px
-            background chocolate
-            border-top-right-radius 50%
-            border-bottom-right-radius 50%
+            height: 30px
+            background #fed351
+            border-radius 50%
             float left
             display inline-block
-            position relative
-            transform translate(-120%, 0%)
+            position absolute
+            top: 0
+            left: 20px
+            transform translateY(-50%)
         }
 
         .right-block {

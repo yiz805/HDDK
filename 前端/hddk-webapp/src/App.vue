@@ -1,17 +1,15 @@
 <template>
     <div id="app">
-        <TopBar :title="topBarTitle" :show-arrow="!isHome"/>
+        <TopBar :title="topBarTitle" :show-arrow="!isHome" color="#fff"/>
         <router-view/>
     </div>
 </template>
 
 <script>
     import TopBar from './components/TopBar'
-    import Scroll from './components/Scroll'
 
     export default {
         components: {
-            Scroll,
             TopBar
         },
         data() {
@@ -48,7 +46,7 @@
     }
 
     #app {
-        background linear-gradient(0deg, #6aa9f8, #9de4f8);
+        background #fed351;
         min-height: 100vh
     }
 </style>

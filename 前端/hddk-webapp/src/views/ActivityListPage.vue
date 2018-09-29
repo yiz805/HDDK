@@ -2,7 +2,7 @@
     <div id="activity-list-page">
         <Scroll @scroll="scroll" class="wrapper" :data="activities">
             <div class="content">
-                <ActivityListItem v-for="activity in activities" :key="activity.id" :activity="activity" @click.native="openActivityDetails(activity)"/>
+                <ActivityListItem v-for="activity in activities" :key="activity.id" :activity="activity" @item-click="openActivityDetails(activity)"/>
             </div>
         </Scroll>
 

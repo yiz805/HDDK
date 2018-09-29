@@ -9,10 +9,13 @@ for (let i = 0; i < 10; i++) {
         id: (i+1),
         title: random.ctitle(4, 10),
         status: '报名中',
-        time: random.date('yyyy-MM-dd'),
-        personLimit: random.integer(50, 500),
+        startTime: random.date('yyyy-MM-dd'),
+        signUpStartTime: random.date('yyyy-MM-dd'),
+        personLimit: random.integer(300, 500),
         signUpNumber: random.integer(50, 500),
-        description: random.cparagraph(6, 30)
+        description: random.cparagraph(6, 100),
+        score: random.integer(1, 10),
+        tips: random.cparagraph(10, 100)
     };
 
     activities.push(activity);

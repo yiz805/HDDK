@@ -25,7 +25,7 @@
                 default: false
             },
             data: {
-                type: Array,
+                type: Object | Array,
                 default: null
             },
             pullup: {
@@ -46,9 +46,9 @@
             }
         },
         mounted() {
-            setTimeout(() => {
+            this.$nextTick(() => {
                 this._initScroll()
-            }, 20)
+            })
         },
         methods: {
             _initScroll() {
