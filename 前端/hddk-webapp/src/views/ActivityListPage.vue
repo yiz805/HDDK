@@ -6,7 +6,7 @@
             </div>
         </Scroll>
 
-        <transition name="slide">
+        <transition name="slide-up">
             <router-view />
         </transition>
     </div>
@@ -30,14 +30,15 @@
                         time: '2018.09.26',
                         personLimit: 300,
                         signUpNumber: 175,
-                        description: "这是一个测试活动来着，每一个活动都会有一个活动简介"
+                        description: "这是一个测试活动来着，每一个活动都会有一个活动简介",
+                        fields:[]
                     }
                 ],
                 scrollY: 0
             }
         },
         methods: {
-            openActivityDetails(activity) {
+            openActivityDetails() {
                 this.$router.push({name: "activity", params: {id: '1'}})
             },
             scroll(pos) {
@@ -56,6 +57,8 @@
 </script>
 
 <style scoped lang="stylus">
+    @import "../assets/stylus/animation.styl"
+
     .wrapper {
         height: calc(100vh - 110px);
         overflow hidden
@@ -64,13 +67,5 @@
             padding-top: 20px;
             overflow auto
         }
-    }
-
-    .slide-enter-active, .slide-leave-active {
-        transition all .35s ease-in-out
-    }
-
-    .slide-enter, .slide-leave-to {
-        transform: translateY(100%);
     }
 </style>

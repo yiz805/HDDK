@@ -19,7 +19,7 @@
 
 <script>
     import ActivityPreview from './ActivityPreview'
-    import ActivityProgressBar from '../ActivityProgressBar'
+    import ActivityProgressBar from '../ProgressBar'
 
     export default {
         name: "ActivityListItem",

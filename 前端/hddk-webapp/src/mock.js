@@ -15,7 +15,23 @@ for (let i = 0; i < 10; i++) {
         signUpNumber: random.integer(50, 500),
         description: random.cparagraph(6, 100),
         score: random.integer(1, 10),
-        tips: random.cparagraph(10, 100)
+        tips: random.cparagraph(10, 100),
+        fields: [
+            {
+                id: 1,
+                info: random.ctitle(4, 10),
+                signUpNumLimit: random.integer(30, 100),
+                tel: 13988888888,
+                name: '王老师'
+            },
+            {
+                id: 2,
+                info: random.ctitle(4, 10),
+                signUpNumLimit: random.integer(30, 100),
+                tel: 13988888888,
+                name: '王老师'
+            }
+        ]
     };
 
     activities.push(activity);

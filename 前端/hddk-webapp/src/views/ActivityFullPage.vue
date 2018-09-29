@@ -19,25 +19,43 @@
                 </div>
             </div>
         </Scroll>
+
+        <transition name="slide-up">
+            <router-view />
+        </transition>
+
+        <transition name="fade">
+            <div class="mask" v-if="showMask" @click="closePlacePage"></div>
+        </transition>
+
+        <div class="ac-button">
+            <CButton @button-click="signUp">
+                <font-icon icon="edit" />
+                报名
+            </CButton>
+        </div>
     </div>
 </template>
 
 <script>
     import ActivityPreview from '../components/ActivityListItem/ActivityPreview'
     import ActivityDetails from '../components/ActivityListItem/ActivityDetails'
-    import ProgressBar from '../components/ActivityProgressBar'
+    import ProgressBar from '../components/ProgressBar'
+    import CButton from '../components/CButton'
 
     export default {
         name: "ActivityFullPage",
         components: {
             ActivityPreview,
             ActivityDetails,
-            ProgressBar
+            ProgressBar,
+            CButton
         },
         props: ['id'],
         data() {
             return {
                 activity: {},
+                showMask: false
             }
         },
         methods: {
@@ -45,15 +63,26 @@
                 this.$http.get('/api/activity/' + this.id).then((res) => {
                     this.activity = res.data.activity
                 })
+            },
+            signUp() {
+                this.showMask = true;
+                this.$router.push({name: 'signUp', params: {activity: this.activity}});
+            },
+            closePlacePage() {
+                this.showMask = false;
+                this.$router.go(-1);
             }
         },
         mounted() {
+            this.showMask = false;
             this.getActivity();
         }
     }
 </script>
 
 <style scoped lang="stylus">
+    @import "../assets/stylus/animation.styl"
+
     #activity-full-page {
         width: 100vw
         height: calc(100vh - 110px)
@@ -64,12 +93,22 @@
         position absolute
         top 110px
         z-index: 10
-        padding 20px
-        box-sizing border-box
+
+        .mask {
+            width: 100vw
+            height: 100vh
+            position absolute
+            top: 0
+            left: 0
+            opacity .3
+            background #000
+        }
 
         .full-page-scroll {
             overflow hidden
             width: 100%;
+            padding: 20px
+            box-sizing border-box
             height: calc(100vh - 110px)
 
             .content {
@@ -91,7 +130,19 @@
                         opacity .35
                     }
                 }
+
+                .detail {
+                    margin-bottom: 80px
+                }
             }
+        }
+
+        .ac-button {
+            position: fixed;
+            bottom: 50px
+            left: 50%
+            z-index: 20
+            transform translateX(-50%)
         }
     }
 </style>

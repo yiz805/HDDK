@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import ActivityList from './views/ActivityListPage'
 import ActivityFull from './views/ActivityFullPage'
+import SignUpPage from './views/SignUpPage'
 
 Vue.use(Router)
 
@@ -17,14 +18,16 @@ export default new Router({
                     path: 'activity/:id',
                     name: 'activity',
                     component: ActivityFull,
-                    props: true
+                    props: true,
+                    children: [
+                        {
+                            path: 'sign-up',
+                            name: 'signUp',
+                            component: SignUpPage
+                        }
+                    ]
                 }
             ]
         }
-        // {
-        //     path: '/activity',
-        //     name: 'activity',
-        //     component:
-        // }
     ]
 })
