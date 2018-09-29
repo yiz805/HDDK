@@ -1,5 +1,7 @@
 package com.hddk.entity;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -41,6 +43,19 @@ public class Activity {
         this.a_state = a_state;
         this.fields = fields;
         this.signInTimes = signInTimes;
+    }
+
+    public Activity(String theme, Double score, String description, String tips, int releaseState, Date releaseTime, Date signUpStartTime, Date signUpEndTime, Date startTime, Date endTime) {
+        this.theme = theme;
+        this.score = score;
+        this.description = description;
+        this.tips = tips;
+        this.releaseState = releaseState;
+        this.releaseTime = releaseTime;
+        this.signUpStartTime = signUpStartTime;
+        this.signUpEndTime = signUpEndTime;
+        this.startTime = startTime;
+        this.endTime = endTime;
     }
 
     public Integer getA_id() {
@@ -91,12 +106,21 @@ public class Activity {
         this.releaseState = releaseState;
     }
 
-    public Date getReleaseTime() {
-        return releaseTime;
+    public String getReleaseTime() {
+        SimpleDateFormat bf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String format = bf.format(releaseTime);
+        return format;
     }
 
     public void setReleaseTime(Date releaseTime) {
-        this.releaseTime = releaseTime;
+        SimpleDateFormat bf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String format = bf.format(releaseTime);
+        try {
+            Date date = bf.parse(format);
+            this.releaseTime = date;
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
     }
 
     public int getNeedStuSignUp() {
@@ -107,36 +131,72 @@ public class Activity {
         this.needStuSignUp = needStuSignUp;
     }
 
-    public Date getSignUpStartTime() {
-        return signUpStartTime;
+    public String getSignUpStartTime() {
+        SimpleDateFormat bf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String format = bf.format(signUpStartTime);
+        return format;
     }
 
     public void setSignUpStartTime(Date signUpStartTime) {
-        this.signUpStartTime = signUpStartTime;
+        SimpleDateFormat bf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String format = bf.format(signUpStartTime);
+        try {
+            Date date = bf.parse(format);
+            this.signUpStartTime = date;
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
     }
 
-    public Date getSignUpEndTime() {
-        return signUpEndTime;
+    public String getSignUpEndTime() {
+        SimpleDateFormat bf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String format = bf.format(signUpEndTime);
+        return format;
     }
 
     public void setSignUpEndTime(Date signUpEndTime) {
-        this.signUpEndTime = signUpEndTime;
+        SimpleDateFormat bf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String format = bf.format(signUpEndTime);
+        try {
+            Date date = bf.parse(format);
+            this.signUpEndTime = date;
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
     }
 
-    public Date getStartTime() {
-        return startTime;
+    public String getStartTime() {
+        SimpleDateFormat bf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String format = bf.format(startTime);
+        return format;
     }
 
     public void setStartTime(Date startTime) {
-        this.startTime = startTime;
+        SimpleDateFormat bf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String format = bf.format(startTime);
+        try {
+            Date date = bf.parse(format);
+            this.startTime = date;
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
     }
 
-    public Date getEndTime() {
-        return endTime;
+    public String getEndTime() {
+        SimpleDateFormat bf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String format = bf.format(endTime);
+        return format;
     }
 
     public void setEndTime(Date endTime) {
-        this.endTime = endTime;
+        SimpleDateFormat bf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String format = bf.format(endTime);
+        try {
+            Date date = bf.parse(format);
+            this.endTime = date;
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
     }
 
     public int getSignInState() {

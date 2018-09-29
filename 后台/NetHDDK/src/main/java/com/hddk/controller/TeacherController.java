@@ -7,6 +7,7 @@ import com.hddk.service.ActivityService;
 import com.hddk.util.AjaxResult;
 import net.sf.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -24,57 +25,52 @@ public class TeacherController {
 
     @ResponseBody
     @RequestMapping(value = "/addActivity", method = RequestMethod.POST)
-    public void addActivity(@RequestBody Activity activity) {
-        activityService.addActivity(activity);
+    public AjaxResult addActivity(@RequestBody Activity activity) {
+        //activityService.addActivity(activity);
+        System.out.println(activity.getTheme());
+        return AjaxResult.getOK();
+    }
 
+    @ResponseBody
+    @RequestMapping(value = "/test", method = RequestMethod.POST)
+    public AjaxResult test(@RequestBody Student student) {
+        System.out.println("resqust test" + student.getS_name());
+        return AjaxResult.getOK();
     }
 
     @ResponseBody
     @RequestMapping(value = "/getAllActivity", method = RequestMethod.POST)
-    public void getAllActivity(HttpServletRequest req, HttpServletResponse res) {
+    public AjaxResult getAllActivity() {
         List<ActivityQueryVo> activities = activityService.getTotalSignUpStu();
-
-        JSONObject jsonObject = new JSONObject();
-        jsonObject.put("data", activities);
-        try {
-            res.getWriter().write(jsonObject.toString());
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        return AjaxResult.getOK(activities);
     }
 
     @ResponseBody
-    @RequestMapping(value = "/deleteActivity", method = RequestMethod.POST)
-    public void deleteActivity(int a_id) {
+    @RequestMapping(value = "/deleteActivity", method = RequestMethod.GET)
+    public AjaxResult deleteActivity(@RequestParam(value = "a_id") int a_id) {
         activityService.deleteActivity(a_id);
-
+        return AjaxResult.getOK();
     }
 
     @ResponseBody
     @RequestMapping(value = "/updateActivity", method = RequestMethod.POST)
-    public void updateActivity(@RequestBody Activity activity) {
+    public AjaxResult updateActivity(@RequestBody Activity activity) {
         activityService.updateActivity(activity);
-
+        return AjaxResult.getOK();
     }
 
     @ResponseBody
     @RequestMapping(value = "/getActivityField", method = RequestMethod.POST)
-    public void getActivityField(@RequestParam int a_id, HttpServletRequest req, HttpServletResponse res) {
+    public AjaxResult getActivityField(@RequestParam(value = "a_id") int a_id) {
         Activity activity = activityService.getActivityAndField(a_id);
-        JSONObject jsonObject = new JSONObject();
-        jsonObject.put("data", activity);
-        try {
-            res.getWriter().write(jsonObject.toString());
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        return AjaxResult.getOK(activity);
     }
 
     @ResponseBody
     @RequestMapping(value = "/getSignUpStu", method = RequestMethod.POST)
-    public void getSignUpStu(int a_id) {
+    public AjaxResult getSignUpStu(@RequestParam(value = "a_id") int a_id) {
         List<Student> students = activityService.getSignUpStu(a_id);
-
+        return AjaxResult.getOK(students);
     }
 
 }

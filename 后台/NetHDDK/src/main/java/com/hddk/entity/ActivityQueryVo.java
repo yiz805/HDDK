@@ -72,7 +72,7 @@ public class ActivityQueryVo {
         String format = bf.format(startTime);
         try {
             Date date = bf.parse(format);
-            this.startTime = startTime;
+            this.startTime = date;
         } catch (ParseException e) {
             e.printStackTrace();
         }
