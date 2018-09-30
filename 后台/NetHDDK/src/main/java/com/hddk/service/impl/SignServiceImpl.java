@@ -16,7 +16,7 @@ public class SignServiceImpl implements SignService {
     public void studentSignUp(Sign signUp) {
         //设置默认值
         signUp.setSignState(0);//状态:报名
-        signUp.setSignTime(new Date());
+        signUp.setSignTime(new Date().toString());
         signUp.setPersonState(0);//是否负责人:否
         signMapper.studentSignUp(signUp);
     }

@@ -7,8 +7,8 @@ import java.util.Date;
 public class ActivityQueryVo {
     private Integer a_id;
     private String theme;
-    private Date signUpStartTime;
-    private Date startTime;
+    private String signUpStartTime;
+    private String startTime;
     private int a_state;
     private Long num;
 
@@ -16,7 +16,7 @@ public class ActivityQueryVo {
 
     }
 
-    public ActivityQueryVo(Integer a_id, String theme, Date signUpStartTime, Date startTime, int a_state, Long num) {
+    public ActivityQueryVo(Integer a_id, String theme, String signUpStartTime, String startTime, int a_state, Long num) {
         this.a_id = a_id;
         this.theme = theme;
         this.signUpStartTime = signUpStartTime;
@@ -42,41 +42,19 @@ public class ActivityQueryVo {
     }
 
     public String getSignUpStartTime() {
-        SimpleDateFormat bf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        String format = bf.format(signUpStartTime);
-
-        return format;
+        return signUpStartTime;
     }
 
-    public void setSignUpStartTime(Date signUpStartTime) {
-        SimpleDateFormat bf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        String format = bf.format(signUpStartTime);
-        try {
-            Date date = bf.parse(format);
-            this.signUpStartTime = date;
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-
+    public void setSignUpStartTime(String signUpStartTime) {
+        this.signUpStartTime = signUpStartTime;
     }
 
     public String getStartTime() {
-        SimpleDateFormat bf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//多态
-        String format = bf.format(startTime);
-
-        return format;
+        return startTime;
     }
 
-    public void setStartTime(Date startTime) {
-        SimpleDateFormat bf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//多态
-        String format = bf.format(startTime);
-        try {
-            Date date = bf.parse(format);
-            this.startTime = date;
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-
+    public void setStartTime(String startTime) {
+        this.startTime = startTime;
     }
 
     public int getA_state() {

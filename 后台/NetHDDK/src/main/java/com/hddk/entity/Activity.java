@@ -12,12 +12,11 @@ public class Activity {
     private String description;//活动描述
     private String tips;//注意事项
     private int releaseState;//活动发布方式:'0':直接发布,'1':定时发布
-    private Date releaseTime;//活动发布时间
-    private int needStuSignUp;//是否需要学生报名?'0':否,'1':是
-    private Date signUpStartTime;//报名开始时间
-    private Date signUpEndTime;//报名结束时间
-    private Date startTime;//活动开始时间
-    private Date endTime;//活动结束时间
+    private String releaseTime;//活动发布时间
+    private String signUpStartTime;//报名开始时间
+    private String signUpEndTime;//报名结束时间
+    private String startTime;//活动开始时间
+    private String endTime;//活动结束时间
     private int signInState;//活动签到状态?'0':签到未开始,'1':正在签到
     private int a_state;//活动状态?'0':草稿,"1":未开始,'2':报名中,'3':正在进行,'4':结束
     private List<Field> fields;//场地
@@ -26,7 +25,7 @@ public class Activity {
     public Activity() {
     }
 
-    public Activity(Integer a_id, String theme, Double score, String description, String tips, int releaseState, Date releaseTime, int needStuSignUp, Date signUpStartTime, Date signUpEndTime, Date startTime, Date endTime, int signInState, int a_state, List<Field> fields, Integer signInTimes) {
+    public Activity(Integer a_id, String theme, Double score, String description, String tips, int releaseState, String releaseTime, String signUpStartTime, String signUpEndTime, String startTime, String endTime, int signInState, int a_state, List<Field> fields, Integer signInTimes) {
         this.a_id = a_id;
         this.theme = theme;
         this.score = score;
@@ -34,7 +33,6 @@ public class Activity {
         this.tips = tips;
         this.releaseState = releaseState;
         this.releaseTime = releaseTime;
-        this.needStuSignUp = needStuSignUp;
         this.signUpStartTime = signUpStartTime;
         this.signUpEndTime = signUpEndTime;
         this.startTime = startTime;
@@ -45,7 +43,7 @@ public class Activity {
         this.signInTimes = signInTimes;
     }
 
-    public Activity(String theme, Double score, String description, String tips, int releaseState, Date releaseTime, Date signUpStartTime, Date signUpEndTime, Date startTime, Date endTime) {
+    public Activity(String theme, Double score, String description, String tips, int releaseState, String releaseTime, String signUpStartTime, String signUpEndTime, String startTime, String endTime) {
         this.theme = theme;
         this.score = score;
         this.description = description;
@@ -107,96 +105,43 @@ public class Activity {
     }
 
     public String getReleaseTime() {
-        SimpleDateFormat bf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        String format = bf.format(releaseTime);
-        return format;
+        return releaseTime;
     }
 
-    public void setReleaseTime(Date releaseTime) {
-        SimpleDateFormat bf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        String format = bf.format(releaseTime);
-        try {
-            Date date = bf.parse(format);
-            this.releaseTime = date;
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public int getNeedStuSignUp() {
-        return needStuSignUp;
-    }
-
-    public void setNeedStuSignUp(int needStuSignUp) {
-        this.needStuSignUp = needStuSignUp;
+    public void setReleaseTime(String releaseTime) {
+        this.releaseTime = releaseTime;
     }
 
     public String getSignUpStartTime() {
-        SimpleDateFormat bf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        String format = bf.format(signUpStartTime);
-        return format;
+        return signUpStartTime;
     }
 
-    public void setSignUpStartTime(Date signUpStartTime) {
-        SimpleDateFormat bf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        String format = bf.format(signUpStartTime);
-        try {
-            Date date = bf.parse(format);
-            this.signUpStartTime = date;
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
+    public void setSignUpStartTime(String signUpStartTime) {
+        this.signUpStartTime = signUpStartTime;
     }
 
     public String getSignUpEndTime() {
-        SimpleDateFormat bf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        String format = bf.format(signUpEndTime);
-        return format;
+        return signUpEndTime;
     }
 
-    public void setSignUpEndTime(Date signUpEndTime) {
-        SimpleDateFormat bf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        String format = bf.format(signUpEndTime);
-        try {
-            Date date = bf.parse(format);
-            this.signUpEndTime = date;
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
+    public void setSignUpEndTime(String signUpEndTime) {
+        this.signUpEndTime = signUpEndTime;
     }
 
     public String getStartTime() {
-        SimpleDateFormat bf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        String format = bf.format(startTime);
-        return format;
+        return startTime;
     }
 
-    public void setStartTime(Date startTime) {
-        SimpleDateFormat bf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        String format = bf.format(startTime);
-        try {
-            Date date = bf.parse(format);
-            this.startTime = date;
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
+    public void setStartTime(String startTime) {
+        this.startTime = startTime;
     }
 
     public String getEndTime() {
-        SimpleDateFormat bf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        String format = bf.format(endTime);
-        return format;
+        return endTime;
     }
 
-    public void setEndTime(Date endTime) {
-        SimpleDateFormat bf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        String format = bf.format(endTime);
-        try {
-            Date date = bf.parse(format);
-            this.endTime = date;
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
+    public void setEndTime(String endTime) {
+        this.endTime = endTime;
     }
 
     public int getSignInState() {

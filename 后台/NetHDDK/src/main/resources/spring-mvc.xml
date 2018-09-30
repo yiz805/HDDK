@@ -8,6 +8,15 @@
     <mvc:annotation-driven/>
     <!-- 对模型视图名称的解析,在请求时模型视图名称添加前后缀 -->
     <context:component-scan base-package="com.hddk.controller"/>
+    <!--注解适配器
+    <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
+        <property name="messageConverters">
+            <list>
+                <bean class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter"></bean>
+            </list>
+        </property>
+    </bean>
+-->
     <!--<bean id="mappingJacksonHttpMessageConverter"
           class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
         <property name="supportedMediaTypes">

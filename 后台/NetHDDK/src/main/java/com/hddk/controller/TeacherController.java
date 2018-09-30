@@ -26,15 +26,8 @@ public class TeacherController {
     @ResponseBody
     @RequestMapping(value = "/addActivity", method = RequestMethod.POST)
     public AjaxResult addActivity(@RequestBody Activity activity) {
-        //activityService.addActivity(activity);
+        activityService.addActivity(activity);
         System.out.println(activity.getTheme());
-        return AjaxResult.getOK();
-    }
-
-    @ResponseBody
-    @RequestMapping(value = "/test", method = RequestMethod.POST)
-    public AjaxResult test(@RequestBody Student student) {
-        System.out.println("resqust test" + student.getS_name());
         return AjaxResult.getOK();
     }
 

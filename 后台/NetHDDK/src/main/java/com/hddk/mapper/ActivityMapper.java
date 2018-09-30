@@ -10,8 +10,8 @@ import java.util.List;
 
 public interface ActivityMapper {
     //添加活动(改SQL片段拼接)
-    @Insert("INSERT INTO activity(a_id,theme,score,description,tips,releaseState,releaseTime,needStuSignUp,signUpStartTime,signUpEndTime,startTime,endTime,signInState,a_state,signInTimes)" +
-            "VALUES(#{a_id},#{theme},#{score},#{description},#{tips},#{releaseState},#{releaseTime},#{needStuSignUp},#{signUpStartTime},#{signUpEndTime},#{startTime},#{endTime},#{signInState},#{a_state},#{signInTimes})")
+    @Insert("INSERT INTO activity(a_id,theme,score,description,tips,releaseState,releaseTime,signUpStartTime,signUpEndTime,startTime,endTime,signInState,a_state,signInTimes)" +
+            "VALUES(#{a_id},#{theme},#{score},#{description},#{tips},#{releaseState},#{releaseTime},#{signUpStartTime},#{signUpEndTime},#{startTime},#{endTime},#{signInState},#{a_state},#{signInTimes})")
     @Options(useGeneratedKeys = true, keyProperty = "a_id")
     void addActivity(Activity activity);
 

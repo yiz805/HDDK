@@ -16,5 +16,5 @@ public interface SignMapper {
     @Update("UPDATE sign SET personState=1 WHERE student_id=#{s_id}")
     void setPersonSate(Long s_id);
 
-
+    //
 }

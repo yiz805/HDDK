@@ -29,7 +29,7 @@ public class TeacherServerTest {
     private StudentService studentService;
     @Autowired
     private FieldService fieldService;
-
+/*
     @Test
     public void testAddActivity() {
         Activity activity = new Activity();
@@ -51,7 +51,7 @@ public class TeacherServerTest {
         activity.setSignInTimes(1);
         activityService.addActivity(activity);
     }
-
+*/
     @Test
     public void testGetAllActivity() {
         List<Activity> activities = activityService.getAllActivities();
@@ -62,7 +62,7 @@ public class TeacherServerTest {
 //    public void testDeleteActivity() {
 //        activityService.deleteActivity(2L);
 //    }
-
+/*
     @Test
     public void testUpdateActivity() {
         Activity activity = new Activity();
@@ -83,7 +83,7 @@ public class TeacherServerTest {
 
         activityService.updateActivity(activity);
     }
-
+*/
     @Test
     public void testGetActivityAndField() {
         Activity activity = activityService.getActivityAndField(1);
