@@ -3,24 +3,15 @@
         <div class="ac-info">
             <div class="title">活动简介</div>
             <div class="content">
-                <div class="block">
-                    <div class="icon">
-                        <font-icon icon="star"/>
-                    </div>
-                    <div class="text">思政分：{{ activity.score }} 分</div>
-                </div>
-                <div class="block">
-                    <div class="icon">
-                        <font-icon icon="calendar-alt"/>
-                    </div>
-                    <div class="text">{{ activity.startTime }}</div>
-                </div>
-                <div class="block">
-                    <div class="icon">
-                        <font-icon icon="stopwatch"/>
-                    </div>
-                    <div class="text">{{ activity.signUpStartTime }}</div>
-                </div>
+                <InfoBlock :content="'思政分' + activity.score + ' 分'">
+                    <font-icon icon="star"/>
+                </InfoBlock>
+                <InfoBlock :content="activity.startTime">
+                    <font-icon icon="calendar-alt"/>
+                </InfoBlock>
+                <InfoBlock :content="activity.signUpStartTime">
+                    <font-icon icon="stopwatch"/>
+                </InfoBlock>
             </div>
         </div>
         <div class="ac-description">
@@ -35,10 +26,15 @@
 </template>
 
 <script>
+    import InfoBlock from '../InfoBlock'
+
     export default {
         name: "Activity-details",
         props: {
             activity: Object
+        },
+        components: {
+            InfoBlock
         }
     }
 </script>
@@ -67,41 +63,6 @@
 
             .content {
                 text-indent 0
-            }
-
-            .block {
-                width: 100%
-                margin-bottom: 10px
-                overflow auto
-
-                .icon {
-                    width: 80px
-                    height: 60px
-                    background #ff9800
-                    line-height 60px
-                    text-align center
-                    display inline-block
-                    float left
-                    border-top-left-radius 30px
-                    border-bottom-left-radius 30px
-
-                    svg {
-                        color #fff
-                    }
-                }
-
-                .text {
-                    display inline-block
-                    width: calc(100% - 80px)
-                    text-align center
-                    float left
-                    height 60px
-                    color #000000bf
-                    line-height 60px
-                    background #ffbe0059
-                    border-top-right-radius 30px
-                    border-bottom-right-radius 30px
-                }
             }
         }
 

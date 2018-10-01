@@ -11,15 +11,31 @@
                 活动地点详情
             </div>
             <div class="place-info-block" v-if="activity">
-                {{ activity.fields[choosenIndex].info }}
+                <InfoBlock :content="activity.fields[choosenIndex].info">
+                    <font-icon icon="map-marker-alt"/>
+                </InfoBlock>
+                <InfoBlock :content="'未知 / ' + activity.fields[choosenIndex].signUpNumLimit">
+                    <font-icon icon="users"/>
+                </InfoBlock>
+                <InfoBlock :content="activity.fields[choosenIndex].name">
+                    <font-icon icon="user"/>
+                </InfoBlock>
+                <InfoBlock :content="activity.fields[choosenIndex].tel">
+                    <font-icon icon="phone"/>
+                </InfoBlock>
             </div>
         </div>
     </div>
 </template>
 
 <script>
+    import InfoBlock from '../components/InfoBlock'
+
     export default {
         name: "SignUpPage",
+        components: {
+            InfoBlock
+        },
         data() {
             return {
                 choosenPlace: {},
@@ -53,6 +69,9 @@
         bottom 0
         width: 100vw
         box-shadow 0 8px 50px 0 #999
+        border-top-left-radius 20px
+        border-top-right-radius 20px
+        overflow hidden
 
         .title {
             font-size 30px
