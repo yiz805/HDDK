@@ -15,7 +15,7 @@ Vue.config.productionTip = false
 Vue.prototype.$http = Axios
 
 library.add(i.faTimesCircle, i.faUser, i.faUsers, i.faPercentage, i.faTimes, i.faAngleDoubleDown,
-    i.faStar, i.faCalendarAlt, i.faStopwatch, i.faEdit)
+    i.faStar, i.faCalendarAlt, i.faStopwatch, i.faEdit, i.faMapMarkerAlt, i.faPhone)
 
 Vue.component('font-icon', FontAwesomeIcon)
 Vue.component('Scroll', Scroll);

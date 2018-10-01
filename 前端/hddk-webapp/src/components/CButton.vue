@@ -19,7 +19,7 @@
     #custom-button {
         padding: 10px 40px;
         border-radius 40px;
-        background linear-gradient(left , rgb(26, 207, 255) , rgb(255, 88, 213) 100%);
+        background linear-gradient(to right , rgb(26, 207, 255) , rgb(255, 88, 213) 100%);
         color: #fff
         font-size 30px;
         display inline-block;

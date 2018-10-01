@@ -25,13 +25,13 @@
         </transition>
 
         <transition name="fade">
-            <div class="mask" v-if="showMask" @click="closePlacePage"></div>
+            <div class="mask" v-if="showMask" @click="cancelToChoose"></div>
         </transition>
 
         <div class="ac-button">
             <CButton @button-click="signUp">
                 <font-icon icon="edit" />
-                报名
+                {{ buttonTitle }}
             </CButton>
         </div>
     </div>
@@ -55,7 +55,17 @@
         data() {
             return {
                 activity: {},
-                showMask: false
+                showMask: false,
+                buttonClickCount: 0
+            }
+        },
+        computed: {
+            buttonTitle() {
+                if (this.$route.name === 'signUp') {
+                    return '确定提交';
+                } else {
+                    return '立即报名';
+                }
             }
         },
         methods: {
@@ -65,10 +75,22 @@
                 })
             },
             signUp() {
-                this.showMask = true;
-                this.$router.push({name: 'signUp', params: {activity: this.activity}});
+                // 同一个按钮实例及事件，通过增加counter判断按钮点击时应该执行的事件
+                this.buttonClickCount++;
+                if (this.buttonClickCount === 1) {
+                    this.showMask = true;
+                    this.$router.push({
+                        name: 'signUp',
+                        params: {activity: this.activity}
+                    });
+                } else if (this.buttonClickCount === 2) {
+                    // 按钮第二次点击执行
+                    console.log("按钮第二次点击");
+                }
             },
-            closePlacePage() {
+            cancelToChoose() {
+                // 重置counter、取消背景遮罩
+                this.buttonClickCount = 0;
                 this.showMask = false;
                 this.$router.go(-1);
             }
