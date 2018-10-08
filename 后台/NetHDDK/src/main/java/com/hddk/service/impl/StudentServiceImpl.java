@@ -19,4 +19,7 @@ public class StudentServiceImpl implements StudentService {
         return studentMapper.getSignUpActivity(student_id);
     }
 
+    public List<Sign> getStuSignIn(Long s_id, int a_id) {
+        return studentMapper.getStuSignIn(s_id, a_id);
+    }
 }

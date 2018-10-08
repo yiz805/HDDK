@@ -6,17 +6,26 @@ public class Field {
     private Integer signUpNumLimit;//报名人数上限
     private String t_name;//负责教师姓名
     private String t_tel;//电话
+    private int activity_id;
 
     public Field() {
     }
 
-    public Field(Integer f_id, String f_info, Integer signUpNumLimit, String t_name, String t_tel) {
+    public Field(String f_info, Integer signUpNumLimit, String t_name, String t_tel, int activity_id) {
+        this.f_info = f_info;
+        this.signUpNumLimit = signUpNumLimit;
+        this.t_name = t_name;
+        this.t_tel = t_tel;
+        this.activity_id = activity_id;
+    }
 
+    public Field(Integer f_id, String f_info, Integer signUpNumLimit, String t_name, String t_tel, int activity_id) {
         this.f_id = f_id;
         this.f_info = f_info;
         this.signUpNumLimit = signUpNumLimit;
         this.t_name = t_name;
         this.t_tel = t_tel;
+        this.activity_id = activity_id;
     }
 
     public Integer getF_id() {
@@ -57,5 +66,13 @@ public class Field {
 
     public void setT_tel(String t_tel) {
         this.t_tel = t_tel;
+    }
+
+    public int getActivity_id() {
+        return activity_id;
+    }
+
+    public void setActivity_id(int activity_id) {
+        this.activity_id = activity_id;
     }
 }
