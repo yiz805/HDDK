@@ -69,9 +69,7 @@
 ## 原形设计
 [https://modao.cc/app/O3zcb8WxqciXEgWPfUs9VDnoXmACy15](https://modao.cc/app/O3zcb8WxqciXEgWPfUs9VDnoXmACy15)
 
-接口
-
-1\. 查询所有活动信息接口
+##接口
 
 ---
 
@@ -80,7 +78,7 @@
 > 获取所有活动信息
 
 ###### URL
-> [http://101.200.32.54:8080/NetHDDK-1.0/teacher/getAllActivity]
+> [http://101.200.32.54:8080/NetHDDK-1.0/teacher/getAllActivity](http://101.200.32.54:8080/NetHDDK-1.0/teacher/getAllActivity)
 
 ###### 支持格式
 > JSON
@@ -88,19 +86,17 @@
 ###### HTTP请求方式
 > POST
 
-###### 请求参数
-> |参数|必选|类型|说明|
-|---|---|---|---|
+###### 请求参数 无
 
 ###### 返回字段
 > |返回字段|字段类型|说明|
 |---|---|---|
 |ErrorCode|String|返回结果状态。0：正常；其他：错误。|
-|Message|string|返回结果信息 |
+|Message|string|返回结果信息|
 |Data|string|返回activity对象集合|
 
 ###### 接口示例
-> 地址：[http://101.200.32.54:8080/NetHDDK-1.0/teacher/getAllActivity]
+> 地址：[http://101.200.32.54:8080/NetHDDK-1.0/teacher/getAllActivity](http://101.200.32.54:8080/NetHDDK-1.0/teacher/getAllActivity)
 ``` javascript
 {
     "ErrorCode": "0",
