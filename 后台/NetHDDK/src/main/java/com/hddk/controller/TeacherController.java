@@ -5,15 +5,10 @@ import com.hddk.service.ActivityService;
 import com.hddk.service.FieldService;
 import com.hddk.service.SignService;
 import com.hddk.util.AjaxResult;
-import net.sf.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
 import java.util.List;
 
 
@@ -36,8 +31,9 @@ public class TeacherController {
     @ResponseBody
     @RequestMapping(value = "/addActivity", method = RequestMethod.POST)
     public AjaxResult addActivity(@RequestBody Activity activity) {
+        System.out.println(activity.getFields().get(0).getF_info());
         activityService.addActivity(activity);
-        System.out.println(activity.getTheme());
+
         return AjaxResult.getOK();
     }
 
@@ -49,7 +45,7 @@ public class TeacherController {
     @ResponseBody
     @RequestMapping(value = "/getAllActivity", method = RequestMethod.GET)
     public AjaxResult getAllActivity() {
-        List<ActivityQueryVo> activities = activityService.getTotalSignUpStu();
+        List<ActivityQueryVo_PC> activities = activityService.getTotalSignUpStu();
         return AjaxResult.getOK(activities);
     }
 
@@ -121,11 +117,12 @@ public class TeacherController {
 
     /**
      * 添加新的场地
+     *
      * @param field
      * @return
      */
     @ResponseBody
-    @RequestMapping(value = "/newField", method = RequestMethod.POST)
+    @RequestMapping(value = "/addField", method = RequestMethod.POST)
     public AjaxResult newField(@RequestBody Field field) {
         fieldService.newField(field);
         return AjaxResult.getOK();
@@ -133,48 +130,15 @@ public class TeacherController {
 
     /**
      * 删除场地
-     * @param a_id
-     * @return
-     */
-    @ResponseBody
-    @RequestMapping(value = "/deleteFiled", method = RequestMethod.POST)
-    public AjaxResult deleteFiled(@RequestParam(value = "a_id")int a_id) {
-        fieldService.deleteFiled(a_id);
-        return AjaxResult.getOK();
-    }
-    /**
-     * 定时任务
      *
-     * @param a_id
+     * @param f_id
      * @return
      */
     @ResponseBody
-    @RequestMapping(value = "/releaseActivity", method = RequestMethod.POST)
-    public AjaxResult releaseActivity(@RequestParam(value = "a_id") int a_id) {
-        activityService.releaseActivity(a_id);
+    @RequestMapping(value = "/deleteFiled", method = RequestMethod.GET)
+    public AjaxResult deleteFiled(@RequestParam(value = "f_id") int f_id) {
+        fieldService.deleteFiled(f_id);
         return AjaxResult.getOK();
     }
-
-    @ResponseBody
-    @RequestMapping(value = "/startSignUp", method = RequestMethod.POST)
-    public AjaxResult startSignUp(@RequestParam(value = "a_id") int a_id) {
-        activityService.startSignUp(a_id);
-        return AjaxResult.getOK();
-    }
-
-    @ResponseBody
-    @RequestMapping(value = "/startActivity", method = RequestMethod.POST)
-    public AjaxResult startActivity(@RequestParam(value = "a_id") int a_id) {
-        activityService.startActivity(a_id);
-        return AjaxResult.getOK();
-    }
-
-    @ResponseBody
-    @RequestMapping(value = "/endActivity", method = RequestMethod.POST)
-    public AjaxResult endActivity(@RequestParam(value = "a_id") int a_id) {
-        activityService.endActivity(a_id);
-        return AjaxResult.getOK();
-    }
-
 
 }

@@ -1,18 +1,12 @@
 package com.hddk.service;
 
-import com.hddk.entity.Activity;
-import com.hddk.entity.ActivityQueryVo;
-import com.hddk.entity.Student;
-import com.hddk.entity.StudentQueryVo;
-import org.springframework.stereotype.Service;
+import com.hddk.entity.*;
 
 import java.util.List;
 
 
 public interface ActivityService {
     void addActivity(Activity activity);
-
-    List<Activity> getAllActivities();
 
     void deleteActivity(int a_id);
 
@@ -22,13 +16,23 @@ public interface ActivityService {
 
     Activity getActivityAndField(int a_id);
 
-    List<ActivityQueryVo> getTotalSignUpStu();
+    List<ActivityQueryVo_PC> getTotalSignUpStu();
 
     void releaseActivity(int a_id);
 
     void startSignUp(int a_id);
 
+    void endSignUp(int a_id);
+
     void startActivity(int a_id);
 
     void endActivity(int a_id);
+
+    List<ActivityQueryVo_APP> getAllActivity();
+
+    ActivityQueryVo_APP getActivityDetail(int a_id);
+
+    Activity getActByA_id(int a_id);
+
+    List<ActivityQueryVo_task> getTimes();
 }

@@ -2,10 +2,14 @@ package com.hddk.service.impl;
 
 import com.hddk.entity.Sign;
 import com.hddk.mapper.SignMapper;
+import com.hddk.service.ActivityService;
+import com.hddk.service.FieldService;
 import com.hddk.service.SignService;
+import com.hddk.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -13,11 +17,23 @@ import java.util.List;
 public class SignServiceImpl implements SignService {
     @Autowired
     private SignMapper signMapper;
+    @Autowired
+    private ActivityService activityService;
+    @Autowired
+    private StudentService studentService;
+    @Autowired
+    private FieldService fieldService;
 
-    public void studentSignUp(Sign signUp) {
+    public void studentSignUp(Long s_id, int f_id, int a_id) {
         //设置默认值
+        Sign signUp = new Sign();
+        signUp.setActivity(activityService.getActByA_id(a_id));
+        signUp.setStudent(studentService.getStuByS_id(s_id));
+        signUp.setField(fieldService.getFieldByF_id(f_id));
         signUp.setSignState(0);//状态:报名
-        signUp.setSignTime(new Date().toString());
+        Date date = new Date();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        signUp.setSignTime(sdf.format(date));
         signUp.setPersonState(0);//是否负责人:否
         signMapper.studentSignUp(signUp);
     }
@@ -26,13 +42,8 @@ public class SignServiceImpl implements SignService {
         signMapper.setPersonSate(s_id, a_id);
     }
 
-    public boolean isPerson(Long s_id) {
-        int personState = signMapper.findPersonState(s_id);
-        if (personState == 0) {
-            return false;
-        } else {
-            return true;
-        }
+    public int findPersonState(Long s_id, int a_id) {
+        return signMapper.findPersonState(s_id, a_id);
     }
 
     public void startSignIn(int a_id, Long s_id) {
@@ -46,5 +57,9 @@ public class SignServiceImpl implements SignService {
 
     public List<Sign> findActivitySign(int a_id) {
         return signMapper.findActivitySign(a_id);
+    }
+
+    public void deleteSign(Long s_id, int a_id) {
+        signMapper.deleteSign(s_id, a_id);
     }
 }

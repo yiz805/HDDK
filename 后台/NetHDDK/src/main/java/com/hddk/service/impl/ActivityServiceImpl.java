@@ -1,14 +1,10 @@
 package com.hddk.service.impl;
 
-import com.hddk.entity.Activity;
-import com.hddk.entity.ActivityQueryVo;
-import com.hddk.entity.Student;
-import com.hddk.entity.StudentQueryVo;
+import com.hddk.entity.*;
 import com.hddk.mapper.ActivityMapper;
 import com.hddk.mapper.FieldMapper;
 import com.hddk.service.ActivityService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -34,9 +30,6 @@ public class ActivityServiceImpl implements ActivityService {
         }
     }
 
-    public List<Activity> getAllActivities() {
-        return activityMapper.getAllActivities();
-    }
 
     public void deleteActivity(int a_id) {
         activityMapper.deleteActivity(a_id);
@@ -54,7 +47,7 @@ public class ActivityServiceImpl implements ActivityService {
         return activityMapper.getActivityAndField(a_id);
     }
 
-    public List<ActivityQueryVo> getTotalSignUpStu() {
+    public List<ActivityQueryVo_PC> getTotalSignUpStu() {
         return activityMapper.getTotalSignUpStu();
     }
 
@@ -66,6 +59,10 @@ public class ActivityServiceImpl implements ActivityService {
         activityMapper.startSignUp(a_id);
     }
 
+    public void endSignUp(int a_id) {
+        activityMapper.endSignUp(a_id);
+    }
+
     public void startActivity(int a_id) {
         activityMapper.startActivity(a_id);
     }
@@ -73,6 +70,26 @@ public class ActivityServiceImpl implements ActivityService {
     public void endActivity(int a_id) {
         activityMapper.endActivity(a_id);
         int score = activityMapper.findScore(a_id);
-        activityMapper.addScore(a_id, score);
+        List<Student> students = activityMapper.getActivityStu(a_id);
+        for (int i = 0; i < students.size(); i++) {
+            Long s_id = students.get(i).getS_id();
+            activityMapper.addScore(s_id, score);
+        }
+    }
+
+    public List<ActivityQueryVo_APP> getAllActivity() {
+        return activityMapper.getAllActivity();
+    }
+
+    public ActivityQueryVo_APP getActivityDetail(int a_id) {
+        return activityMapper.getActivityDetail(a_id);
+    }
+
+    public Activity getActByA_id(int a_id) {
+        return activityMapper.getActByA_id(a_id);
+    }
+
+    public List<ActivityQueryVo_task> getTimes() {
+        return activityMapper.getTimes();
     }
 }

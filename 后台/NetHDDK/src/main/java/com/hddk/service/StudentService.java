@@ -10,4 +10,6 @@ public interface StudentService {
     List<Activity> getSignUpActivity(Long student_id);
 
     List<Sign> getStuSignIn(Long s_id,int a_id);
+
+    Student getStuByS_id(Long s_id);
 }

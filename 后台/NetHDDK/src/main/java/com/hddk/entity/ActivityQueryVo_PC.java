@@ -4,7 +4,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class ActivityQueryVo {
+public class ActivityQueryVo_PC {
     private Integer a_id;
     private String theme;
     private String signUpStartTime;
@@ -12,11 +12,11 @@ public class ActivityQueryVo {
     private int a_state;
     private Long num;
 
-    public ActivityQueryVo() {
+    public ActivityQueryVo_PC() {
 
     }
 
-    public ActivityQueryVo(Integer a_id, String theme, String signUpStartTime, String startTime, int a_state, Long num) {
+    public ActivityQueryVo_PC(Integer a_id, String theme, String signUpStartTime, String startTime, int a_state, Long num) {
         this.a_id = a_id;
         this.theme = theme;
         this.signUpStartTime = signUpStartTime;

@@ -8,17 +8,17 @@ public class Sign {
     private String signTime;//签到时间
     private Activity activity;
     private Student student;
-    private Sign sign;
+    private Field field;
     private int personState;//是否为签到负责人,'0':否,'1':是
 
 
-    public Sign(Long id, int signState, String signTime, Activity activity, Student student, Sign sign, int personState) {
+    public Sign(Long id, int signState, String signTime, Activity activity, Student student, Field field, int personState) {
         this.id = id;
         this.signState = signState;
         this.signTime = signTime;
         this.activity = activity;
         this.student = student;
-        this.sign = sign;
+        this.field = field;
         this.personState = personState;
     }
 
@@ -74,11 +74,11 @@ public class Sign {
         this.personState = personState;
     }
 
-    public Sign getSign() {
-        return sign;
+    public Field getField() {
+        return field;
     }
 
-    public void setSign(Sign sign) {
-        this.sign = sign;
+    public void setField(Field field) {
+        this.field = field;
     }
 }

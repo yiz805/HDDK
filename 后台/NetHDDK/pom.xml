@@ -205,6 +205,11 @@
             <artifactId>spring-webmvc</artifactId>
             <version>4.2.1.RELEASE</version>
         </dependency>
+        <dependency>
+            <groupId>org.quartz-scheduler</groupId>
+            <artifactId>quartz</artifactId>
+            <version>2.2.1</version>
+        </dependency>
         <!-- springMVC end -->
         <!-- spring4 end -->
         <dependency>

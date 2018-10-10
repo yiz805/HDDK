@@ -18,7 +18,7 @@ public class Activity {
     private String startTime;//活动开始时间
     private String endTime;//活动结束时间
     private int signInState;//活动签到状态?'0':签到未开始,'1':正在签到
-    private int a_state;//活动状态?'0':草稿,"1":未开始,'2':报名中,'3':正在进行,'4':结束
+    private int a_state;//活动状态?'0':草稿,"1":发布,'2':报名中,'3':报名结束,'4':正在进行,'5':结束
     private List<Field> fields;//场地
     private Integer signInTimes;//签到次数
 
