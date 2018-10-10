@@ -1,11 +1,9 @@
 package com.test.serviceTest;
 
 
-import com.hddk.entity.Activity;
-import com.hddk.entity.ActivityQueryVo;
-import com.hddk.entity.Field;
-import com.hddk.entity.Student;
+import com.hddk.entity.*;
 import com.hddk.service.FieldService;
+import com.hddk.service.SignService;
 import com.hddk.service.StudentService;
 import com.hddk.service.impl.ActivityServiceImpl;
 import org.junit.Test;
@@ -29,7 +27,9 @@ public class TeacherServerTest {
     private StudentService studentService;
     @Autowired
     private FieldService fieldService;
-
+    @Autowired
+    private SignService signService;
+/*
     @Test
     public void testAddActivity() {
         Activity activity = new Activity();
@@ -51,18 +51,13 @@ public class TeacherServerTest {
         activity.setSignInTimes(1);
         activityService.addActivity(activity);
     }
+*/
 
-    @Test
-    public void testGetAllActivity() {
-        List<Activity> activities = activityService.getAllActivities();
-        System.out.println(activities.get(0));
-    }
-
-//    @Test
+    //    @Test
 //    public void testDeleteActivity() {
 //        activityService.deleteActivity(2L);
 //    }
-
+/*
     @Test
     public void testUpdateActivity() {
         Activity activity = new Activity();
@@ -83,11 +78,11 @@ public class TeacherServerTest {
 
         activityService.updateActivity(activity);
     }
-
+*/
     @Test
     public void testGetActivityAndField() {
         Activity activity = activityService.getActivityAndField(1);
-        System.out.println(activity.getFields().get(0).getF_info());
+        System.out.println(activity.getA_id());
     }
 
     @Test
@@ -97,8 +92,29 @@ public class TeacherServerTest {
     }
 
     @Test
-    public void testGetTotal(){
-        List<ActivityQueryVo> total=activityService.getTotalSignUpStu();
-        System.out.println(total.get(0).getStartTime());
+    public void testGetTotal() {
+        List<ActivityQueryVo_APP> total = activityService.getAllActivity();
+        System.out.println(total.get(0).getTheme());
+    }
+
+    @Test
+    public void teststartSignIn() {
+
+        signService.setPersonSate(1L,1);
+    }
+
+    @Test
+    public void testGetTimes() {
+        List<ActivityQueryVo_task> activityQueryVo_tasks=activityService.getTimes();
+        for (int i=0;i<activityQueryVo_tasks.size();i++){
+            System.out.println(activityQueryVo_tasks.get(i).getReleaseTime());
+        }
+    }
+    @Test
+    public void testGetSignUpStudent(){
+        List<StudentQueryVo> studentQueryVos=activityService.getSignUpStu(1);
+        for (int i=0;i<studentQueryVos.size();i++){
+            System.out.println(studentQueryVos.get(i).getS_name());
+        }
     }
 }

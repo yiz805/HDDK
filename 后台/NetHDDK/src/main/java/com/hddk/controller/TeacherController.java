@@ -1,18 +1,14 @@
 package com.hddk.controller;
 
-import com.hddk.entity.Activity;
-import com.hddk.entity.ActivityQueryVo;
-import com.hddk.entity.Student;
+import com.hddk.entity.*;
 import com.hddk.service.ActivityService;
+import com.hddk.service.FieldService;
+import com.hddk.service.SignService;
 import com.hddk.util.AjaxResult;
-import net.sf.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
 import java.util.List;
 
 
@@ -21,60 +17,128 @@ import java.util.List;
 public class TeacherController {
     @Autowired
     private ActivityService activityService;
+    @Autowired
+    private SignService signService;
+    @Autowired
+    private FieldService fieldService;
 
+    /**
+     * 添加活动
+     *
+     * @param activity
+     * @return
+     */
     @ResponseBody
     @RequestMapping(value = "/addActivity", method = RequestMethod.POST)
-    public void addActivity(@RequestBody Activity activity) {
+    public AjaxResult addActivity(@RequestBody Activity activity) {
+        System.out.println(activity.getFields().get(0).getF_info());
         activityService.addActivity(activity);
 
+        return AjaxResult.getOK();
     }
 
+    /**
+     * 查询所有活动
+     *
+     * @return activities
+     */
     @ResponseBody
-    @RequestMapping(value = "/getAllActivity", method = RequestMethod.POST)
-    public void getAllActivity(HttpServletRequest req, HttpServletResponse res) {
-        List<ActivityQueryVo> activities = activityService.getTotalSignUpStu();
-
-        JSONObject jsonObject = new JSONObject();
-        jsonObject.put("data", activities);
-        try {
-            res.getWriter().write(jsonObject.toString());
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    @RequestMapping(value = "/getAllActivity", method = RequestMethod.GET)
+    public AjaxResult getAllActivity() {
+        List<ActivityQueryVo_PC> activities = activityService.getTotalSignUpStu();
+        return AjaxResult.getOK(activities);
     }
 
+    /**
+     * 删除活动
+     *
+     * @param a_id
+     * @return
+     */
     @ResponseBody
-    @RequestMapping(value = "/deleteActivity", method = RequestMethod.POST)
-    public void deleteActivity(int a_id) {
+    @RequestMapping(value = "/deleteActivity", method = RequestMethod.GET)
+    public AjaxResult deleteActivity(@RequestParam(value = "a_id") int a_id) {
         activityService.deleteActivity(a_id);
-
+        return AjaxResult.getOK();
     }
 
+    /**
+     * 修改活动
+     *
+     * @param activity
+     * @return
+     */
     @ResponseBody
     @RequestMapping(value = "/updateActivity", method = RequestMethod.POST)
-    public void updateActivity(@RequestBody Activity activity) {
+    public AjaxResult updateActivity(@RequestBody Activity activity) {
         activityService.updateActivity(activity);
-
+        return AjaxResult.getOK();
     }
 
+    /**
+     * 查询活动详情
+     *
+     * @param a_id
+     * @return activity
+     */
     @ResponseBody
-    @RequestMapping(value = "/getActivityField", method = RequestMethod.POST)
-    public void getActivityField(@RequestParam int a_id, HttpServletRequest req, HttpServletResponse res) {
+    @RequestMapping(value = "/getActivityField", method = RequestMethod.GET)
+    public AjaxResult getActivityField(@RequestParam(value = "a_id") int a_id) {
         Activity activity = activityService.getActivityAndField(a_id);
-        JSONObject jsonObject = new JSONObject();
-        jsonObject.put("data", activity);
-        try {
-            res.getWriter().write(jsonObject.toString());
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        return AjaxResult.getOK(activity);
     }
 
+    /**
+     * 获取活动报名学生名单,及学生是否为签到负责人
+     *
+     * @param a_id
+     * @return students
+     */
     @ResponseBody
-    @RequestMapping(value = "/getSignUpStu", method = RequestMethod.POST)
-    public void getSignUpStu(int a_id) {
-        List<Student> students = activityService.getSignUpStu(a_id);
+    @RequestMapping(value = "/getSignUpStu", method = RequestMethod.GET)
+    public AjaxResult getSignUpStu(@RequestParam(value = "a_id") int a_id) {
+        List<StudentQueryVo> students = activityService.getSignUpStu(a_id);
+        return AjaxResult.getOK(students);
+    }
 
+    /**
+     * 将学生设置为活动签到负责人
+     *
+     * @param a_id
+     * @param s_id
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value = "/setPersonState", method = RequestMethod.GET)
+    public AjaxResult setPersonState(@RequestParam(value = "a_id") int a_id, @RequestParam(value = "s_id") Long s_id) {
+        signService.setPersonSate(s_id, a_id);
+        return AjaxResult.getOK();
+    }
+
+    /**
+     * 添加新的场地
+     *
+     * @param field
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value = "/addField", method = RequestMethod.POST)
+    public AjaxResult newField(@RequestBody Field field) {
+        fieldService.newField(field);
+        return AjaxResult.getOK();
+    }
+
+    /**
+     * 删除场地
+     *
+     * @param f_id
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value = "/deleteFiled", method = RequestMethod.GET)
+    public AjaxResult deleteFiled(@RequestParam(value = "f_id") int f_id) {
+        fieldService.deleteFiled(f_id);
+        return AjaxResult.getOK();
     }
 
 }

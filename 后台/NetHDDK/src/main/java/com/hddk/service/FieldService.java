@@ -12,4 +12,6 @@ public interface FieldService {
     void deleteFiled(int f_id);
 
     void updateField(Field field);
+
+    Field getFieldByF_id(int f_id);
 }

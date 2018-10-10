@@ -1,0 +1,38 @@
+{
+  "name": "hddk-webapp",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build"
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.4",
+    "@fortawesome/free-solid-svg-icons": "^5.3.1",
+    "@fortawesome/vue-fontawesome": "^0.1.1",
+    "axios": "^0.18.0",
+    "better-scroll": "^1.12.6",
+    "cssnano": "^3.10.0",
+    "postcss-aspect-ratio-mini": "^0.0.2",
+    "postcss-cssnext": "^3.1.0",
+    "postcss-px-to-viewport": "^0.0.3",
+    "postcss-viewport-units": "^0.1.4",
+    "postcss-write-svg": "^3.0.1",
+    "register-service-worker": "^1.0.0",
+    "vue": "^2.5.17",
+    "vue-router": "^3.0.1",
+    "vuex": "^3.0.1"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "^3.0.1",
+    "@vue/cli-plugin-pwa": "^3.0.1",
+    "@vue/cli-service": "^3.0.1",
+    "babel-plugin-component": "^1.1.1",
+    "mockjs": "^1.0.1-beta3",
+    "postcss-import": "^12.0.0",
+    "postcss-url": "^8.0.0",
+    "stylus": "^0.54.5",
+    "stylus-loader": "^3.0.2",
+    "vue-template-compiler": "^2.5.17"
+  }
+}

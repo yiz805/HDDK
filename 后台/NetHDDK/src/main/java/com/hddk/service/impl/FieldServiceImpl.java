@@ -29,4 +29,7 @@ public class FieldServiceImpl implements FieldService {
         fieldMapper.updateField(field);
     }
 
+    public Field getFieldByF_id(int f_id) {
+        return fieldMapper.getFieldByF_id(f_id);
+    }
 }

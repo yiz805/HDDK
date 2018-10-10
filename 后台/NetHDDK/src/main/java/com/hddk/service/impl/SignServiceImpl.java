@@ -2,27 +2,64 @@ package com.hddk.service.impl;
 
 import com.hddk.entity.Sign;
 import com.hddk.mapper.SignMapper;
+import com.hddk.service.ActivityService;
+import com.hddk.service.FieldService;
 import com.hddk.service.SignService;
+import com.hddk.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 @Service
 public class SignServiceImpl implements SignService {
     @Autowired
     private SignMapper signMapper;
+    @Autowired
+    private ActivityService activityService;
+    @Autowired
+    private StudentService studentService;
+    @Autowired
+    private FieldService fieldService;
 
-    public void studentSignUp(Sign signUp) {
+    public void studentSignUp(Long s_id, int f_id, int a_id) {
         //设置默认值
+        Sign signUp = new Sign();
+        signUp.setActivity(activityService.getActByA_id(a_id));
+        signUp.setStudent(studentService.getStuByS_id(s_id));
+        signUp.setField(fieldService.getFieldByF_id(f_id));
         signUp.setSignState(0);//状态:报名
-        signUp.setSignTime(new Date());
+        Date date = new Date();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        signUp.setSignTime(sdf.format(date));
         signUp.setPersonState(0);//是否负责人:否
         signMapper.studentSignUp(signUp);
     }
 
-    public void setPersonSate(Long s_id) {
-        signMapper.setPersonSate(s_id);
+    public void setPersonSate(Long s_id, int a_id) {
+        signMapper.setPersonSate(s_id, a_id);
     }
 
+    public int findPersonState(Long s_id, int a_id) {
+        return signMapper.findPersonState(s_id, a_id);
+    }
+
+    public void startSignIn(int a_id, Long s_id) {
+        signMapper.addSignInTimes(a_id);
+        signMapper.personSignIn(s_id, a_id);
+    }
+
+    public void endSignIn(int a_id) {
+        signMapper.endSignIn(a_id);
+    }
+
+    public List<Sign> findActivitySign(int a_id) {
+        return signMapper.findActivitySign(a_id);
+    }
+
+    public void deleteSign(Long s_id, int a_id) {
+        signMapper.deleteSign(s_id, a_id);
+    }
 }

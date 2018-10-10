@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface FieldMapper {
     //创建新的场地(改SQL片段拼接)
-    @Insert("INSERT INTO field VALUES(#{f_id},#{f_info},#{signUpNumLimit},#{t_name},#{t_tel},#{a_id})")
+    @Insert("INSERT INTO field VALUES(#{f_id},#{f_info},#{signUpNumLimit},#{t_name},#{t_tel},#{activity_id})")
     @Options(useGeneratedKeys = true, keyProperty = "f_id")
     void newField(Field field);
 
@@ -22,4 +22,8 @@ public interface FieldMapper {
     //修改场地信息(改SQL片段拼接)
     @Update("UPDATE field SET f_info=#{f_info},signUpNumLimit=#{signUpNumLimit},t_name=#{t_name},t_tel=#{t_tel}")
     void updateField(Field field);
+
+    //通过id查场地
+    @Select("SELECT * FROM field WHERE f_id=#{f_id}")
+    Field getFieldByF_id(int f_id);
 }

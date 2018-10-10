@@ -8,9 +8,11 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>活动大咖后台</title>
+    <title>活动大咖</title>
 </head>
 <body>
-    <h1>HDDK</h1>
+<center>
+    <h1>HDDK后台@DYZ</h1>
+</center>
 </body>
 </html>
