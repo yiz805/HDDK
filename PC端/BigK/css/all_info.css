@@ -1,0 +1,118 @@
+#all_info{
+	/*height: 600px;*/
+	margin-top: 20px;
+	width: 720px;
+	background-color: white;
+	position:absolute;/*因为这个，所以不能高度自适应*/
+	top: 40px;
+    left: 50%;
+    transform: translate(-50%,0);
+	border: 1px solid #DDD;
+	/*display:none;*/
+	border-radius:5px;
+	z-index: 5;
+	padding-bottom: 30px;
+}
+.all_theme{
+	text-align: center;
+	line-height: 50px;
+	font-size: 30px;
+}
+.line1{
+	background-color: red;
+	margin-top: 20px;
+
+	margin-bottom: 20px;
+}
+.line1 span{
+	display: block;
+	float: left;
+	width: 160px;
+	margin-left: 100px;
+	margin-right: 100px;
+	margin-bottom: 10px;
+}
+.line1 em{
+	margin-left: 5px;
+	margin-right: 5px;
+}
+.rrr{
+	margin-left: 100px;
+	margin-top: 30px;
+	margin-bottom: 10px;
+	display: block;
+	clear: both;
+}
+.all_base{
+	/*border-bottom: 1px solid #DDD;*/
+}
+#textarea111{
+	display: block;
+	height: 100px;
+	width: 60%;
+	border: 1px solid black;
+	border-radius:1px;
+	float: right;
+	margin-right: 160px;
+}
+#textarea111 p{
+	margin-left: 20px;
+	margin-top: 5px;
+}
+#decrip{
+	height: 100px;
+	display: block;
+	margin-left: 100px;
+}
+#decrip span{
+	line-height: 100px;
+}
+#time_i{
+	padding-top: 10px;
+	height: 100px;
+	width: 520px;
+	margin-left: 100px;
+	margin-top: 10px;
+	border-bottom: 1px solid #ddd;
+	overflow: hidden;
+}
+#ttt{
+	text-align: center;
+}
+#time_i span{
+	/*margin-right: 100px;*/	
+}
+#time_i em{
+	color: #909090;
+	margin-left: 10px;
+}
+.fff em{
+	color: #909090;
+}
+.ccc em{
+	color: #909090;
+}
+.fildes_list{
+	text-align: center;
+	margin-top: 10px;
+	width: 72%;
+	margin-left: auto;
+	margin-right: auto;
+	border-bottom: 2px solid #ddd;
+	border-left: 2px solid #ddd;
+	border-right: 2px solid #ddd;
+}
+.fff{
+	margin-top: 5px;
+	display: block;
+}
+.all_bottom{
+	margin-top: 10px;
+	width: 100%;
+	text-align: center;
+}
+.all_btnn{
+	width: 73%;
+	height: 35px;
+
+}

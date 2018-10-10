@@ -43,14 +43,16 @@
 }
 .modal-footer{
 	height: 30px;
-	width: 500px;
-	position: absolute;
-	bottom: 0;
+	width: 100%;
+	margin-top: 20px;
+/*	position: absolute;
+	bottom: 10px;
 	right: 0;
 	left: 0;
-	margin:auto;
+	margin:auto;*/
 }
 .center-block{
+	/*margin-bottom: 10px;*/
 	text-align: center;
 }
 .btn{
@@ -107,8 +109,8 @@
 	float: left;
 	margin-left: 120px;
 }
-.group2_right{
-	margin-left: 200px;
+.group2_right label{
+	font-size: 10px;
 }
 .group2_inp{
 	height: 28px;
@@ -121,9 +123,14 @@
 .group3_left{
 	float: left;
 	margin-left: 120px;
+	font-size: 10px;
+	margin-right: 10px;
+}
+.group3_right{
+	font-size: 10px;
 }
 .group3 input{
-	width: 110px;
+	width: 120px;
 	margin-left: 10px;
 }
 .group4{
@@ -165,13 +172,17 @@
 	width: 20px;
 	border-radius: 10px;
 	position: absolute;
-	bottom: 100px;
+	bottom: 170px;
 	left: 50px;
 	font-size: 10px;
 	background-color: #ddd;
 }
-#setdata1{
+#setdatactivity{
+	width: 115px;
 	display: none;
 	float: right;
-	margin-right: 120px;
+	margin-right: 160px;
+}
+[v-cloak] {
+    display: none !important;
 }

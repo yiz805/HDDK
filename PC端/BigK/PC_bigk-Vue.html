@@ -1,0 +1,1030 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+<head>
+    <meta charset="utf-8">
+    <title>
+        Document
+    </title>
+    </meta>
+</head>
+<link href="iconfont.css" rel="stylesheet" type="text/css">
+<script src="https://cdn.bootcss.com/vue/2.5.17-beta.0/vue.js"></script>
+<script src="js/jquery.js" type="text/javascript"></script>
+<!-- 引入样式 -->
+<link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+<!-- 引入组件库 -->
+<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+<style type="text/css">
+    * {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        text-decoration: none;
+    }
+
+    body {
+        background-color: #f5f5f5;
+        height: 100%
+    }
+
+    button {
+        outline: none;
+    }
+</style>
+<link href="css/mainActive.css" rel="stylesheet" type="text/css">
+<link href="css/addActive.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="css/all_info.css">
+<link rel="stylesheet" type="text/css" href="css/changeinfo.css">
+<link rel="stylesheet" type="text/css" href="css/stu_list.css">
+<body>
+    <div id="content">
+        <div id="right">
+            <div id="right_top">
+                <img id="logo" src="logo.png">
+                <em>
+                    活动大咖
+                </em>
+                <p>
+                    <i class="icon iconfont icon-bangzhuzhongxin">
+                    </i>
+                    管理员登陆
+                </p>
+                </img>
+            </div>
+            <div id="right_doSth">
+                <div id="color">
+                    <ul>
+                        <li id="blue">
+                        </li>
+                        <li>
+                            草稿->
+                        </li>
+                        <li id="red">
+                        </li>
+                        <li>
+                            正在进行->
+                        </li>
+                        <li id="green">
+                        </li>
+                        <li>
+                            已完成->
+                        </li>
+                        <li id="yellow">
+                        </li>
+                        <li>
+                            活动结束
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div id="right_main">
+                <div class="myDiv" v-for="baseinfo in info_list" :data-actionid="baseinfo.a_id" :data-actionstate="baseinfo.a_state" 
+                    v-on:click="showAllInfo(baseinfo.a_id)">
+                    <div class="ribbon">
+                    <i class="aa11">{{baseinfo.a_state}}</i>  
+                </div>
+                    <i class="icon iconfont icon-shanchu" v-on:click.stop="deleAction(baseinfo.a_id)">
+                    </i>
+                    <span class="myDiv_spa">
+                        {{baseinfo.theme}}
+                    </span>
+                    <div class="dis">
+                        <p class="myDiv_p">
+                            报名时间:
+                            <em class="em">
+                                {{baseinfo.startTime}}
+                            </em>
+                        </p>
+                        <p class="myDiv_p">
+                            活动时间:
+                            <em class="em">
+                                {{baseinfo.signUpStartTime}}
+                            </em>
+                        </p>
+                        <p class="myDiv_p">
+                            报名人数:
+                            <em class="em">
+                                {{baseinfo.num}}
+                            </em>
+                        </p>
+                    </div>
+                    <button class="btn1" v-on:click.stop="changeInfo(baseinfo.a_id)">
+                        <i class="icon iconfont icon-31qiandao">
+                        </i>
+                        编辑
+                    </button>
+                </div>
+                <div class="myDiv0">
+                    <div id="add" v-on:click="addItem">
+                        +
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="bottom">
+            天津理工大学@2018年9月
+        </div>
+
+        <div id="addAction" v-show="visible" v-cloak>
+            <div class="modal-header">
+                <button id="close" v-on:click="closeItem">
+                    X
+                </button>
+                <h2 class="modal-title">
+                    添加新活动
+                </h2>
+            </div>
+            <div class="addlist" id="addPersonModal">
+                <div class="addList_group">
+                    <div class="group">
+                        <div class="group1">
+                            <div class="group1_left">
+                                <label>
+                                    活动主题:*
+                                </label>
+                            </div>
+                            <div class="group1_right">
+                                <input class="form-control" maxlength="15" name="aaa" type="text">
+                                </input>
+                            </div>
+                        </div>
+                        <div class="group1">
+                            <div class="group1_left">
+                                <label>
+                                    默认思政分:*
+                                </label>
+                            </div>
+                            <div class="group1_right">
+                                <input class="form-control" name="aaa" type="text">
+                                </input>
+                            </div>
+                        </div>
+                        <div class="group1">
+                            <div class="group1_left">
+                                <label>
+                                    活动描述:*
+                                </label>
+                            </div>
+                            <div class="group1_right">
+                                <textarea class="textarea" maxlength="500" name="aaa">
+                                </textarea>
+                            </div>
+                        </div>
+                        <div class="group1">
+                            <div class="group1_left">
+                                <label>
+                                    注意事项:*
+                                </label>
+                            </div>
+                            <div class="group1_right">
+                                <input class="form-control" maxlength="100" name="aaa" type="text">
+                                </input>
+                            </div>
+                        </div>
+                        <div class="group2">
+                            <div class="group2_left">
+                                <label>
+                                    发布时间:*
+                                </label>
+                            </div>
+                            <div class="group2_right">
+                                <input name="radio" type="radio" value="0">
+                                <label>
+                                    手动立即发布
+                                </label>
+                                <input id="setdata" name="radio" type="radio" value="1">
+                                <label>
+                                    系统定时发布
+                                </label>
+                                <input id="setdatactivity" name="time" class="timeInp" type="datetime-local">
+                                </input>
+                                </input>
+                                </input>
+                            </div>
+                        </div>
+                        <div class="group3">
+                            <div class="group3_left">
+                                <label>
+                                    报名开始时间:
+                                </label>
+                                <input class="timeInp" name="time" type="datetime-local" >
+                                </input>
+                            </div>
+                            <div class="group3_right">
+                                <label>
+                                    报名截止时间:
+                                </label>
+                                <input class="timeInp" name="time" type="datetime-local">
+                                </input>
+                            </div>
+                        </div>
+                        <div class="group3">
+                            <div class="group3_left">
+                                <label>
+                                    活动开始时间:
+                                </label>
+                                <input class="timeInp" name="time" type="datetime-local">
+                                </input>
+                            </div>
+                            <div class="group3_right">
+                                <label>
+                                    活动截止时间:
+                                </label>
+                                <input class="timeInp" name="time" type="datetime-local">
+                                </input>
+                            </div>
+                        </div>
+                        <form class="group4">
+                            <div class="group4_left">
+                                <label>
+                                    活动举办地点:*
+                                </label>
+                            </div>
+                            <div class="group4_right">
+                                <input class="form-control" maxlength="20" name="text" type="text">
+                                </input>
+                            </div>
+                            <br>
+                            <div class="group4_left">
+                                <label>
+                                    报名人数上限:*
+                                </label>
+                            </div>
+                            <div class="group4_right">
+                                <input class="form-control" name="text" type="text">
+                                </input>
+                            </div>
+                            <br>
+                            <div class="group5_left">
+                                <label>
+                                    活动负责人:
+                                </label>
+                                <input class="form-control" name="text" type="text">
+                                </input>
+                            </div>
+                            <div class="group5_right">
+                                <label>
+                                    负责人联系方式:
+                                </label>
+                                <input class="form-control" name="text" type="text">
+                                </input>
+                            </div>
+                            </br>
+                            </br>
+                        </form>
+                        <button id="addbtn">
+                            +
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="center-block">
+                    <button class="btn btn_default" id="cancelAdd" type="button">
+                        取消
+                    </button>
+                    <button class="btn btn_success" id="addAct" type="button" v-on:click="addAct">
+                        保存
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div id="shade" v-show="shade" v-cloak></div>
+        <div id="shade2" v-show="shade2" v-cloak></div>
+        <div id="all_info" v-show="visible2" v-for="infoList in all_info" v-cloak>
+            <div class="all_base">
+                <p class="all_theme">
+                    <em>{{infoList.theme}}</em>
+                </p>
+                <em class="aaaid">活动编号</em>
+                <em id="aaaid">{{infoList.fields[0].activity_id}}</em>
+                <button id="close" v-on:click="closeItem">
+                    X
+                </button>
+                <ul >
+                    <li>
+                        <p class="line1">
+                            <span>思政分:<em>{{infoList.score}}</em>分</span>
+                            <span>发起签到次数:<em>{{infoList.signInTimes}}</em>次</span>
+                        </p>
+                    </li>
+
+                    <li>
+                        <p class="line1">
+                            <span>活动状态:<em>{{infoList.a_state}}</em></span>
+                            <span>签到状态:<em>{{infoList.signInState}}</em></span>
+                        </p>
+                    </li>
+                    <li>
+                        <div class="rrr">注意事项:<em>{{infoList.tips}}</em></div>
+                    </li>
+                    <li>
+                        <div id="decrip">
+                            <span>活动描述:</span>
+                            <div id="textarea111">
+                                <p>{{infoList.description}}</p>
+                            </div>
+                        </div>
+                        
+                    </li>   
+                    <li>
+                        <div id="time_i">
+                            <ul><h3 id="ttt">时间信息</h3> 
+                                <li>
+                                    <span>发布方式:{{infoList.releaseState}}</span>
+                                    <span>活动发布时间:<em>{{infoList.releaseTime}}</em></span>
+                                </li>
+                                <li>
+                                    <span>开始时间:<em>{{infoList.startTime}}</em></span>
+                                    <span>截止时间:<em>{{infoList.endTime}}</em></span>
+                                </li>
+                                <li>
+                                    <span>报名时间:<em>{{infoList.signUpStartTime}}</em></span>
+                                    <span>报名截止:<em>{{infoList.signUpEndTime}}</em></span>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li v-for="aaa in infoList.fields">
+                        <div class="fildes_list">
+                            <ul>
+                                <li>
+                                    <h3>场地</h3>
+                                </li>
+                                <li>
+                                    <span class="fff">场地:<em>{{aaa.f_info}}</em></span>
+                                    <span class="fff">报名人数上限:<em>{{aaa.signUpNumLimit}}</em></span>
+                                </li>
+
+                                <li>
+                                    <span class="ccc">负责人:<em>{{aaa.t_name}}</em></span>
+                                    <span class="ccc">负责人联系方式:<em>{{aaa.t_tel}}</em></span>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+                <div class="all_bottom">
+                    <button class="all_btnn" 
+                    v-on:click="showStuList(infoList.theme,infoList.fields[0].activity_id,infoList.a_state)">查看人员详情
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div id="change-Info" class="changeInfo" v-show="visible3" v-for="changeInfolist in change_info" v-cloak>
+            <h2 class="ci_header">
+                <em id="temem">{{changeInfolist.theme}}</em>
+                <em class="aaaid">活动编号</em>
+                <em id="aaaid">{{changeInfolist.fields[0].activity_id}}</em>
+            </h2>
+            <div class="ci_baseinfo">
+                <div class="ci_bi_l">
+                    <p class="a1">思政分:
+                        <input type="" name="iii" class="a2" v-model="data1.score">
+                    </p>
+                    <p class="a1">活动状态:
+                        <input type="" name="iii" class="a2" v-model="data1.a_state">
+                    </p>  
+                </div>
+                <div class="ci_bi_r">
+                    <p class="a1">签到状态:
+                        <input type="" name="iii" class="a2" v-model="data1.signInState">
+                    </p>
+                    <p class="a1">签到次数:
+                        <input type="" name="iii" class="a2" v-model="data1.signInTimes">
+                    </p>
+                </div>
+                <div class="ci_attention">
+                    <p>
+                        注意事项:
+                        <input type="" name="iii" class="a3" v-model="data1.tips">
+                    </p>
+                </div>
+                <div class="ci_textarea">
+                    <p id="o">
+                        活动描述:
+                        <textarea class="a4" v-model="data1.description">
+                            
+                        </textarea>
+                    </p>
+                </div>
+            </div>
+            <div class="ci_time">
+                <div class="ci_time_l">
+                    <p class="a1">已选方式:
+                        {{changeInfolist.releaseState}}
+                        <input type="radio" name="choose" value="0">手动发布
+                       <input type="radio" name="choose" value="1"> 定时发布
+                    </p>
+                    <div>
+                        
+                    </div>
+                    <p class="a1">活动开始时间:
+                        <input type="" name="iii" class="a5" v-model="data1.startTime">
+                    </p>
+                    <p class="a1">报名开始时间:
+                        <input type="" name="iii" class="a5" v-model="data1.signUpStartTime">
+                    </p>                       
+                </div>
+                <div class="ci_time_r">
+                    <p class="a1">活动发布时间:
+                        <input type="" name="iii" class="a5" v-model="data1.releaseTime">
+                    </p>
+                    <p class="a1">活动结束时间:
+                        <input type="" name="iii" class="a5" v-model="data1.endTime">
+                    </p>
+                    <p class="a1">报名结束时间:
+                        <input type="" name="iii" class="a5" v-model="data1.signUpEndTime">
+                    </p>  
+                </div>
+            </div>
+            <div class="ci_fields" v-for="bbb in changeInfolist.fields">
+                <h4 class="ppp" :data-fieldId="bbb.f_id">场地:</h4>
+                <p class="ci_fields_fff">场地:<em>{{bbb.f_info}}</em></p>
+                <p class="ci_fields_fff">报名人数上限:<em>{{bbb.signUpNumLimit}}</em></p>
+                <p class="ci_fields_ccc">负责人:<em>{{bbb.t_tel}}</em></p>
+                <p class="ci_fields_ccc">负责人联系方式:<em>{{bbb.t_name}}</em></p>
+                <button class="del_btn" v-on:click="del_fields(bbb.f_id)">删除场地</button>
+                <button class="change_btn" v-on:click="addFields(changeInfolist.fields[0].activity_id)">添加场地</button>
+            </div>
+            <div class="ci_bottom">
+                <button class="ci_bottom1" v-on:click="closeItem()">取消</button>
+                <button class="ci_bottom1" v-on:click="change_baseInfo()">保存</button>
+            </div>
+        </div>
+
+        <div class="stu_list" v-show="visible4" v-cloak v-for="stu_list in stu_info">
+            <button id="close" v-on:click="closeItem">X</button>
+            <h1 class="stu_header">{{stu_list.theme}}</h1>
+            <em class="aaaid">活动编号</em>
+            <em id="aaaid">{{stu_list.aId}}</em>
+            <h2 class="stu_header">学生名单</h2>
+            <div class="stu_table">
+                <table border="1" cellspacing="0" class="">
+                    <thead>
+                        <tr>      
+                            <th class="wid">学号</th>      
+                            <th class="wid">姓名</th>      
+                            <th class="wid">报名时间</th>
+                            <th class="wid">状态</th>
+                            <th class="wid">管理</th>            
+
+                        </tr> 
+                    <thead> 
+                    <tbody>
+                        <tr v-for="stu_list in stu_info">       
+                            <td class="td">{{stu_list.s_id}}</td>      
+                            <td class="td">{{stu_list.s_name}}</td>      
+                            <td class="td">{{stu_list.signTime}}</td>
+                            <td class="td"><span id="stu_State">{{stu_list.personState}}</span></td>
+                            <td class="td">
+                                <button id="bbbttt" v-on:click="setManager(stu_list.s_id,stu_list.aId)">设置为负责人</button>
+                            </td>           
+                        </tr>  
+                    <tbody>
+                </table>
+            </div>
+        </div> 
+        <div class="add_fields" v-show="visible5" :data-thisid="this_a_id" v-cloak>
+            <div>
+                <h3 class="h3">添加场地</h3>
+            </div>
+            <div class="add_bi_l">
+                <p class="add_a1">
+                    场地名称:
+                </p>
+                <p class="add_a1">
+                    报名人数上限:
+                </p>  
+                <p class="add_a1">
+                    负责教师姓名:
+                </p>
+                <p class="add_a1">
+                    电话:
+                </p> 
+            </div>
+            <div class="add_bi_r">
+                <p>
+                    <input type=""  class="add_a2" >
+                </p>
+                <p>
+                    <input type=""  class="add_a2" >
+                </p>
+                <p>
+                    <input type=""  class="add_a2" >
+                </p>
+                <p>
+                    <input type=""  class="add_a2" >
+                </p>
+            </div>
+            <div class="add_bottom2">
+                <button class="add_bottom1" v-on:click="closeItem()">取消</button>
+                <button class="add_bottom1" v-on:click="saveFields">保存</button>
+            </div>
+        </div>    
+    </div>
+
+</body>
+</link>
+</link>
+</link>
+</meta>
+
+</html>
+<script src="js/main.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+    new Vue({
+        el: "#content",
+        data: {
+            info_list: '',
+            all_info: '',
+            change_info: '',
+            stu_info: '',
+            shade: false,
+            shade2: false,
+            visible: false,
+            visible2: false,
+            visible3: false,
+            visible4: false,
+            visible5: false,
+            data1:{},
+            this_a_id: ''
+        },
+        methods: {
+            //页面加载查询所有活动
+            getData() {
+                let self = this;
+                $.ajax({
+                    // async : true,   
+                    type: "GET",
+                    url: "http://101.200.32.54:8080/NetHDDK-1.0/teacher/getAllActivity",
+                    data: "",
+                    dataType: 'json',
+                    // jsonp:'callback',    
+                    // jsonpCallback:"successCallback",
+                    success: function (data) {
+                        self.info_list = data.Data;
+                        var mydata = self.info_list;
+                        console.log(mydata)
+                        for (let i = 0; i < mydata.length; i++) {
+                            let myStatus = mydata[i].a_state
+                            if (myStatus == 0) {
+                                self.info_list[i].a_state = '草稿';
+                            }else if (myStatus == 1){
+                                self.info_list[i].a_state = '发布';
+                            }else if (myStatus == 2){
+                                self.info_list[i].a_state = '报名中';
+                            }else if (myStatus == 3){
+                                self.info_list[i].a_state = '报名结束';
+                            }else if (myStatus == 4){
+                                self.info_list[i].a_state = '正在进行';
+                            }else if (myStatus == 5){
+                                self.info_list[i].a_state = '结束';
+                            }
+                        }
+                    },
+                    error: function (XMLHttpRequest, textStatus, errorThrown) {
+                        console.log(XMLHttpRequest.status)
+                        console.log(XMLHttpRequest.readyState)
+                        console.log(textStatus)
+                    }
+                });
+
+            },
+
+            addAct() {
+                let self = this;
+                var action1 = []
+                var fields = []
+                var checked = $('input[name="radio"]:checked').val();
+                var description = $(".textarea").val();
+                $("input[name='aaa']").each(function () {
+                    action1.push($(this).val())
+                });
+                var thisDate = DateFunction();
+                for (var i = 0; i < thisDate.length; i++) {
+                    action1.push(thisDate[i])
+                }
+                action1.push(checked)
+                action1.push(description)
+                console.log(action1)
+
+                var aaa = $(".group4 input");
+                switch (aaa.length) {
+                    case 4:
+                        var fields111 = {
+                            f_info: aaa[0].value,
+                            signUpNumLimit: aaa[1].value,
+                            t_name: aaa[2].value,
+                            t_tel: aaa[3].value
+                        };
+                        fields.push(fields111)
+                        break;
+                    case 8:
+                        var fields111 = {
+                            f_info: aaa[0].value,
+                            signUpNumLimit: aaa[1].value,
+                            t_name: aaa[2].value,
+                            t_tel: aaa[3].value
+                        };
+                        var fields222 = {
+                            f_info: aaa[4].value,
+                            signUpNumLimit: aaa[5].value,
+                            t_name: aaa[6].value,
+                            t_tel: aaa[7].value
+                        };
+                        fields.push(fields111,fields222)
+                        break;
+                    case 12:
+                        var fields111 = {
+                            f_info: aaa[0].value,
+                            signUpNumLimit: aaa[1].value,
+                            t_name: aaa[2].value,
+                            t_tel: aaa[3].value
+                        };
+                        var fields222 = {
+                            f_info: aaa[4].value,
+                            signUpNumLimit: aaa[5].value,
+                            t_name: aaa[6].value,
+                            t_tel: aaa[7].value
+                        };
+                        var fields333 = {
+                            f_info: aaa[8].value,
+                            signUpNumLimit: aaa[9].value,
+                            t_name: aaa[10].value,
+                            t_tel: aaa[11].value
+                        };
+                        fields.push(fields111,fields222,fields333)
+                        break;
+                }
+                console.log(fields)
+                $.ajax({
+                    type: "POST",
+                    dataType: "json",
+                    url: "http://101.200.32.54:8080/NetHDDK-1.0/teacher/addActivity",
+                    contentType : "application/json",
+                    data: JSON.stringify({
+                        "theme": action1[0],
+                        "score": action1[1],
+                        "description": action1[9],
+                        "tips": action1[2],
+                        "releaseState": action1[8],
+                        "releaseTime": action1[3],
+                        "signUpStartTime": action1[4],
+                        "signUpEndTime": action1[5],
+                        "startTime": action1[6],
+                        "endTime": action1[7],
+                        "fields" : fields
+                    }),
+                    success: function (data) {
+                        alert("保存成功")
+                        window.location.reload()
+                    },
+                    error: function (XMLHttpRequest, textStatus, errorThrown) {
+                        console.log(XMLHttpRequest.status)
+                        console.log(XMLHttpRequest.readyState)
+                        console.log(textStatus)
+                    }
+                });
+
+            },
+
+            showAllInfo(a_id) {
+                console.log(a_id)
+                let self = this;
+                self.visible2 = true;
+                self.shade = true;
+                $.ajax({
+                    type: "GET",
+                    url: "http://101.200.32.54:8080/NetHDDK-1.0/teacher/getActivityField?a_id="+a_id,
+                    data: '',
+                    dataType: "json",
+                    success: function (data) {
+                        console.log(data)
+                        for (var k in data) {
+                            if(k=='ErrorCode'){
+                                delete data[k];
+                            }
+                             if(k=='Message'){
+                                delete data[k];
+                            }
+                        }
+                        self.all_info = data;
+
+                    }
+                });
+            },
+
+            //修改功能
+            changeInfo(a_id) {
+                console.log(a_id)
+                let self = this;
+                self.shade = true;
+                self.visible3 = true;
+                $.ajax({
+                    type: "GET",
+                    url: "http://101.200.32.54:8080/NetHDDK-1.0/teacher/getActivityField",
+                    data: {
+                        "a_id": a_id
+                    },
+                    dataType: "json",
+                    success: function (data) {
+                        for (var k in data) {
+                            if(k=='ErrorCode'){
+                                delete data[k];
+                            }
+                             if(k=='Message'){
+                                delete data[k];
+                            }
+                        }
+                        console.log(data)
+                        self.change_info = data;
+                        self.data1 = data.Data;
+                        console.log(a_id) 
+                    }
+                });
+            },
+            change_baseInfo() {
+                let self = this;
+                var activity = []
+                var inpv = $("input[name='iii']")
+                for (var i = 0; i < inpv.length; i++) {
+                    activity.push(inpv[i].value)
+                }
+                var textareav =$(".a4")[0].value;
+                var aaaid = $("#aaaid").text();
+                var temem = $("#temem").text();
+                activity.push(textareav)
+                activity.push(aaaid)
+                activity.push(temem)
+                console.log(activity)
+                console.log(JSON.stringify({
+                        "a_id": activity[11],
+                        "theme": activity[12],
+                        "score": activity[0],
+                        "a_state": activity[1],
+                        'signInState': activity[2],
+                        'signInTimes': activity[3],
+                        "tips": activity[4],
+                        "description": activity[10],
+                        "releaseState":'1',
+                        "releaseTime":activity[7],
+                        "startTime": activity[5],
+                        "signUpStartTime": activity[6],
+                        "endTime": activity[8],
+                        "signUpEndTime": activity[9],
+                    }))
+                $.ajax({
+                    type: "POST",
+                    dataType: "json",
+                    url: "http://101.200.32.54:8080/NetHDDK-1.0/teacher/updateActivity",
+                    contentType : "application/json",
+                    data: JSON.stringify({
+                       "a_id": activity[11],
+                        "theme": activity[12],
+                        "score": activity[0],
+                        "a_state": activity[1],
+                        'signInState': activity[2],
+                        'signInTimes': activity[3],
+                        "tips": activity[4],
+                        "description": activity[10],
+                        "releaseState":'1',
+                        "releaseTime":activity[7],
+                        "startTime": activity[5],
+                        "signUpStartTime": activity[6],
+                        "endTime": activity[8],
+                        "signUpEndTime": activity[9],
+                    }),
+                    success: function (data) {
+                        alert("保存成功")
+                        window.location.reload()
+                    },
+                    error: function (XMLHttpRequest, textStatus, errorThrown) {
+                        console.log(XMLHttpRequest.status)
+                        console.log(XMLHttpRequest.readyState)
+                        console.log(textStatus)
+                    }
+                });
+            },
+
+            //删除场地
+            del_fields(f_id){
+                let self = this;
+                console.log(f_id)
+                $("h4[data-fieldId="+f_id+"]").parent().remove()
+                $.ajax({
+                    type: "GET",
+                    url: "http://101.200.32.54:8080/NetHDDK-1.0/teacher/deleteFiled?f_id="+f_id,
+                    data: "",
+                    dataType: "json",
+                    success: function (data) {
+                        console.log(this)
+                    }
+                });
+            },
+
+            //添加场地
+            addFields(aid){
+                let self = this;
+                self.visible3 = true;
+                self.shade2 = true;
+                self.visible5 = true;
+                console.log(self.this_a_id)
+                self.this_a_id = aid;
+            },
+            saveFields(){
+                var field = [];
+                let a_id = $(".add_fields").data("thisid");
+                field.push(a_id)
+                var temp = $(".add_a2")
+                for (var i = 0; i < temp.length; i++) {
+                    field.push(temp[i].value)
+                }
+                console.log(field)
+                console.log(JSON.stringify({
+                        "activity_id": field[0],
+                        "f_info": field[1],
+                        "signUpNumLimit": field[2],
+                        "t_tel": field[3],
+                        "t_name": field[4],
+                    }))
+                $.ajax({
+                    type: "POST",
+                    dataType: "json",
+                    url: "http://101.200.32.54:8080/NetHDDK-1.0/teacher/addField",
+                    contentType : "application/json",
+                    data: JSON.stringify({
+                        "activity_id": field[0],
+                        "f_info": field[1],
+                        "signUpNumLimit": field[2],
+                        "t_tel": field[3],
+                        "t_name": field[4],
+                    }),
+                    success: function (data) {
+                        alert("保存成功")
+                        window.location.reload()
+                    },
+                    error: function (XMLHttpRequest, textStatus, errorThrown) {
+                        console.log(XMLHttpRequest.status)
+                        console.log(XMLHttpRequest.readyState)
+                        console.log(textStatus)
+                    }
+                });
+            },
+            //显示学生列表
+            showStuList(a,b,c){
+                console.log(a)
+                console.log(b)
+                console.log(c)
+                if (c == 0 ||c == 1 ) {
+                    alert("暂时未开始报名")
+                    return false;
+                }
+                let self = this;
+                self.shade = true;
+                self.visible4 = true;
+                self.visible2 = false;
+                $.ajax({
+                    type: "GET",
+                    url: "http://101.200.32.54:8080/NetHDDK-1.0/teacher/getSignUpStu?a_id="+b,
+                    data: "",
+                    dataType: "json",
+                    success: function (data) {
+                        self.stu_info = data.Data;
+                        console.log(self.stu_info)
+
+                        let stuData = self.stu_info;
+                        for (let i = 0; i < stuData.length; i++) {
+                            let stuStatus = stuData[i].personState
+                            if (stuStatus == 0) {
+                                self.stu_info[i].personState = '成员';
+                            }else if (stuStatus == 1){
+                                self.stu_info[i].personState = '负责人';
+                            }
+                        self.stu_info[i].theme = a;
+                        self.stu_info[i].aId = b;
+                        }
+
+                    }
+                });
+            },
+
+            //设为管理员
+            setManager(sId,aId){
+                console.log(aId)
+                console.log(sId)
+                $("#stu_State").html("负责人");
+
+                $.ajax({
+                    type: "GET",
+                    url: "http://101.200.32.54:8080/NetHDDK-1.0/teacher/setPersonState",
+                    data: {
+                        a_id:aId,
+                        s_id:sId
+                    },
+                    dataType: "json",
+                    success: function (data) {
+                        alert("success")
+
+                        }
+                });
+            },
+
+
+
+            //删除功能！！！！
+            deleAction(a_id) {
+                console.log(a_id)
+                alert("del")
+                let self = this;
+                $.ajax({
+                    type: "GET",
+                    url: "http://101.200.32.54:8080/NetHDDK-1.0/teacher/deleteActivity",
+                    data: {
+                        "a_id": a_id
+                    },
+                    dataType: "json",
+                    success: function (data) {
+
+                    },
+                    error: function (XMLHttpRequest, textStatus, errorThrown) {
+                        console.log(XMLHttpRequest.status)
+                        console.log(XMLHttpRequest.readyState)
+                        console.log(textStatus)
+                    }
+                });
+                location.reload();
+            },
+
+            addItem() {
+                let self = this;
+                self.visible = true;
+                self.shade = true;
+            },
+
+            closeItem() {
+                let self = this;
+                self.visible = false;
+                self.shade = false;
+                location.reload();
+            },
+        },
+        created: function () {
+            this.getData();
+            console.log("success");
+        },
+        mounted: function () {
+
+        }
+
+
+    });
+    function DateFunction(){
+        var format=[];
+        $(".timeInp").each(function(){
+            let tmp;
+            year=$(this).val().substring(0,4);
+            month=$(this).val().substring(5,7);
+            day=$(this).val().substring(8,10);
+            hour=$(this).val().substring(11,13);
+            minute=$(this).val().substring(14);
+
+            tmp=year+"-"+month+"-"+day+" "+hour+":"+minute+":00";
+            format.push(tmp);
+        });
+        return format;
+    }
+    //增加活动---增加分会场
+    document.getElementById("addbtn").onclick = () => {
+        var activity = document.getElementsByClassName("group4");
+        var a2 = activity[0].cloneNode(true);
+        a2.reset();
+        var a3 = document.getElementsByClassName("group");
+        if (activity.length >= 3) {
+            alert("bukeyi")
+            return false;
+        }
+        a3[0].appendChild(a2);
+    }
+
+    //-----单选按钮-----
+    var setD = document.getElementById("setdata");
+    setD.onclick = () => {
+        document.getElementById("setdatactivity").style.display = 'block';
+    }
+    //非空验证
+    function checkNull(){
+    //     console.log(document.getElementsByName("aaa").value)
+    // if(document.getElementsByName("aaa").value== "" || document.getElementsByName("aaa").value==null)
+    //     {
+    //         alert("内容不可以为空");
+    //         // document.getElementsByTagName("input").focus();
+    //         // document.getElementsByTagName("input").select();
+    //         return false;
+    //     }
+    //     else return true;
+}
+</script>

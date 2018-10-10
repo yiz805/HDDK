@@ -53,6 +53,33 @@
 	border-radius:10px;
 	border: 1px solid #DDD;
 }
+
+.aa11{
+	position: absolute;
+	top: 9px;
+	left: -42px;
+	display: inline-block;
+	text-align: center;
+	width: 140px;
+	height: 35px;
+	line-height: 35px;
+	z-index: 2;
+	overflow: hidden;
+	transform: rotate(-45deg);
+	border: 1px dashed;
+	background: #57dd43;
+	box-shadow: 0 0 0 3px #57dd43,
+	0 21px 5px  -18px rgba(0,0,0,.6);
+
+}
+.ribbon{
+	position: absolute;
+	height: 200px;
+	width: 320px;
+	/*padding-top: 2px;*/
+	overflow: hidden;
+	color: #fff;
+}
 .myDiv0{
 	height: 200px;
 	width: 320px;
@@ -178,4 +205,9 @@
 	height: 60px;
 	position:absolute;
 	left: 10px;
+}
+.em{
+	/*background-color: red;*/
+	margin-left: 10px;
+
 }

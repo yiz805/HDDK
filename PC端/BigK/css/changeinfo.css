@@ -1,0 +1,208 @@
+.changeInfo{
+	margin-top: 20px;
+	width: 720px;
+	background-color: white;
+	z-index:3;
+	position:absolute;/*因为这个，所以不能高度自适应*/
+	top: 40px;
+    left: 50%;
+    transform: translate(-50%,0);
+	border: 1px solid #DDD;
+	/*display:none;*/
+	border-radius:5px;
+	z-index: 5;
+	padding-bottom: 30px;
+}
+.ci_header{
+	text-align: center;
+	margin-top: 15px;
+	margin-bottom: 10px;
+}
+.ci_baseinfo{
+	width: 80%;
+	height: 240px;
+	border: 1px solid #ddd;
+	margin-left: 7%;
+	padding-left: 20px;
+	padding-right: 20px;
+}
+.ci_bi_l{
+	width: 40%;
+	float: left;
+	padding-top: 5px;
+	padding-left: 10px;
+}
+.ci_bi_r{
+	width: 40%;
+	float: right;
+	padding-top: 5px;
+	padding-left: 10px;
+}
+.a1{
+	margin-bottom: 5px;
+	line-height: 30px;
+}
+.a2{
+	width: 120px;
+	float: right;
+	line-height: 20px;
+	margin-right: 20px;
+	margin-top: 3px;
+}
+.ci_attention{
+	float: left;
+	margin-left: 10px;
+	width: 100%;
+}
+.a3{
+	width: 79%;
+	height: 20px;
+	margin-left: 13px;
+}
+.ci_textarea{
+	float: left;
+	margin-left: 10px;
+	width: 100%;
+	height: 120px;
+	line-height: 80px;
+	margin-top: 5px;
+	line-height: 150px;
+}
+.a4{
+	display: block;
+	height: 120px;
+	width: 70%;
+	border: 1px solid black;
+	border-radius:1px;
+	float: right;
+	margin-right: 80px;
+	margin-top: 10px;
+}
+.ci_time{
+	width: 80%;
+	height: 110px;
+	border: 1px solid #ddd;
+	margin-left: 7%;
+	padding-left: 20px;
+	padding-right: 20px;
+	padding-top: 5px;
+}
+.ci_time_l{
+	width: 45%;
+	float: left;
+	padding-top: 5px;
+	padding-left: 10px;
+}
+.ci_time_r{
+	width: 50%;
+
+	float: right;
+	padding-top: 5px;
+	padding-left: 10px;
+}
+.a5{
+	width: 140px;
+	float: right;
+	line-height: 20px;
+	margin-right: 10px;
+	margin-top: 3px;	
+}
+.ci_fields{
+	position: relative;
+	width: 80%;
+	height: 110px;
+	border: 1px solid #ddd;
+	margin-left: 7%;
+	padding-left: 20px;
+	padding-right: 20px;
+	padding-top: 5px;
+}
+.del_btn{
+	height: 23px;
+	position: absolute;
+	right: 60px;
+	top: 20px;
+
+}
+.change_btn{
+	height: 23px;
+	position: absolute;
+	right: 60px;
+	top: 70px;
+}
+.ci_bottom{
+	margin-top: 20px;
+	text-align: center;
+}
+.ci_bottom1{
+	height: 23px;
+	width: 40px;
+	margin-left: 40px;
+	margin-right: 40px;
+}
+#aaaid{
+	position: absolute;
+	right: 60px;
+	top: 40px;
+	height: 10px;
+	font-size: 5px;
+}
+.aaaid{
+	position: absolute;
+	right: 80px;
+	top: 40px;
+	height: 10px;
+	font-size: 5px;
+}
+
+.add_fields{
+	margin-top: 180px;
+	width: 520px;
+	height: 220px;
+	background-color: white;
+	z-index:3;
+	position:absolute;/*因为这个，所以不能高度自适应*/
+	top: 40px;
+    left: 50%;
+    transform: translate(-50%,0);
+	border: 1px solid #DDD;
+	/*display:none;*/
+	border-radius:5px;
+	z-index: 7;
+	padding-bottom: 30px;
+}
+.h3{
+	line-height: 40px;
+	text-align: center;
+}
+.add_bi_l{
+	width: 40%;
+	float: left;
+	padding-top: 5px;
+	padding-left: 10px;
+	text-align: center;
+}
+.add_bi_r{
+	width: 55%;
+	float: right;
+	padding-top: 5px;
+	padding-left: 10px;
+}
+.add_a2{
+	width: 90%;
+	line-height: 30px;
+	margin-bottom: 6px;
+}
+.add_a1{
+	line-height: 40px;
+}
+.add_bottom2{
+	padding-left: 140px;
+}
+.add_bottom1{
+	height: 25px;
+	width: 40px;
+	margin-left: 40px;
+	margin-right: 40px;
+	margin-top: 10px;
+}
