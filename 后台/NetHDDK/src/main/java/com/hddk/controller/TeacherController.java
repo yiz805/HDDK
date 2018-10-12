@@ -1,5 +1,7 @@
 package com.hddk.controller;
 
+import com.hddk.QueryVo.ActivityQueryVo_PC;
+import com.hddk.QueryVo.StudentQueryVo_PC;
 import com.hddk.entity.*;
 import com.hddk.service.ActivityService;
 import com.hddk.service.FieldService;
@@ -31,9 +33,7 @@ public class TeacherController {
     @ResponseBody
     @RequestMapping(value = "/addActivity", method = RequestMethod.POST)
     public AjaxResult addActivity(@RequestBody Activity activity) {
-        System.out.println(activity.getFields().get(0).getF_info());
         activityService.addActivity(activity);
-
         return AjaxResult.getOK();
     }
 
@@ -97,7 +97,7 @@ public class TeacherController {
     @ResponseBody
     @RequestMapping(value = "/getSignUpStu", method = RequestMethod.GET)
     public AjaxResult getSignUpStu(@RequestParam(value = "a_id") int a_id) {
-        List<StudentQueryVo> students = activityService.getSignUpStu(a_id);
+        List<StudentQueryVo_PC> students = activityService.getSignUpStu(a_id);
         return AjaxResult.getOK(students);
     }
 
@@ -112,6 +112,20 @@ public class TeacherController {
     @RequestMapping(value = "/setPersonState", method = RequestMethod.GET)
     public AjaxResult setPersonState(@RequestParam(value = "a_id") int a_id, @RequestParam(value = "s_id") Long s_id) {
         signService.setPersonSate(s_id, a_id);
+        return AjaxResult.getOK();
+    }
+
+    /**
+     * 取消签到负责人
+     *
+     * @param a_id
+     * @param s_id
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value = "/setPersonState0", method = RequestMethod.GET)
+    public AjaxResult setPersonState2(@RequestParam(value = "a_id") int a_id, @RequestParam(value = "s_id") Long s_id) {
+        signService.setPersonState2(s_id, a_id);
         return AjaxResult.getOK();
     }
 
@@ -141,4 +155,16 @@ public class TeacherController {
         return AjaxResult.getOK();
     }
 
+    /**
+     * 修改场地
+     *
+     * @param field
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value = "/updateField", method = RequestMethod.GET)
+    public AjaxResult updateField(@RequestBody Field field) {
+        fieldService.updateField(field);
+        return AjaxResult.getOK();
+    }
 }

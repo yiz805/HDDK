@@ -4,15 +4,15 @@ import java.util.Date;
 
 public class Sign {
     private Long id;
-    private int signState;//签到状态?'0':报名,'1':过审,'2':签到
+    private Integer signState;//签到状态?'0':报名,'1':签到1次,'2':签到2次,'3':签到3次
     private String signTime;//签到时间
     private Activity activity;
     private Student student;
     private Field field;
-    private int personState;//是否为签到负责人,'0':否,'1':是
+    private Integer personState;//是否为签到负责人,'0':否,'1':是
 
 
-    public Sign(Long id, int signState, String signTime, Activity activity, Student student, Field field, int personState) {
+    public Sign(Long id, Integer signState, String signTime, Activity activity, Student student, Field field, Integer personState) {
         this.id = id;
         this.signState = signState;
         this.signTime = signTime;
@@ -33,11 +33,11 @@ public class Sign {
         this.id = id;
     }
 
-    public int getSignState() {
+    public Integer getSignState() {
         return signState;
     }
 
-    public void setSignState(int signState) {
+    public void setSignState(Integer signState) {
         this.signState = signState;
     }
 
@@ -66,11 +66,11 @@ public class Sign {
         this.student = student;
     }
 
-    public int getPersonState() {
+    public Integer getPersonState() {
         return personState;
     }
 
-    public void setPersonState(int personState) {
+    public void setPersonState(Integer personState) {
         this.personState = personState;
     }
 

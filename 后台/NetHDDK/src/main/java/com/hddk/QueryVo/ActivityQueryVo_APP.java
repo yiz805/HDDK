@@ -1,4 +1,8 @@
-package com.hddk.entity;
+package com.hddk.QueryVo;
+
+import com.hddk.entity.Field;
+
+import java.util.List;
 
 public class ActivityQueryVo_APP {
     private int a_id;
@@ -13,6 +17,7 @@ public class ActivityQueryVo_APP {
     private String endTime;//活动结束时间
     private int num;
     private int lim;
+    private List<Field> fields;
 
     public ActivityQueryVo_APP() {
     }
@@ -42,17 +47,20 @@ public class ActivityQueryVo_APP {
         this.lim = lim;
     }
 
-    public ActivityQueryVo_APP(int a_id, String theme, String description, int a_state, int score, String tips, String startTime, String endTime, int num, int lim) {
+    public ActivityQueryVo_APP(int a_id, String theme, String description, int a_state, int score, String tips, String signUpStartTime, String signUpEndTime, String startTime, String endTime, int num, int lim, List<Field> fields) {
         this.a_id = a_id;
         this.theme = theme;
         this.description = description;
         this.a_state = a_state;
         this.score = score;
         this.tips = tips;
+        this.signUpStartTime = signUpStartTime;
+        this.signUpEndTime = signUpEndTime;
         this.startTime = startTime;
         this.endTime = endTime;
         this.num = num;
         this.lim = lim;
+        this.fields = fields;
     }
 
     public int getA_id() {
@@ -149,5 +157,13 @@ public class ActivityQueryVo_APP {
 
     public void setSignUpEndTime(String signUpEndTime) {
         this.signUpEndTime = signUpEndTime;
+    }
+
+    public List<Field> getFields() {
+        return fields;
+    }
+
+    public void setFields(List<Field> fields) {
+        this.fields = fields;
     }
 }

@@ -1,4 +1,4 @@
-package com.hddk.entity;
+package com.hddk.QueryVo;
 
 
 public class ActivityQueryVo_task {

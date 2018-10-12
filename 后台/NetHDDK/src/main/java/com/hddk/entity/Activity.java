@@ -11,21 +11,21 @@ public class Activity {
     private Double score;//思政分
     private String description;//活动描述
     private String tips;//注意事项
-    private int releaseState;//活动发布方式:'0':直接发布,'1':定时发布
+    private Integer releaseState;//活动发布方式:'0':直接发布,'1':定时发布
     private String releaseTime;//活动发布时间
     private String signUpStartTime;//报名开始时间
     private String signUpEndTime;//报名结束时间
     private String startTime;//活动开始时间
     private String endTime;//活动结束时间
-    private int signInState;//活动签到状态?'0':签到未开始,'1':正在签到
-    private int a_state;//活动状态?'0':草稿,"1":发布,'2':报名中,'3':报名结束,'4':正在进行,'5':结束
+    private Integer signInState;//活动签到状态?'0':签到未开始,'1':正在签到
+    private Integer a_state;//活动状态?'0':草稿,"1":发布,'2':报名中,'3':报名结束,'4':正在进行,'5':结束
     private List<Field> fields;//场地
     private Integer signInTimes;//签到次数
 
     public Activity() {
     }
 
-    public Activity(Integer a_id, String theme, Double score, String description, String tips, int releaseState, String releaseTime, String signUpStartTime, String signUpEndTime, String startTime, String endTime, int signInState, int a_state, List<Field> fields, Integer signInTimes) {
+    public Activity(Integer a_id, String theme, Double score, String description, String tips, Integer releaseState, String releaseTime, String signUpStartTime, String signUpEndTime, String startTime, String endTime, Integer signInState, Integer a_state, List<Field> fields, Integer signInTimes) {
         this.a_id = a_id;
         this.theme = theme;
         this.score = score;
@@ -43,7 +43,7 @@ public class Activity {
         this.signInTimes = signInTimes;
     }
 
-    public Activity(String theme, Double score, String description, String tips, int releaseState, String releaseTime, String signUpStartTime, String signUpEndTime, String startTime, String endTime) {
+    public Activity(String theme, Double score, String description, String tips, Integer releaseState, String releaseTime, String signUpStartTime, String signUpEndTime, String startTime, String endTime) {
         this.theme = theme;
         this.score = score;
         this.description = description;
@@ -96,11 +96,11 @@ public class Activity {
         this.tips = tips;
     }
 
-    public int getReleaseState() {
+    public Integer getReleaseState() {
         return releaseState;
     }
 
-    public void setReleaseState(int releaseState) {
+    public void setReleaseState(Integer releaseState) {
         this.releaseState = releaseState;
     }
 
@@ -144,19 +144,19 @@ public class Activity {
         this.endTime = endTime;
     }
 
-    public int getSignInState() {
+    public Integer getSignInState() {
         return signInState;
     }
 
-    public void setSignInState(int signInState) {
+    public void setSignInState(Integer signInState) {
         this.signInState = signInState;
     }
 
-    public int getA_state() {
+    public Integer getA_state() {
         return a_state;
     }
 
-    public void setA_state(int a_state) {
+    public void setA_state(Integer a_state) {
         this.a_state = a_state;
     }
 

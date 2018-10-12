@@ -1,6 +1,6 @@
 package com.hddk.task;
 
-import com.hddk.entity.ActivityQueryVo_task;
+import com.hddk.QueryVo.ActivityQueryVo_task;
 import com.hddk.service.ActivityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;

@@ -1,5 +1,9 @@
 package com.hddk.service;
 
+import com.hddk.QueryVo.ActivityQueryVo_APP;
+import com.hddk.QueryVo.ActivityQueryVo_PC;
+import com.hddk.QueryVo.ActivityQueryVo_task;
+import com.hddk.QueryVo.StudentQueryVo_PC;
 import com.hddk.entity.*;
 
 import java.util.List;
@@ -12,7 +16,7 @@ public interface ActivityService {
 
     void updateActivity(Activity activity);
 
-    List<StudentQueryVo> getSignUpStu(int activity_id);
+    List<StudentQueryVo_PC> getSignUpStu(int activity_id);
 
     Activity getActivityAndField(int a_id);
 
@@ -35,4 +39,6 @@ public interface ActivityService {
     Activity getActByA_id(int a_id);
 
     List<ActivityQueryVo_task> getTimes();
+
+    int getActState(int a_id);
 }
