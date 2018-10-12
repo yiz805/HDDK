@@ -12,6 +12,7 @@
 	border-radius:5px;
 	z-index: 5;
 	padding-bottom: 30px;
+    overflow:hidden;
 }
 .stu_header{
 	text-align: center;
@@ -22,7 +23,30 @@
 	height: 400px;
 	width: 80%;
 	margin-left: 10%;
+
+	overflow-x: hidden;
+    overflow-y: auto;
+    color: #000;
+    font-size: .7rem;
+    font-family: "\5FAE\8F6F\96C5\9ED1",Helvetica,"黑体",Arial,Tahoma;
+    /*height: 100%;*/
 }
+/*滚动条样式*/
+.stu_table::-webkit-scrollbar {/*滚动条整体样式*/
+    width: 4px;     /*高宽分别对应横竖滚动条的尺寸*/
+    height: 4px;
+}
+.stu_table::-webkit-scrollbar-thumb {/*滚动条里面小方块*/
+    border-radius: 5px;
+    -webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+    background: rgba(0,0,0,0.2);
+}
+.stu_table::-webkit-scrollbar-track {/*滚动条里面轨道*/
+    -webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+    border-radius: 0;
+    background: rgba(0,0,0,0.1);
+}
+
 .wid{
 	width: 200px;
 }
@@ -32,6 +56,7 @@
 #bbbttt{
 	width: 90%;
 	height: 30px;
+	margin-top: 5px;
 }
 #shade2{
 	position:fixed;

@@ -7,20 +7,52 @@
 </head>
 <link rel="stylesheet" type="text/css" href="css/reset.css">
 <style type="text/css">
-	@media screen and (max-width: 320px) {
-	  .box{
-		width: 100px;
-		height: 100px;
-		background-color: red;
-		}
-	}
+	.inner{
+            width: 265px;
+            height: 400px;
+            position: absolute;
+            top: 33px;
+            left: 13px;
+            /*cursor: pointer;*/
+            overflow:hidden;
+        }
+        .innerbox{
+            overflow-x: hidden;
+            overflow-y: auto;
+            color: #000;
+            font-size: .7rem;
+            font-family: "\5FAE\8F6F\96C5\9ED1",Helvetica,"黑体",Arial,Tahoma;
+            height: 100%;
+        }
+        /*滚动条样式*/
+        .innerbox::-webkit-scrollbar {/*滚动条整体样式*/
+            width: 4px;     /*高宽分别对应横竖滚动条的尺寸*/
+            height: 4px;
+        }
+        .innerbox::-webkit-scrollbar-thumb {/*滚动条里面小方块*/
+            border-radius: 5px;
+            -webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+            background: rgba(0,0,0,0.2);
+        }
+        .innerbox::-webkit-scrollbar-track {/*滚动条里面轨道*/
+            -webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+            border-radius: 0;
+            background: rgba(0,0,0,0.1);
+        }
 
 </style>
 <body>
-	<div class="box">
-		<p>
-			aaa
-		</p>
-	</div>
+ <div class="inner">
+        <div class="innerbox">
+            <p style="height:200px;">这是内容111</p>
+            <p style="height:400px;">这里是内容222</p>
+            <p>这里是内容333</p>
+        </div>
+    </div>
+	
 </body>
+<script type="text/javascript">
+
+
+</script>
 </html>
