@@ -63,3 +63,10 @@ hr {
     border: none;
     height: 1px;
 }
+input[type="submit"],
+input[type="reset"],
+input[type="button"],
+button {
+-webkit-appearance: none;
+}
+

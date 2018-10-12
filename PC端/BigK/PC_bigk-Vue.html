@@ -9,9 +9,12 @@
     </title>
     </meta>
 </head>
+<!-- <link rel="stylesheet" type="text/css" href="css/reset.css"> -->
 <link href="iconfont.css" rel="stylesheet" type="text/css">
 <script src="https://cdn.bootcss.com/vue/2.5.17-beta.0/vue.js"></script>
 <script src="js/jquery.js" type="text/javascript"></script>
+<script src="js/jquery.validate.min.js" type="text/javascript"></script>
+<script src="js/messages_zh.js" type="text/javascript"></script>
 <!-- 引入样式 -->
 <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
 <!-- 引入组件库 -->
@@ -39,7 +42,7 @@
 <link rel="stylesheet" type="text/css" href="css/changeinfo.css">
 <link rel="stylesheet" type="text/css" href="css/stu_list.css">
 <body>
-    <div id="content">
+    <div id="content" v-cloak>
         <div id="right">
             <div id="right_top">
                 <img id="logo" src="logo.png">
@@ -61,20 +64,30 @@
                         <li>
                             草稿->
                         </li>
+                        <li id="pink">
+                        </li>
+                        <li>
+                            发布->
+                        </li>
                         <li id="red">
                         </li>
                         <li>
-                            正在进行->
+                            报名中->
                         </li>
                         <li id="green">
                         </li>
                         <li>
-                            已完成->
+                            报名结束->
                         </li>
                         <li id="yellow">
                         </li>
                         <li>
-                            活动结束
+                            正在进行
+                        </li>
+                        <li id="black">
+                        </li>
+                        <li>
+                            结束
                         </li>
                     </ul>
                 </div>
@@ -110,7 +123,7 @@
                             </em>
                         </p>
                     </div>
-                    <button class="btn1" v-on:click.stop="changeInfo(baseinfo.a_id)">
+                    <button class="btn1" v-on:click.stop="changeInfo(baseinfo.a_id,baseinfo.a_state)">
                         <i class="icon iconfont icon-31qiandao">
                         </i>
                         编辑
@@ -146,8 +159,7 @@
                                 </label>
                             </div>
                             <div class="group1_right">
-                                <input class="form-control" maxlength="15" name="aaa" type="text">
-                                </input>
+                                <input class="form-control" maxlength="15" name="aaa" type="text"></input>
                             </div>
                         </div>
                         <div class="group1">
@@ -157,8 +169,7 @@
                                 </label>
                             </div>
                             <div class="group1_right">
-                                <input class="form-control" name="aaa" type="text">
-                                </input>
+                                <input class="form-control" name="aaa" type="number"></input>
                             </div>
                         </div>
                         <div class="group1">
@@ -168,8 +179,7 @@
                                 </label>
                             </div>
                             <div class="group1_right">
-                                <textarea class="textarea" maxlength="500" name="aaa">
-                                </textarea>
+                                <textarea class="textarea" maxlength="120" name="aaa" placeholder="120字以内"></textarea>
                             </div>
                         </div>
                         <div class="group1">
@@ -179,8 +189,7 @@
                                 </label>
                             </div>
                             <div class="group1_right">
-                                <input class="form-control" maxlength="100" name="aaa" type="text">
-                                </input>
+                                <input class="form-control" maxlength="100" name="aaa" type="text"></input>
                             </div>
                         </div>
                         <div class="group2">
@@ -190,7 +199,7 @@
                                 </label>
                             </div>
                             <div class="group2_right">
-                                <input name="radio" type="radio" value="0">
+                                <input id="dontsetid" name="radio" type="radio" value="0" checked>
                                 <label>
                                     手动立即发布
                                 </label>
@@ -209,14 +218,14 @@
                                 <label>
                                     报名开始时间:
                                 </label>
-                                <input class="timeInp" name="time" type="datetime-local" >
+                                <input class="timeInp" name="time" type="datetime-local" value="2018-01-01T00:00">
                                 </input>
                             </div>
                             <div class="group3_right">
                                 <label>
                                     报名截止时间:
                                 </label>
-                                <input class="timeInp" name="time" type="datetime-local">
+                                <input class="timeInp" name="time" type="datetime-local" value="2018-01-01T00:00">
                                 </input>
                             </div>
                         </div>
@@ -225,14 +234,14 @@
                                 <label>
                                     活动开始时间:
                                 </label>
-                                <input class="timeInp" name="time" type="datetime-local">
+                                <input class="timeInp" name="time" type="datetime-local" value="2018-01-01T00:00">
                                 </input>
                             </div>
                             <div class="group3_right">
                                 <label>
                                     活动截止时间:
                                 </label>
-                                <input class="timeInp" name="time" type="datetime-local">
+                                <input class="timeInp" name="time" type="datetime-local" value="2018-01-01T00:00">
                                 </input>
                             </div>
                         </div>
@@ -253,7 +262,7 @@
                                 </label>
                             </div>
                             <div class="group4_right">
-                                <input class="form-control" name="text" type="text">
+                                <input class="form-control" name="text" type="number">
                                 </input>
                             </div>
                             <br>
@@ -268,7 +277,7 @@
                                 <label>
                                     负责人联系方式:
                                 </label>
-                                <input class="form-control" name="text" type="text">
+                                <input class="form-control" name="text" type="number" maxlength="11">
                                 </input>
                             </div>
                             </br>
@@ -282,7 +291,7 @@
             </div>
             <div class="modal-footer">
                 <div class="center-block">
-                    <button class="btn btn_default" id="cancelAdd" type="button">
+                    <button class="btn btn_default" id="cancelAdd" type="button" v-on:click="closeItem()">
                         取消
                     </button>
                     <button class="btn btn_success" id="addAct" type="button" v-on:click="addAct">
@@ -333,7 +342,7 @@
                         <div id="time_i">
                             <ul><h3 id="ttt">时间信息</h3> 
                                 <li>
-                                    <span>发布方式:{{infoList.releaseState}}</span>
+                                    <!-- <span>发布方式:{{infoList.releaseState}}</span> -->
                                     <span>活动发布时间:<em>{{infoList.releaseTime}}</em></span>
                                 </li>
                                 <li>
@@ -382,7 +391,7 @@
             <div class="ci_baseinfo">
                 <div class="ci_bi_l">
                     <p class="a1">思政分:
-                        <input type="" name="iii" class="a2" v-model="data1.score">
+                        <input type="number" name="iii" class="a2" v-model="data1.score">
                     </p>
                     <p class="a1">活动状态:
                         <input type="" name="iii" class="a2" v-model="data1.a_state">
@@ -413,30 +422,31 @@
             </div>
             <div class="ci_time">
                 <div class="ci_time_l">
-                    <p class="a1">已选方式:
-                        {{changeInfolist.releaseState}}
-                        <input type="radio" name="choose" value="0">手动发布
-                       <input type="radio" name="choose" value="1"> 定时发布
+                    <p class="a1">发布方式:
+                        <!-- {{changeInfolist.releaseState}} -->
+                        <input type="radio" name="choose" value="0" checked>手动发布
+                       <input id="setTimeOut" type="radio" name="choose" value="1"> 定时发布
                     </p>
                     <div>
                         
                     </div>
                     <p class="a1">活动开始时间:
-                        <input type="" name="iii" class="a5" v-model="data1.startTime">
+                        <input type="datetime-local" name="" class="a5" :value="changeInfolist.startTime">
+                        <!-- <input class="timeInp" name="time" type="datetime-local" value="2018-01-01T00:00"> -->
                     </p>
                     <p class="a1">报名开始时间:
-                        <input type="" name="iii" class="a5" v-model="data1.signUpStartTime">
+                        <input type="datetime-local" name="" class="a5" :value="changeInfolist.signUpStartTime">
                     </p>                       
                 </div>
                 <div class="ci_time_r">
                     <p class="a1">活动发布时间:
-                        <input type="" name="iii" class="a5" v-model="data1.releaseTime">
+                        <input id="realtime" type="datetime-local" name="" class="a5" :value="changeInfolist.releaseTime">
                     </p>
                     <p class="a1">活动结束时间:
-                        <input type="" name="iii" class="a5" v-model="data1.endTime">
+                        <input type="datetime-local" name="" class="a5" :value="changeInfolist.endTime">
                     </p>
                     <p class="a1">报名结束时间:
-                        <input type="" name="iii" class="a5" v-model="data1.signUpEndTime">
+                        <input type="datetime-local" name="" class="a5" :value="changeInfolist.signUpEndTime">
                     </p>  
                 </div>
             </div>
@@ -478,9 +488,10 @@
                             <td class="td">{{stu_list.s_id}}</td>      
                             <td class="td">{{stu_list.s_name}}</td>      
                             <td class="td">{{stu_list.signTime}}</td>
-                            <td class="td"><span id="stu_State">{{stu_list.personState}}</span></td>
+                            <td class="td">{{stu_list.personState}}</td>
                             <td class="td">
-                                <button id="bbbttt" v-on:click="setManager(stu_list.s_id,stu_list.aId)">设置为负责人</button>
+                                <button id="bbbttt" v-on:click="setManager(stu_list.s_id,stu_list.aId,stu_list.theme)">设置为负责人</button>
+                                <button id="bbbttt" v-on:click="delManager(stu_list.s_id,stu_list.aId,stu_list.theme)">取消负责人</button>
                             </td>           
                         </tr>  
                     <tbody>
@@ -550,8 +561,11 @@
             visible3: false,
             visible4: false,
             visible5: false,
+            visible6: []|false,
             data1:{},
-            this_a_id: ''
+            this_a_id: '',
+            nowData: '',
+            
         },
         methods: {
             //页面加载查询所有活动
@@ -585,6 +599,9 @@
                                 self.info_list[i].a_state = '结束';
                             }
                         }
+                        // var aa=[]
+                        // aa= $(".aa11");
+                        // console.log(aa)
                     },
                     error: function (XMLHttpRequest, textStatus, errorThrown) {
                         console.log(XMLHttpRequest.status)
@@ -596,6 +613,7 @@
             },
 
             addAct() {
+                var flag = 1;
                 let self = this;
                 var action1 = []
                 var fields = []
@@ -605,12 +623,26 @@
                     action1.push($(this).val())
                 });
                 var thisDate = DateFunction();
+                var Flag1=DataCompaire(thisDate,flag);
+                if(Flag1==0){
+                    alert("截止日期必须大于开始日期")
+                    return false;
+                }
+                flag = 1;
+
                 for (var i = 0; i < thisDate.length; i++) {
                     action1.push(thisDate[i])
                 }
                 action1.push(checked)
                 action1.push(description)
                 console.log(action1)
+
+                var Flag=valdate(flag);
+                if(Flag==0){
+                    alert("请将信息填写完整")
+                    return false;
+                }
+                flag = 1;
 
                 var aaa = $(".group4 input");
                 switch (aaa.length) {
@@ -661,6 +693,12 @@
                         break;
                 }
                 console.log(fields)
+                var Flag2=checkNum()
+                if(Flag2==0){
+                    alert("请填写正确的联系方式")
+                    return false;
+                }
+                flag = 1;
                 $.ajax({
                     type: "POST",
                     dataType: "json",
@@ -719,11 +757,18 @@
             },
 
             //修改功能
-            changeInfo(a_id) {
+            changeInfo(a_id,a_state) {
                 console.log(a_id)
+                console.log(a_state)
+                if (a_state!='草稿') {
+                    alert(a_state+'无法编辑')
+                    return false;
+
+                }
                 let self = this;
                 self.shade = true;
                 self.visible3 = true;
+
                 $.ajax({
                     type: "GET",
                     url: "http://101.200.32.54:8080/NetHDDK-1.0/teacher/getActivityField",
@@ -740,20 +785,52 @@
                                 delete data[k];
                             }
                         }
-                        console.log(data)
+                        console.log(data.Data)
+                        var temp = []
+                        temp.push(data.Data.startTime)
+                        temp.push(data.Data.endTime) 
+                        temp.push(data.Data.signUpStartTime) 
+                        temp.push(data.Data.signUpEndTime) 
+                        temp.push(data.Data.releaseTime) 
+
+                        var newtime = DateFunction2(temp)
+                        console.log(newtime)
+                        data.Data.startTime = newtime[0];
+                        data.Data.endTime = newtime[1];
+                        data.Data.signUpStartTime = newtime[2];
+                        data.Data.signUpEndTime = newtime[3];
+                        data.Data.releaseTime = newtime[4];
                         self.change_info = data;
                         self.data1 = data.Data;
-                        console.log(a_id) 
+
+                       
                     }
                 });
             },
             change_baseInfo() {
+                var flag;
                 let self = this;
                 var activity = []
                 var inpv = $("input[name='iii']")
                 for (var i = 0; i < inpv.length; i++) {
                     activity.push(inpv[i].value)
                 }
+                var thisDate = UpdateDateFunction();
+                var Flag1=DataCompaire2(thisDate,flag);
+                if(Flag1==0){
+                    alert("截止日期必须大于开始日期")
+                    return false;
+                }
+                flag = 1;
+                for (var i = 0; i < thisDate.length; i++) {
+                    activity.push(thisDate[i])
+                }
+                var Flag=valdate2(flag);
+                if(Flag==0){
+                    alert("请将信息填写完整")
+                    return false;
+                }
+                flag = 1;
                 var textareav =$(".a4")[0].value;
                 var aaaid = $("#aaaid").text();
                 var temem = $("#temem").text();
@@ -836,6 +913,7 @@
                 self.this_a_id = aid;
             },
             saveFields(){
+                var flag;
                 var field = [];
                 let a_id = $(".add_fields").data("thisid");
                 field.push(a_id)
@@ -843,6 +921,12 @@
                 for (var i = 0; i < temp.length; i++) {
                     field.push(temp[i].value)
                 }
+                var Flag2=checkNum2()
+                if(Flag2==0){
+                    alert("请填写正确的联系方式")
+                    return false;
+                }
+                flag = 1;
                 console.log(field)
                 console.log(JSON.stringify({
                         "activity_id": field[0],
@@ -894,7 +978,14 @@
                     dataType: "json",
                     success: function (data) {
                         self.stu_info = data.Data;
+                        console.log(data.Data)
                         console.log(self.stu_info)
+
+                        if (data.Data.length == 0) {
+                            alert("无人报名，无法查看")
+                            self.shade = false;
+                            return false;
+                        }
 
                         let stuData = self.stu_info;
                         for (let i = 0; i < stuData.length; i++) {
@@ -903,6 +994,9 @@
                                 self.stu_info[i].personState = '成员';
                             }else if (stuStatus == 1){
                                 self.stu_info[i].personState = '负责人';
+                                console.log(this)
+                                self.visible6[i] = true;
+                                console.log(self.visible6)
                             }
                         self.stu_info[i].theme = a;
                         self.stu_info[i].aId = b;
@@ -913,11 +1007,10 @@
             },
 
             //设为管理员
-            setManager(sId,aId){
-                console.log(aId)
-                console.log(sId)
-                $("#stu_State").html("负责人");
-
+            setManager(sId,aId,atheme){
+                let self = this;
+                console.log(atheme)
+                $("#stu_State").html("");
                 $.ajax({
                     type: "GET",
                     url: "http://101.200.32.54:8080/NetHDDK-1.0/teacher/setPersonState",
@@ -927,12 +1020,88 @@
                     },
                     dataType: "json",
                     success: function (data) {
-                        alert("success")
+                        $.ajax({
+                            type: "GET",
+                            url: "http://101.200.32.54:8080/NetHDDK-1.0/teacher/getSignUpStu?a_id="+aId,
+                            data: "",
+                            dataType: "json",
+                            success: function (data) {
+                                self.stu_info = data.Data;
+                                console.log(data.Data)
+                                console.log(self.stu_info)
+
+                                if (data.Data.length == 0) {
+                                    alert("无人报名，无法查看")
+                                    self.shade = false;
+                                    return false;
+                                }
+
+                                let stuData = self.stu_info;
+                                for (let i = 0; i < stuData.length; i++) {
+                                    let stuStatus = stuData[i].personState
+                                    if (stuStatus == 0) {
+                                        self.stu_info[i].personState = '成员';
+                                    }else if (stuStatus == 1){
+                                        self.stu_info[i].personState = '负责人';
+                                    }
+                                self.stu_info[i].theme = atheme;
+                                self.stu_info[i].aId = aId;
+                                }
+
+                            }
+                        });
 
                         }
                 });
             },
+            //取消管理员
+            delManager(sId,aId,atheme){
+                let self = this;
+                console.log(atheme)
+                $("#stu_State").html("");
+                $.ajax({
+                    type: "GET",
+                    url: "http://101.200.32.54:8080/NetHDDK-1.0/teacher/setPersonState0 ",
+                    data: {
+                        a_id:aId,
+                        s_id:sId
+                    },
+                    dataType: "json",
+                    success: function (data) {
+                        $.ajax({
+                            type: "GET",
+                            url: "http://101.200.32.54:8080/NetHDDK-1.0/teacher/getSignUpStu?a_id="+aId,
+                            data: "",
+                            dataType: "json",
+                            success: function (data) {
+                                self.stu_info = data.Data;
+                                console.log(data.Data)
+                                console.log(self.stu_info)
 
+                                if (data.Data.length == 0) {
+                                    alert("无人报名，无法查看")
+                                    self.shade = false;
+                                    return false;
+                                }
+
+                                let stuData = self.stu_info;
+                                for (let i = 0; i < stuData.length; i++) {
+                                    let stuStatus = stuData[i].personState
+                                    if (stuStatus == 0) {
+                                        self.stu_info[i].personState = '成员';
+                                    }else if (stuStatus == 1){
+                                        self.stu_info[i].personState = '负责人';
+                                    }
+                                self.stu_info[i].theme = atheme;
+                                self.stu_info[i].aId = aId;
+                                }
+
+                            }
+                        });
+
+                        }
+                });
+            },
 
 
             //删除功能！！！！
@@ -997,6 +1166,35 @@
         });
         return format;
     }
+    function UpdateDateFunction(){
+        var format=[];
+        $(".a5").each(function(){
+            let tmp;
+            year=$(this).val().substring(0,4);
+            month=$(this).val().substring(5,7);
+            day=$(this).val().substring(8,10);
+            hour=$(this).val().substring(11,13);
+            minute=$(this).val().substring(14);
+
+            tmp=year+"-"+month+"-"+day+" "+hour+":"+minute+":00";
+            format.push(tmp);
+        });
+        return format;
+    }
+    function DateFunction2(temp){
+        var format=[];
+        for (var i = 0; i < temp.length; i++) {
+            let tmp;
+            // "2018-10-11 18:00:00"
+            date=temp[i].substring(0,10);
+            date2=temp[i].substring(11,16);
+            // "2018-01-01T00:00"
+            tmp=date+"T"+date2;
+            format.push(tmp);
+        }
+        console.log(format)
+        return format;
+    }
     //增加活动---增加分会场
     document.getElementById("addbtn").onclick = () => {
         var activity = document.getElementsByClassName("group4");
@@ -1004,27 +1202,109 @@
         a2.reset();
         var a3 = document.getElementsByClassName("group");
         if (activity.length >= 3) {
-            alert("bukeyi")
+            alert("最多三个场地")
             return false;
         }
         a3[0].appendChild(a2);
     }
 
-    //-----单选按钮-----
+    //-----单选按钮-----setTimeOut
     var setD = document.getElementById("setdata");
     setD.onclick = () => {
+        var myDate = new Date();
+        var newdate = myDate.toLocaleString()
+        let tmp;
+            year=newdate.substring(0,4);
+            month=newdate.substring(5,7);
+            day=newdate.substring(8,10);
+            hour=newdate.substring(11,13);
+            minute=newdate.substring(14);
+            tmp=year+"-"+month+"-"+day+"T00:00";
+            console.log(tmp)
         document.getElementById("setdatactivity").style.display = 'block';
+        document.getElementById("setdatactivity").value = tmp;
     }
-    //非空验证
-    function checkNull(){
-    //     console.log(document.getElementsByName("aaa").value)
-    // if(document.getElementsByName("aaa").value== "" || document.getElementsByName("aaa").value==null)
-    //     {
-    //         alert("内容不可以为空");
-    //         // document.getElementsByTagName("input").focus();
-    //         // document.getElementsByTagName("input").select();
-    //         return false;
-    //     }
-    //     else return true;
-}
+    var dontsetD = document.getElementById("dontsetid");
+    dontsetD.onclick = () => {
+        document.getElementById("setdatactivity").style.display = 'none';
+        document.getElementById("setdatactivity").value = '';
+    }
+
+    //验证
+    function valdate(flag) {
+        var thisVal;
+        $('input[name="aaa"]').each(function () {
+            thisVal = $(this).val();
+            if (thisVal == ''||thisVal == null) {
+                flag=0;
+            }
+        }) 
+        return flag;
+    }
+    function valdate2(flag) {
+        var thisVal;
+        $('input[name="iii"]').each(function () {
+            thisVal = $(this).val();
+            if (thisVal == ''||thisVal == null) {
+                flag=0;
+            }
+        }) 
+        return flag;
+    }
+    //比较时间
+    function DataCompaire(thisData,flag) {
+        var temp = CompareDate(thisData,flag)
+        var temp2 = CompareDate2(thisData,flag)
+        function CompareDate(thisData){
+            return ((new Date(thisData[2].replace(/-/g,"\/"))) > (new Date(thisData[1].replace(/-/g,"\/"))));
+        }
+        function CompareDate2(thisData){
+            return ((new Date(thisData[4].replace(/-/g,"\/"))) > (new Date(thisData[3].replace(/-/g,"\/"))));
+        }
+        if (temp == false ||temp2 == false) {
+            flag=0;
+        }
+        return flag;
+    }
+    function DataCompaire2(thisData,flag) {
+        console.log(thisData)
+        var temp = CompareDate(thisData,flag)
+        var temp2 = CompareDate2(thisData,flag)
+        function CompareDate(thisData){
+            return ((new Date(thisData[3].replace(/-/g,"\/"))) > (new Date(thisData[0].replace(/-/g,"\/"))));
+        }
+        function CompareDate2(thisData){
+            return ((new Date(thisData[4].replace(/-/g,"\/"))) > (new Date(thisData[1].replace(/-/g,"\/"))));
+        }
+        if (temp == false ||temp2 == false) {
+            flag=0;
+        }
+        return flag;
+    }
+    //电话格式
+    function checkNum() {
+        $('.group5_right input').each(function () {
+            thisVal = $(this).val();
+            if(thisVal && /^1[3|4|5|8]\d{9}$/.test(thisVal)){
+                flag=1;
+            } else{
+                flag=0;
+            }
+        }) 
+        return flag;
+    }
+    function checkNum2() {
+        $('.add_a2').each(function () {
+            thisVal = $(this).val();
+            if(thisVal && /^1[3|4|5|8]\d{9}$/.test(thisVal)){
+                flag=1;
+            } else{
+                flag=0;
+            }
+        }) 
+        return flag;
+    }
+    
+
+
 </script>

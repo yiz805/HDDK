@@ -164,7 +164,7 @@
 }
 #color{
 	height: 30px;
-	width: 600px;
+	width: 800px;
     position: absolute;
     top: 0;
     left:0;
@@ -199,6 +199,18 @@
 	height: 23px;
 	width: 23px;
 	background-color: #DDFF77;
+	border-radius:15px;
+}
+#pink{
+	height: 23px;
+	width: 23px;
+	background-color: pink;
+	border-radius:15px;
+}
+#black{
+	height: 23px;
+	width: 23px;
+	background-color: #ddd;
 	border-radius:15px;
 }
 #logo{
