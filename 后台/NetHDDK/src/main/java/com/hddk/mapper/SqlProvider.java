@@ -8,6 +8,7 @@ import org.apache.ibatis.jdbc.SQL;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Map;
 
 public class SqlProvider {
     private final String activity_TABLE = "activity";
@@ -141,8 +142,39 @@ public class SqlProvider {
                     VALUES("field_id", "#{field.f_id}");
                 if (sign.getPersonState() != null)
                     VALUES("personState", "#{personState}");
-
             }
         }.toString();
+    }
+
+    //模糊查询
+    public String GET_ACTIVITY_BY_CONDITION(Map<String, Object> param) {
+        String sql = "SELECT a.a_id,a.theme,a.signUpStartTime,a.startTime,a.a_state,count(s.activity_id) num from (select a_id,theme,signUpStartTime,startTime,a_state,releaseTime from activity ";
+        if (param.get("0").equals(0)) {//0:按主题
+            sql += "WHERE theme LIKE '%" + param.get("content").toString() + "%'";
+        }
+        if(param.get("0").equals(1)){//按时间范围
+            String time[] = param.get("content").toString().split(",");
+            String start = time[0];//开始时间
+            String end = time[1];//结束时间
+            System.out.println(start + end);
+            if (start != null && !start.equals(" ")) {
+                sql += "WHERE startTime>'" + start + "' ";
+                if (end != null && !end.equals(" ")) {
+                    sql += "AND endTime<'" + end + "'";
+                }
+            } else {
+                if (end != null && !end.equals(" ")) {
+                    sql += "WHERE endTime<'" + end + "'";
+                }
+            }
+        }
+        if(param.get("0").equals(2)){//按状态
+            int state=Integer.parseInt(param.get("content").toString());
+            if (!param.get("content").equals("")){
+                sql+="WHERE a_state="+state;
+            }
+        }
+        sql += ") a left join (select activity_id from sign ) s on a.a_id = s.activity_id GROUP BY a.a_id ORDER BY a.releaseTime DESC";
+        return sql;
     }
 }

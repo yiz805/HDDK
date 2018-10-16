@@ -16,7 +16,7 @@ public class AccessFilter extends HttpServlet implements Filter {
     @Override
     public void doFilter(ServletRequest req, ServletResponse res,
                          FilterChain chain) throws IOException, ServletException {
-        System.out.println("aaa");
+        System.out.println("跨域");
         HttpServletRequest request = (HttpServletRequest) req;
         HttpServletResponse response = (HttpServletResponse) res;
         response.setHeader("Access-Control-Allow-Origin", "*");// 允许所有网站跨域访问该网站

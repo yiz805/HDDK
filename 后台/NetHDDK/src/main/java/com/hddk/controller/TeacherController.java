@@ -7,11 +7,14 @@ import com.hddk.service.ActivityService;
 import com.hddk.service.FieldService;
 import com.hddk.service.SignService;
 import com.hddk.util.AjaxResult;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 
 @Controller
@@ -44,9 +47,14 @@ public class TeacherController {
      */
     @ResponseBody
     @RequestMapping(value = "/getAllActivity", method = RequestMethod.GET)
-    public AjaxResult getAllActivity() {
-        List<ActivityQueryVo_PC> activities = activityService.getTotalSignUpStu();
-        return AjaxResult.getOK(activities);
+    public AjaxResult getAllActivity(@Param("page")int page) {
+        List<ActivityQueryVo_PC> activities = activityService.getTotalSignUpStu(page);
+        int totalNum=activityService.actNum();
+        int totalPage=(totalNum+8-1)/8;//(总页数+每页条数-1)/每页条数
+        Map map=new HashMap();
+        map.put("activity",activities);
+        map.put("totalPage",totalPage);
+        return AjaxResult.getOK(map);
     }
 
     /**
@@ -166,5 +174,24 @@ public class TeacherController {
     public AjaxResult updateField(@RequestBody Field field) {
         fieldService.updateField(field);
         return AjaxResult.getOK();
+    }
+
+    /**
+     * 搜索
+     * @param state
+     * @param content
+     * @param page
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value = "/search", method = RequestMethod.GET)
+    public AjaxResult search(@Param(value = "state") int state, @Param("content") String content,@Param("page") int page) {
+        List<ActivityQueryVo_PC> activity = activityService.getActByCondition(state, content);
+        int totalNum=activity.size();
+        int totalPage=(totalNum+8-1)/8;
+        Map map=new HashMap();
+        map.put("activity",activity);
+        map.put("totalPage",totalPage);
+        return AjaxResult.getOK(map);
     }
 }

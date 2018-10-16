@@ -5,6 +5,7 @@ import com.hddk.QueryVo.ActivityQueryVo_PC;
 import com.hddk.QueryVo.ActivityQueryVo_task;
 import com.hddk.QueryVo.StudentQueryVo_PC;
 import com.hddk.entity.*;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -20,7 +21,7 @@ public interface ActivityService {
 
     Activity getActivityAndField(int a_id);
 
-    List<ActivityQueryVo_PC> getTotalSignUpStu();
+    List<ActivityQueryVo_PC> getTotalSignUpStu(int page);
 
     void releaseActivity(int a_id);
 
@@ -41,4 +42,8 @@ public interface ActivityService {
     List<ActivityQueryVo_task> getTimes();
 
     int getActState(int a_id);
+
+    List<ActivityQueryVo_PC> getActByCondition(int state, String content);
+
+    int actNum();
 }

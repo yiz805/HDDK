@@ -1,10 +1,7 @@
 package com.test.serviceTest;
 
 
-import com.hddk.QueryVo.ActivityQueryVo_APP;
-import com.hddk.QueryVo.ActivityQueryVo_task;
-import com.hddk.QueryVo.StudentQueryVo_PC;
-import com.hddk.QueryVo.StudentQueryVo_sign;
+import com.hddk.QueryVo.*;
 import com.hddk.entity.*;
 import com.hddk.service.FieldService;
 import com.hddk.service.SignService;
@@ -134,6 +131,14 @@ public class TeacherServerTest {
 
     @Test
     public void testfindActivitySign() {
-        List<StudentQueryVo_sign> signs=signService.findActivitySign(1);
+        List<StudentQueryVo_sign> signs = signService.findActivitySign(1);
+    }
+
+    @Test
+    public void testGetActByCondition() {
+        List<ActivityQueryVo_PC> activityQueryVo_pcs = activityService.getActByCondition(1, " ,2018-10-16");
+        for (int i = 0; i < activityQueryVo_pcs.size(); i++) {
+            System.out.println(activityQueryVo_pcs.get(i).getTheme());
+        }
     }
 }

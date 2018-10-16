@@ -43,8 +43,8 @@ public interface ActivityMapper {
     //查询活动报名总人数
     //    @Select("SELECT COUNT(*) FROM sign WHERE signState=0 and activity_id=#{a_id}")
     //    Long getTotalSignUpStu(int a_id);
-    @Select("SELECT a.a_id,a.theme,a.signUpStartTime,a.startTime,a.a_state,count(s.activity_id) num from (select a_id,theme,signUpStartTime,startTime,a_state,releaseTime from activity ) a left join (select activity_id from sign ) s on a.a_id = s.activity_id GROUP BY a.a_id ORDER BY a.releaseTime DESC")
-    List<ActivityQueryVo_PC> getTotalSignUpStu();
+    @Select("SELECT a.a_id,a.theme,a.signUpStartTime,a.startTime,a.a_state,count(s.activity_id) num from (select a_id,theme,signUpStartTime,startTime,a_state,releaseTime from activity ) a left join (select activity_id from sign ) s on a.a_id = s.activity_id GROUP BY a.a_id ORDER BY a.releaseTime DESC LIMIT #{page},8")
+    List<ActivityQueryVo_PC> getTotalSignUpStu(int page);
 
     //发布活动:a_state=1
     @Update("UPDATE activity SET a_state=1 WHERE a_id=#{a_id}")
@@ -111,4 +111,12 @@ public interface ActivityMapper {
     //查询活动状态
     @Select("SELECT a_state FROM activity WHERE a_id=#{a_id}")
     int getActState(int a_id);
+
+    //模糊查询
+    @SelectProvider(type = SqlProvider.class, method = "GET_ACTIVITY_BY_CONDITION")
+    List<ActivityQueryVo_PC> getActByCondition(int state, @Param("content") String content);
+
+    //查询活动数量
+    @Select("SELECT count(*) FROM activity")
+    int actNum();
 }
