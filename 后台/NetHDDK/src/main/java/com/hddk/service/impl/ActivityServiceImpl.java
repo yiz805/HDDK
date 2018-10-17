@@ -69,7 +69,7 @@ public class ActivityServiceImpl implements ActivityService {
     }
 
     public List<ActivityQueryVo_PC> getTotalSignUpStu(int page) {
-        int p=(page-1)*8;
+        int p=(page-1)*7;
         return activityMapper.getTotalSignUpStu(p);
     }
 
@@ -122,8 +122,9 @@ public class ActivityServiceImpl implements ActivityService {
         return activityMapper.getActState(a_id);
     }
 
-    public List<ActivityQueryVo_PC> getActByCondition(int state, String content) {
-        return activityMapper.getActByCondition(state, content);
+    public List<ActivityQueryVo_PC> getActByCondition(int state, String content,int page) {
+        int p=(page-1)*7;
+        return activityMapper.getActByCondition(state, content,p);
     }
     public int actNum(){
         return activityMapper.actNum();

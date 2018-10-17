@@ -50,7 +50,7 @@ public class TeacherController {
     public AjaxResult getAllActivity(@Param("page")int page) {
         List<ActivityQueryVo_PC> activities = activityService.getTotalSignUpStu(page);
         int totalNum=activityService.actNum();
-        int totalPage=(totalNum+8-1)/8;//(总页数+每页条数-1)/每页条数
+        int totalPage=(totalNum+7-1)/7;//(总页数+每页条数-1)/每页条数
         Map map=new HashMap();
         map.put("activity",activities);
         map.put("totalPage",totalPage);
@@ -186,9 +186,10 @@ public class TeacherController {
     @ResponseBody
     @RequestMapping(value = "/search", method = RequestMethod.GET)
     public AjaxResult search(@Param(value = "state") int state, @Param("content") String content,@Param("page") int page) {
-        List<ActivityQueryVo_PC> activity = activityService.getActByCondition(state, content);
+        List<ActivityQueryVo_PC> activity = activityService.getActByCondition(state, content ,page);
         int totalNum=activity.size();
-        int totalPage=(totalNum+8-1)/8;
+        int totalPage=(totalNum+7-1)/7;
+        //List<ActivityQueryVo_PC> activity2=activity.subList((page-1)*7,page*7);
         Map map=new HashMap();
         map.put("activity",activity);
         map.put("totalPage",totalPage);

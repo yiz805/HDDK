@@ -134,11 +134,11 @@ public class TeacherServerTest {
         List<StudentQueryVo_sign> signs = signService.findActivitySign(1);
     }
 
-    @Test
+  /*  @Test
     public void testGetActByCondition() {
-        List<ActivityQueryVo_PC> activityQueryVo_pcs = activityService.getActByCondition(1, " ,2018-10-16");
+        List<ActivityQueryVo_PC> activityQueryVo_pcs = activityService.getActByCondition(1, "2018-10-15,2018-10-18");
         for (int i = 0; i < activityQueryVo_pcs.size(); i++) {
             System.out.println(activityQueryVo_pcs.get(i).getTheme());
         }
-    }
+    }*/
 }

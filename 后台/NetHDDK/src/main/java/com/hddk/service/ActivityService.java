@@ -43,7 +43,7 @@ public interface ActivityService {
 
     int getActState(int a_id);
 
-    List<ActivityQueryVo_PC> getActByCondition(int state, String content);
+    List<ActivityQueryVo_PC> getActByCondition(int state, String content,int page);
 
     int actNum();
 }

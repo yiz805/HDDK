@@ -158,23 +158,25 @@ public class SqlProvider {
             String end = time[1];//结束时间
             System.out.println(start + end);
             if (start != null && !start.equals(" ")) {
-                sql += "WHERE startTime>'" + start + "' ";
+                sql += "WHERE startTime>='" + start + "' ";
                 if (end != null && !end.equals(" ")) {
-                    sql += "AND endTime<'" + end + "'";
+                    sql += "AND endTime<='" + end + "'";
                 }
             } else {
                 if (end != null && !end.equals(" ")) {
-                    sql += "WHERE endTime<'" + end + "'";
+                    sql += "WHERE endTime<='" + end + "'";
                 }
             }
         }
         if(param.get("0").equals(2)){//按状态
-            int state=Integer.parseInt(param.get("content").toString());
-            if (!param.get("content").equals("")){
-                sql+="WHERE a_state="+state;
+            if (!param.get("content").equals("6")) {
+                int state = Integer.parseInt(param.get("content").toString());
+                if (!param.get("content").equals("")) {
+                    sql += "WHERE a_state=" + state;
+                }
             }
         }
-        sql += ") a left join (select activity_id from sign ) s on a.a_id = s.activity_id GROUP BY a.a_id ORDER BY a.releaseTime DESC";
+        sql += ") a left join (select activity_id from sign ) s on a.a_id = s.activity_id GROUP BY a.a_id ORDER BY a.releaseTime DESC LIMIT #{page},7";
         return sql;
     }
 }
