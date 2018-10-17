@@ -1,22 +1,22 @@
-package com.hddk.entity;
+package com.hddk.QueryVo;
 
-public class StudentQueryVo {
+public class StudentQueryVo_PC {
     private Long s_id;//学生id
     private String s_name;//学生姓名
     private int personState;//是否为签到负责人
     private String signTime;//报名时间
 
-    public StudentQueryVo() {
+    public StudentQueryVo_PC() {
     }
 
-    public StudentQueryVo(Long s_id, String s_name, int personState, String signTime) {
+    public StudentQueryVo_PC(Long s_id, String s_name, int personState, String signTime) {
         this.s_id = s_id;
         this.s_name = s_name;
         this.personState = personState;
         this.signTime = signTime;
     }
 
-    public StudentQueryVo(Long s_id, String s_name, int personState) {
+    public StudentQueryVo_PC(Long s_id, String s_name, int personState) {
 
         this.s_id = s_id;
         this.s_name = s_name;

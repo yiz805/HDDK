@@ -1,11 +1,10 @@
 package com.hddk.controller;
 
 
-import com.hddk.entity.ActivityQueryVo_APP;
-import com.hddk.entity.Field;
+import com.hddk.QueryVo.ActivityQueryVo_APP;
+import com.hddk.QueryVo.StudentQueryVo_sign;
 import com.hddk.entity.Sign;
 import com.hddk.service.ActivityService;
-import com.hddk.service.FieldService;
 import com.hddk.service.SignService;
 import com.hddk.util.AjaxResult;
 import com.hddk.util.ResultCode;
@@ -16,17 +15,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 @Controller
 @RequestMapping("/student")
 public class StudentController {
     @Autowired
     private ActivityService activityService;
-    @Autowired
-    private FieldService fieldService;
     @Autowired
     private SignService signService;
 
@@ -55,18 +50,6 @@ public class StudentController {
         return AjaxResult.getOK(activity);
     }
 
-    /**
-     * 查询活动的场地信息
-     *
-     * @param a_id
-     * @return fields
-     */
-    @ResponseBody
-    @RequestMapping(value = "/getActivityField", method = RequestMethod.GET)
-    public AjaxResult getFieldByA_id(@RequestParam(value = "a_id") int a_id) {
-        List<Field> fields = fieldService.getFieldByA_id(a_id);
-        return AjaxResult.getOK(fields);
-    }
 
     /**
      * 取消报名
@@ -93,12 +76,17 @@ public class StudentController {
     @ResponseBody
     @RequestMapping(value = "/stuSignUp", method = RequestMethod.GET)
     public AjaxResult stuSignUp(@RequestParam(value = "a_id") int a_id, @RequestParam(value = "s_id") Long s_id, @RequestParam(value = "f_id") int f_id) {
-        signService.studentSignUp(s_id, f_id, a_id);
-        return AjaxResult.getOK();
+        int actState = activityService.getActState(a_id);
+        if (actState == 2) {
+            signService.studentSignUp(s_id, f_id, a_id);
+            return AjaxResult.getOK();
+        } else {
+            return AjaxResult.getError(ResultCode.MyException, "未开始报名或报名已结束!", null);
+        }
     }
 
     /**
-     * 签到负责人发起签到!!!
+     * 签到负责人发起签到
      *
      * @param a_id
      * @param s_id
@@ -108,11 +96,36 @@ public class StudentController {
     @RequestMapping(value = "/startSignIn", method = RequestMethod.GET)
     public AjaxResult startSignIn(@RequestParam(value = "a_id") int a_id, @RequestParam(value = "s_id") Long s_id) {
         int personState = signService.findPersonState(s_id, a_id);
-        if (personState == 1) {
-            signService.startSignIn(a_id, s_id);
-            return AjaxResult.getOK();
+        int actState = activityService.getActState(a_id);
+        if (actState == 4) {//活动开始
+            if (personState == 1) {//签到负责人
+                signService.startSignIn(a_id, s_id);
+                return AjaxResult.getOK();
+            } else {
+                return AjaxResult.getError(ResultCode.MyException, "你不是签到负责人!", null);
+            }
         } else {
-            return AjaxResult.getError(ResultCode.MyException, "不是签到负责人", null);
+            return AjaxResult.getError(ResultCode.MyException, "活动未开始!", null);
+        }
+
+    }
+
+    /**
+     * 学生签到
+     *
+     * @param a_id
+     * @param s_id
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value = "/stuSignIn", method = RequestMethod.GET)
+    public AjaxResult stuSignIn(@RequestParam(value = "a_id") int a_id, @RequestParam(value = "s_id") Long s_id) {
+        int signInState = signService.getActSignInState(a_id);
+        if (signInState == 0) {
+            return AjaxResult.getError(ResultCode.MyException, "签到未开始!", null);
+        } else {
+            signService.stuSignIn(a_id, s_id);
+            return AjaxResult.getOK();
         }
     }
 
@@ -138,7 +151,7 @@ public class StudentController {
     @ResponseBody
     @RequestMapping(value = "/findActivitySign", method = RequestMethod.GET)
     public AjaxResult findActivitySign(@RequestParam(value = "a_id") int a_id) {
-        List<Sign> signs = signService.findActivitySign(a_id);
+        List<StudentQueryVo_sign> signs = signService.findActivitySign(a_id);
         return AjaxResult.getOK(signs);
     }
 }

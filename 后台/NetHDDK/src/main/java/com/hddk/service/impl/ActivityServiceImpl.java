@@ -1,12 +1,20 @@
 package com.hddk.service.impl;
 
+import com.hddk.QueryVo.ActivityQueryVo_APP;
+import com.hddk.QueryVo.ActivityQueryVo_PC;
+import com.hddk.QueryVo.ActivityQueryVo_task;
+import com.hddk.QueryVo.StudentQueryVo_PC;
 import com.hddk.entity.*;
 import com.hddk.mapper.ActivityMapper;
 import com.hddk.mapper.FieldMapper;
+import com.hddk.mapper.SignMapper;
+import com.hddk.mapper.StudentMapper;
 import com.hddk.service.ActivityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -15,12 +23,24 @@ public class ActivityServiceImpl implements ActivityService {
     private ActivityMapper activityMapper;
     @Autowired
     private FieldMapper fieldMapper;
+    @Autowired
+    private SignMapper signMapper;
+    @Autowired
+    private StudentMapper studentMapper;
 
     public void addActivity(Activity activity) {
         //设置默认值
-        activity.setA_state(0);//活动状态:草稿
         activity.setSignInState(0);//签到状态:未开始签到
         activity.setSignInTimes(0);//签到数为0
+        if (activity.getReleaseState() == 0) {//直接发布
+            Date now = new Date();
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+            String date = sdf.format(now);
+            activity.setA_state(1);//发布状态
+            activity.setReleaseTime(date);//发布时间为当前时间
+        } else {//定时发布
+            activity.setA_state(0);//草稿状态
+        }
         activityMapper.addActivity(activity);
         if (activity.getFields() != null) {
             for (int i = 0; i < activity.getFields().size(); i++) {
@@ -30,8 +50,9 @@ public class ActivityServiceImpl implements ActivityService {
         }
     }
 
-
     public void deleteActivity(int a_id) {
+        signMapper.deleteActSign(a_id);
+        fieldMapper.deleteActField(a_id);
         activityMapper.deleteActivity(a_id);
     }
 
@@ -39,7 +60,7 @@ public class ActivityServiceImpl implements ActivityService {
         activityMapper.updateActivity(activity);
     }
 
-    public List<StudentQueryVo> getSignUpStu(int activity_id) {
+    public List<StudentQueryVo_PC> getSignUpStu(int activity_id) {
         return activityMapper.getSignUpStu(activity_id);
     }
 
@@ -47,8 +68,9 @@ public class ActivityServiceImpl implements ActivityService {
         return activityMapper.getActivityAndField(a_id);
     }
 
-    public List<ActivityQueryVo_PC> getTotalSignUpStu() {
-        return activityMapper.getTotalSignUpStu();
+    public List<ActivityQueryVo_PC> getTotalSignUpStu(int page) {
+        int p=(page-1)*8;
+        return activityMapper.getTotalSignUpStu(p);
     }
 
     public void releaseActivity(int a_id) {
@@ -73,7 +95,10 @@ public class ActivityServiceImpl implements ActivityService {
         List<Student> students = activityMapper.getActivityStu(a_id);
         for (int i = 0; i < students.size(); i++) {
             Long s_id = students.get(i).getS_id();
-            activityMapper.addScore(s_id, score);
+            int stuSignInTimes = studentMapper.getStuSignInTimes(s_id, a_id);
+            int actSignInTimes = activityMapper.getActSignInTimes(a_id);
+            if (stuSignInTimes == actSignInTimes)
+                activityMapper.addScore(s_id, score);
         }
     }
 
@@ -91,5 +116,16 @@ public class ActivityServiceImpl implements ActivityService {
 
     public List<ActivityQueryVo_task> getTimes() {
         return activityMapper.getTimes();
+    }
+
+    public int getActState(int a_id) {
+        return activityMapper.getActState(a_id);
+    }
+
+    public List<ActivityQueryVo_PC> getActByCondition(int state, String content) {
+        return activityMapper.getActByCondition(state, content);
+    }
+    public int actNum(){
+        return activityMapper.actNum();
     }
 }

@@ -1,7 +1,11 @@
 package com.hddk.service.impl;
 
+import com.hddk.QueryVo.StudentQueryVo_sign;
 import com.hddk.entity.Sign;
+import com.hddk.mapper.ActivityMapper;
+import com.hddk.mapper.FieldMapper;
 import com.hddk.mapper.SignMapper;
+import com.hddk.mapper.StudentMapper;
 import com.hddk.service.ActivityService;
 import com.hddk.service.FieldService;
 import com.hddk.service.SignService;
@@ -18,18 +22,18 @@ public class SignServiceImpl implements SignService {
     @Autowired
     private SignMapper signMapper;
     @Autowired
-    private ActivityService activityService;
+    private ActivityMapper activityMapper;
     @Autowired
-    private StudentService studentService;
+    private StudentMapper studentMapper;
     @Autowired
-    private FieldService fieldService;
+    private FieldMapper fieldMapper;
 
     public void studentSignUp(Long s_id, int f_id, int a_id) {
         //设置默认值
         Sign signUp = new Sign();
-        signUp.setActivity(activityService.getActByA_id(a_id));
-        signUp.setStudent(studentService.getStuByS_id(s_id));
-        signUp.setField(fieldService.getFieldByF_id(f_id));
+        signUp.setActivity(activityMapper.getActByA_id(a_id));
+        signUp.setStudent(studentMapper.getStuByS_id(s_id));
+        signUp.setField(fieldMapper.getFieldByF_id(f_id));
         signUp.setSignState(0);//状态:报名
         Date date = new Date();
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -48,18 +52,31 @@ public class SignServiceImpl implements SignService {
 
     public void startSignIn(int a_id, Long s_id) {
         signMapper.addSignInTimes(a_id);
-        signMapper.personSignIn(s_id, a_id);
+        signMapper.stuSignIn(s_id, a_id);
     }
 
     public void endSignIn(int a_id) {
         signMapper.endSignIn(a_id);
     }
 
-    public List<Sign> findActivitySign(int a_id) {
-        return signMapper.findActivitySign(a_id);
+    public List<StudentQueryVo_sign> findActivitySign(int a_id) {
+        int signInTimes = activityMapper.getActSignInTimes(a_id);
+        return signMapper.findActivitySign(signInTimes, a_id);
     }
 
     public void deleteSign(Long s_id, int a_id) {
         signMapper.deleteSign(s_id, a_id);
+    }
+
+    public int getActSignInState(int a_id) {
+        return signMapper.getActSignInState(a_id);
+    }
+
+    public void stuSignIn(int a_id, Long s_id) {
+        signMapper.stuSignIn(s_id, a_id);
+    }
+
+    public void setPersonState2(Long s_id, int a_id) {
+        signMapper.setPersonState2(s_id, a_id);
     }
 }

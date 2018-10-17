@@ -1,4 +1,4 @@
-package com.hddk.entity;
+package com.hddk.QueryVo;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

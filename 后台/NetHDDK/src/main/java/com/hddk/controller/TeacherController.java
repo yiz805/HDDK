@@ -1,15 +1,20 @@
 package com.hddk.controller;
 
+import com.hddk.QueryVo.ActivityQueryVo_PC;
+import com.hddk.QueryVo.StudentQueryVo_PC;
 import com.hddk.entity.*;
 import com.hddk.service.ActivityService;
 import com.hddk.service.FieldService;
 import com.hddk.service.SignService;
 import com.hddk.util.AjaxResult;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 
 @Controller
@@ -31,9 +36,7 @@ public class TeacherController {
     @ResponseBody
     @RequestMapping(value = "/addActivity", method = RequestMethod.POST)
     public AjaxResult addActivity(@RequestBody Activity activity) {
-        System.out.println(activity.getFields().get(0).getF_info());
         activityService.addActivity(activity);
-
         return AjaxResult.getOK();
     }
 
@@ -44,9 +47,14 @@ public class TeacherController {
      */
     @ResponseBody
     @RequestMapping(value = "/getAllActivity", method = RequestMethod.GET)
-    public AjaxResult getAllActivity() {
-        List<ActivityQueryVo_PC> activities = activityService.getTotalSignUpStu();
-        return AjaxResult.getOK(activities);
+    public AjaxResult getAllActivity(@Param("page")int page) {
+        List<ActivityQueryVo_PC> activities = activityService.getTotalSignUpStu(page);
+        int totalNum=activityService.actNum();
+        int totalPage=(totalNum+8-1)/8;//(总页数+每页条数-1)/每页条数
+        Map map=new HashMap();
+        map.put("activity",activities);
+        map.put("totalPage",totalPage);
+        return AjaxResult.getOK(map);
     }
 
     /**
@@ -97,7 +105,7 @@ public class TeacherController {
     @ResponseBody
     @RequestMapping(value = "/getSignUpStu", method = RequestMethod.GET)
     public AjaxResult getSignUpStu(@RequestParam(value = "a_id") int a_id) {
-        List<StudentQueryVo> students = activityService.getSignUpStu(a_id);
+        List<StudentQueryVo_PC> students = activityService.getSignUpStu(a_id);
         return AjaxResult.getOK(students);
     }
 
@@ -112,6 +120,20 @@ public class TeacherController {
     @RequestMapping(value = "/setPersonState", method = RequestMethod.GET)
     public AjaxResult setPersonState(@RequestParam(value = "a_id") int a_id, @RequestParam(value = "s_id") Long s_id) {
         signService.setPersonSate(s_id, a_id);
+        return AjaxResult.getOK();
+    }
+
+    /**
+     * 取消签到负责人
+     *
+     * @param a_id
+     * @param s_id
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value = "/setPersonState0", method = RequestMethod.GET)
+    public AjaxResult setPersonState2(@RequestParam(value = "a_id") int a_id, @RequestParam(value = "s_id") Long s_id) {
+        signService.setPersonState2(s_id, a_id);
         return AjaxResult.getOK();
     }
 
@@ -141,4 +163,35 @@ public class TeacherController {
         return AjaxResult.getOK();
     }
 
+    /**
+     * 修改场地
+     *
+     * @param field
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value = "/updateField", method = RequestMethod.GET)
+    public AjaxResult updateField(@RequestBody Field field) {
+        fieldService.updateField(field);
+        return AjaxResult.getOK();
+    }
+
+    /**
+     * 搜索
+     * @param state
+     * @param content
+     * @param page
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value = "/search", method = RequestMethod.GET)
+    public AjaxResult search(@Param(value = "state") int state, @Param("content") String content,@Param("page") int page) {
+        List<ActivityQueryVo_PC> activity = activityService.getActByCondition(state, content);
+        int totalNum=activity.size();
+        int totalPage=(totalNum+8-1)/8;
+        Map map=new HashMap();
+        map.put("activity",activity);
+        map.put("totalPage",totalPage);
+        return AjaxResult.getOK(map);
+    }
 }
