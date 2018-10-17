@@ -40,6 +40,7 @@
 	height: 100px;
 	background-color: white;
 	position:relative;
+	overflow: hidden;
 }
 .myDiv{
 	height: 200px;
@@ -164,7 +165,7 @@
 }
 #color{
 	height: 30px;
-	width: 800px;
+	width: 600px;
     position: absolute;
     top: 0;
     left:0;
@@ -219,7 +220,131 @@
 	left: 10px;
 }
 .em{
-	/*background-color: red;*/
 	margin-left: 10px;
 
+}
+
+#search{
+	height: 35px;
+	width: 652px;
+	margin:0 auto;
+	border: 1px solid #4685f7;
+	margin-top: 30px;
+	position: relative;
+}
+.nowbtn{
+	background-color: #4685f7;
+	color:white;
+	height: 100%;
+	width: 100px;
+	float: right;
+	text-align: center;
+	line-height: 35px;
+}
+.nowbtn:hover{
+	box-shadow: 1px 1px 10px #F0F0F0 inset;
+}
+#inp{
+	height: 35px;
+	border: 0px;
+	width: 450px;
+}
+.search-condition{
+	width: 100px;
+}
+#selectCondention{
+	height: 35px;
+	width: 100px;
+	display: block;
+	float: left;
+	line-height: 35px;
+	text-align: center;
+	border-right:1px solid #4685f7;
+	font-size: 12px;
+}
+#selectCondention:hover{
+	box-shadow: 1px 1px 15px #ddd inset;
+}
+#selectCondention .sm .msg{
+	display: none;
+}
+#selectCondention:hover .sm{
+	height: 30px;
+	width: 300px;
+	/*border: 1px solid red;*/
+}
+#selectCondention:hover .sm .msg{
+	display: block;
+	float: left;
+	width: 90px;
+	height: 30px;
+	font-size: 10px;
+	margin-right: 10px;
+	color: #ADADAD;
+}
+.msg span:hover{
+	color: #FF7744;
+}
+.inpp{
+	height: 35px;
+	width: 225.5px;
+	margin: 0;
+	float: left;
+	border: 0;
+}
+#sele{
+	width: 450px;
+	height: 35px;
+	border: 0;
+}
+.page{
+	position: absolute;
+    left: 50%;
+    transform: translate(-50%,50%);
+}
+#last{
+	height: 30px;
+	width: 60px;
+	border-radius: 6px;
+
+}
+#next{
+	height: 30px;
+	width: 60px;
+	border-radius: 6px;
+}
+.ppaa{
+	float: left;
+	cursor: pointer;
+}
+.ppbb{
+	float: left;
+	cursor: pointer;
+}
+.ppbb:hover{
+	box-shadow: 1px 1px 21px #F0F0F0 inset;
+}
+.pageli{
+	padding-top: 5px;
+	text-align: center;
+	width: 30px;
+	float: left;
+	cursor: pointer;
+}
+.pageli:hover{
+	color:red;
+}
+#nowpage{
+	height: 25px;
+	width: 25px;
+	text-align: center;
+}
+.nowp{
+	float: right;
+	margin-left: 15px;
+}
+.jumpTo{
+	height: 30px;
+	width: 60px;
+	border-radius: 6px;
 }

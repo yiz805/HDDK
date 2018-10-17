@@ -57,40 +57,7 @@
                 </img>
             </div>
             <div id="right_doSth">
-                <div id="color">
-                    <ul>
-                        <li id="blue">
-                        </li>
-                        <li>
-                            草稿->
-                        </li>
-                        <li id="pink">
-                        </li>
-                        <li>
-                            发布->
-                        </li>
-                        <li id="red">
-                        </li>
-                        <li>
-                            报名中->
-                        </li>
-                        <li id="green">
-                        </li>
-                        <li>
-                            报名结束->
-                        </li>
-                        <li id="yellow">
-                        </li>
-                        <li>
-                            正在进行
-                        </li>
-                        <li id="black">
-                        </li>
-                        <li>
-                            结束
-                        </li>
-                    </ul>
-                </div>
+                <my-item :msg="message" @change="nowChange"></my-item>
             </div>
             <div id="right_main">
                 <div class="myDiv" v-for="baseinfo in info_list" :data-actionid="baseinfo.a_id" :data-actionstate="baseinfo.a_state" 
@@ -134,6 +101,32 @@
                         +
                     </div>
                 </div>
+            </div>
+        </div>
+        <div class="page" v-show="pageDIV1">
+            <button class="ppbb" id="last" @click="last()">上一页</button>
+            <ul v-for="aaa in pageList" class="ppaa">
+                <li @click="thisPage(aaa,$event)" class="pageli">
+                    {{aaa}}
+                </li>
+            </ul>
+            <button class="ppbb" id="next" @click="next()">下一页</button>
+            <div class="nowp">当前页:
+                <input type="number" id="nowpage"  name="" :value="page"  min="1" :max="totalPage">
+                <button class="jumpTo"  @click="jumpTo()">跳转</button>
+            </div>
+        </div>
+        <div class="page" v-show="pageDIV2">
+            <button class="ppbb" id="last" @click="last1()">上一页1</button>
+            <ul v-for="aaa in pageList" class="ppaa">
+                <li @click="thisPage1(aaa,$event)" class="pageli">
+                    {{aaa}}
+                </li>
+            </ul>
+            <button class="ppbb" id="next" @click="next1()">下一页1</button>
+            <div class="nowp">当前页:
+                <input type="number" id="nowpage" name="" :value="page">
+                <button class="jumpTo"  @click="jumpTo(page)">跳转</button>
             </div>
         </div>
         <div id="bottom">
@@ -534,623 +527,865 @@
                 <button class="add_bottom1" v-on:click="closeItem()">取消</button>
                 <button class="add_bottom1" v-on:click="saveFields">保存</button>
             </div>
-        </div>    
+        </div>
+         
     </div>
-
 </body>
 </link>
 </link>
 </link>
 </meta>
-
 </html>
-<script src="js/main.js" type="text/javascript">
-</script>
 <script type="text/javascript">
-    new Vue({
-        el: "#content",
-        data: {
-            info_list: '',
-            all_info: '',
-            change_info: '',
-            stu_info: '',
-            shade: false,
-            shade2: false,
-            visible: false,
-            visible2: false,
-            visible3: false,
-            visible4: false,
-            visible5: false,
-            visible6: []|false,
-            data1:{},
-            this_a_id: '',
-            nowData: '',
-            
+Vue.component('my-item', { 
+    template:`<div id="search">
+                <span id="selectCondention">{{msg}}
+                    <div class="sm">
+                        <a href="" class="msg" v-on:click.prevent="changeMsg('主题')">
+                            <span>按主题查找</span>
+                        </a>
+                        <a href="" class="msg" v-on:click.prevent="changeMsg('时间')">
+                            <span>按时间查找</span>
+                        </a>
+                        <a href="" class="msg" v-on:click.prevent="changeMsg('状态')">
+                            <span>按发布状态查找</span>
+                        </a>
+                    </div>
+                </span>
+                <span>
+                    <input type="text" v-model="whatInput" id="inp" v-show="dis">
+                    <span class="nowbtn" @click="selectBySth">搜索</span>
+                    <input type="date" v-model="beginTime" class="inpp" v-show="inppp" placeholder="这里输入开始日期">
+                    <input type="date" v-model="endTime" class="inpp" v-show="inppp" placeholder="|这里输入截止日期">
+                    <select v-model="myVal" v-show="inppp1" id="sele">
+                        <option v-for="item in options" :value="item.value">
+                            {{item.name}}
+                        </option>
+                    </select>
+                </span>
+              </div>`,
+    props:['msg'],
+    data:function () {
+            return {
+                state:0,
+                whatInput:'',
+                inppp:false,
+                inppp1:false,
+                dis:true,
+                beginTime:'',
+                endTime:'',
+                myVal:0, //默认选中第一项
+                options:[
+                    {
+                        name:'草稿',
+                        value:0
+                    },
+                    {
+                        name:'发布',
+                        value:1
+                    },
+                    {
+                        name:'报名中',
+                        value:2
+                    },
+                    {
+                        name:'报名结束',
+                        value:3
+                    },
+                    {
+                        name:'正在进行',
+                        value:4
+                    },
+                    {
+                        name:'结束',
+                        value:5
+                    },
+                    {
+                        name:'所有活动',
+                        value:6
+                    },
+                ]
+            }
+         },
+    methods:{
+        changeMsg:function (info){
+            var aa = this.condition = info
+            if (aa == '主题') {
+                this.state = 0;
+                this.inppp = false;
+                this.dis = true;
+                this.inppp1 = false;
+            }else if (aa == '时间') {
+                this.state = 1;
+                this.inppp = true;
+                this.inppp1 = false;
+                this.dis = false;
+                // this.whatInput = this.beginTime+','+this.endTime;
+            }else if (aa == '状态') {
+                this.state = 2;
+                this.inppp1 = true;
+                this.inppp = false;
+                this.dis = false;
+            }
+            this.$emit('change', info)
         },
-        methods: {
-            //页面加载查询所有活动
-            getData() {
-                let self = this;
-                $.ajax({
-                    // async : true,   
-                    type: "GET",
-                    url: "http://101.200.32.54:8080/NetHDDK-1.0/teacher/getAllActivity",
-                    data: "",
-                    dataType: 'json',
-                    // jsonp:'callback',    
-                    // jsonpCallback:"successCallback",
-                    success: function (data) {
-                        self.info_list = data.Data;
-                        var mydata = self.info_list;
-                        console.log(mydata)
-                        for (let i = 0; i < mydata.length; i++) {
-                            let myStatus = mydata[i].a_state
-                            if (myStatus == 0) {
-                                self.info_list[i].a_state = '草稿';
-                            }else if (myStatus == 1){
-                                self.info_list[i].a_state = '发布';
-                            }else if (myStatus == 2){
-                                self.info_list[i].a_state = '报名中';
-                            }else if (myStatus == 3){
-                                self.info_list[i].a_state = '报名结束';
-                            }else if (myStatus == 4){
-                                self.info_list[i].a_state = '正在进行';
-                            }else if (myStatus == 5){
-                                self.info_list[i].a_state = '结束';
-                            }
-                        }
-                        // var aa=[]
-                        // aa= $(".aa11");
-                        // console.log(aa)
-                    },
-                    error: function (XMLHttpRequest, textStatus, errorThrown) {
-                        console.log(XMLHttpRequest.status)
-                        console.log(XMLHttpRequest.readyState)
-                        console.log(textStatus)
-                    }
-                });
-
-            },
-
-            addAct() {
-                var flag = 1;
-                let self = this;
-                var action1 = []
-                var fields = []
-                var checked = $('input[name="radio"]:checked').val();
-                var description = $(".textarea").val();
-                $("input[name='aaa']").each(function () {
-                    action1.push($(this).val())
-                });
-                var thisDate = DateFunction();
-                var Flag1=DataCompaire(thisDate,flag);
-                if(Flag1==0){
-                    alert("截止日期必须大于开始日期")
-                    return false;
-                }
-                flag = 1;
-
-                for (var i = 0; i < thisDate.length; i++) {
-                    action1.push(thisDate[i])
-                }
-                action1.push(checked)
-                action1.push(description)
-                console.log(action1)
-
-                var Flag=valdate(flag);
-                if(Flag==0){
-                    alert("请将信息填写完整")
-                    return false;
-                }
-                flag = 1;
-
-                var aaa = $(".group4 input");
-                switch (aaa.length) {
-                    case 4:
-                        var fields111 = {
-                            f_info: aaa[0].value,
-                            signUpNumLimit: aaa[1].value,
-                            t_name: aaa[2].value,
-                            t_tel: aaa[3].value
-                        };
-                        fields.push(fields111)
-                        break;
-                    case 8:
-                        var fields111 = {
-                            f_info: aaa[0].value,
-                            signUpNumLimit: aaa[1].value,
-                            t_name: aaa[2].value,
-                            t_tel: aaa[3].value
-                        };
-                        var fields222 = {
-                            f_info: aaa[4].value,
-                            signUpNumLimit: aaa[5].value,
-                            t_name: aaa[6].value,
-                            t_tel: aaa[7].value
-                        };
-                        fields.push(fields111,fields222)
-                        break;
-                    case 12:
-                        var fields111 = {
-                            f_info: aaa[0].value,
-                            signUpNumLimit: aaa[1].value,
-                            t_name: aaa[2].value,
-                            t_tel: aaa[3].value
-                        };
-                        var fields222 = {
-                            f_info: aaa[4].value,
-                            signUpNumLimit: aaa[5].value,
-                            t_name: aaa[6].value,
-                            t_tel: aaa[7].value
-                        };
-                        var fields333 = {
-                            f_info: aaa[8].value,
-                            signUpNumLimit: aaa[9].value,
-                            t_name: aaa[10].value,
-                            t_tel: aaa[11].value
-                        };
-                        fields.push(fields111,fields222,fields333)
-                        break;
-                }
-                console.log(fields)
-                var Flag2=checkNum()
-                if(Flag2==0){
-                    alert("请填写正确的联系方式")
-                    return false;
-                }
-                flag = 1;
-                $.ajax({
-                    type: "POST",
-                    dataType: "json",
-                    url: "http://101.200.32.54:8080/NetHDDK-1.0/teacher/addActivity",
-                    contentType : "application/json",
-                    data: JSON.stringify({
-                        "theme": action1[0],
-                        "score": action1[1],
-                        "description": action1[9],
-                        "tips": action1[2],
-                        "releaseState": action1[8],
-                        "releaseTime": action1[3],
-                        "signUpStartTime": action1[4],
-                        "signUpEndTime": action1[5],
-                        "startTime": action1[6],
-                        "endTime": action1[7],
-                        "fields" : fields
-                    }),
-                    success: function (data) {
-                        alert("保存成功")
-                        window.location.reload()
-                    },
-                    error: function (XMLHttpRequest, textStatus, errorThrown) {
-                        console.log(XMLHttpRequest.status)
-                        console.log(XMLHttpRequest.readyState)
-                        console.log(textStatus)
-                    }
-                });
-
-            },
-
-            showAllInfo(a_id) {
-                console.log(a_id)
-                let self = this;
-                self.visible2 = true;
-                self.shade = true;
-                $.ajax({
-                    type: "GET",
-                    url: "http://101.200.32.54:8080/NetHDDK-1.0/teacher/getActivityField?a_id="+a_id,
-                    data: '',
-                    dataType: "json",
-                    success: function (data) {
-                        console.log(data)
-                        for (var k in data) {
-                            if(k=='ErrorCode'){
-                                delete data[k];
-                            }
-                             if(k=='Message'){
-                                delete data[k];
-                            }
-                        }
-                        self.all_info = data;
-
-                    }
-                });
-            },
-
-            //修改功能
-            changeInfo(a_id,a_state) {
-                console.log(a_id)
-                console.log(a_state)
-                if (a_state!='草稿') {
-                    alert(a_state+'无法编辑')
-                    return false;
-
-                }
-                let self = this;
-                self.shade = true;
-                self.visible3 = true;
-
-                $.ajax({
-                    type: "GET",
-                    url: "http://101.200.32.54:8080/NetHDDK-1.0/teacher/getActivityField",
-                    data: {
-                        "a_id": a_id
-                    },
-                    dataType: "json",
-                    success: function (data) {
-                        for (var k in data) {
-                            if(k=='ErrorCode'){
-                                delete data[k];
-                            }
-                             if(k=='Message'){
-                                delete data[k];
-                            }
-                        }
-                        console.log(data.Data)
-                        var temp = []
-                        temp.push(data.Data.startTime)
-                        temp.push(data.Data.endTime) 
-                        temp.push(data.Data.signUpStartTime) 
-                        temp.push(data.Data.signUpEndTime) 
-                        temp.push(data.Data.releaseTime) 
-
-                        var newtime = DateFunction2(temp)
-                        console.log(newtime)
-                        data.Data.startTime = newtime[0];
-                        data.Data.endTime = newtime[1];
-                        data.Data.signUpStartTime = newtime[2];
-                        data.Data.signUpEndTime = newtime[3];
-                        data.Data.releaseTime = newtime[4];
-                        self.change_info = data;
-                        self.data1 = data.Data;
-
-                       
-                    }
-                });
-            },
-            change_baseInfo() {
-                var flag;
-                let self = this;
-                var activity = []
-                var inpv = $("input[name='iii']")
-                for (var i = 0; i < inpv.length; i++) {
-                    activity.push(inpv[i].value)
-                }
-                var thisDate = UpdateDateFunction();
-                var Flag1=DataCompaire2(thisDate,flag);
-                if(Flag1==0){
-                    alert("截止日期必须大于开始日期")
-                    return false;
-                }
-                flag = 1;
-                for (var i = 0; i < thisDate.length; i++) {
-                    activity.push(thisDate[i])
-                }
-                var Flag=valdate2(flag);
-                if(Flag==0){
-                    alert("请将信息填写完整")
-                    return false;
-                }
-                flag = 1;
-                var textareav =$(".a4")[0].value;
-                var aaaid = $("#aaaid").text();
-                var temem = $("#temem").text();
-                activity.push(textareav)
-                activity.push(aaaid)
-                activity.push(temem)
-                console.log(activity)
-                console.log(JSON.stringify({
-                        "a_id": activity[11],
-                        "theme": activity[12],
-                        "score": activity[0],
-                        "a_state": activity[1],
-                        'signInState': activity[2],
-                        'signInTimes': activity[3],
-                        "tips": activity[4],
-                        "description": activity[10],
-                        "releaseState":'1',
-                        "releaseTime":activity[7],
-                        "startTime": activity[5],
-                        "signUpStartTime": activity[6],
-                        "endTime": activity[8],
-                        "signUpEndTime": activity[9],
-                    }))
-                $.ajax({
-                    type: "POST",
-                    dataType: "json",
-                    url: "http://101.200.32.54:8080/NetHDDK-1.0/teacher/updateActivity",
-                    contentType : "application/json",
-                    data: JSON.stringify({
-                       "a_id": activity[11],
-                        "theme": activity[12],
-                        "score": activity[0],
-                        "a_state": activity[1],
-                        'signInState': activity[2],
-                        'signInTimes': activity[3],
-                        "tips": activity[4],
-                        "description": activity[10],
-                        "releaseState":'1',
-                        "releaseTime":activity[7],
-                        "startTime": activity[5],
-                        "signUpStartTime": activity[6],
-                        "endTime": activity[8],
-                        "signUpEndTime": activity[9],
-                    }),
-                    success: function (data) {
-                        alert("保存成功")
-                        window.location.reload()
-                    },
-                    error: function (XMLHttpRequest, textStatus, errorThrown) {
-                        console.log(XMLHttpRequest.status)
-                        console.log(XMLHttpRequest.readyState)
-                        console.log(textStatus)
-                    }
-                });
-            },
-
-            //删除场地
-            del_fields(f_id){
-                let self = this;
-                console.log(f_id)
-                $("h4[data-fieldId="+f_id+"]").parent().remove()
-                $.ajax({
-                    type: "GET",
-                    url: "http://101.200.32.54:8080/NetHDDK-1.0/teacher/deleteFiled?f_id="+f_id,
-                    data: "",
-                    dataType: "json",
-                    success: function (data) {
-                        console.log(this)
-                    }
-                });
-            },
-
-            //添加场地
-            addFields(aid){
-                let self = this;
-                self.visible3 = true;
-                self.shade2 = true;
-                self.visible5 = true;
-                console.log(self.this_a_id)
-                self.this_a_id = aid;
-            },
-            saveFields(){
-                var flag;
-                var field = [];
-                let a_id = $(".add_fields").data("thisid");
-                field.push(a_id)
-                var temp = $(".add_a2")
-                for (var i = 0; i < temp.length; i++) {
-                    field.push(temp[i].value)
-                }
-                var Flag2=checkNum2()
-                if(Flag2==0){
-                    alert("请填写正确的联系方式")
-                    return false;
-                }
-                flag = 1;
-                console.log(field)
-                console.log(JSON.stringify({
-                        "activity_id": field[0],
-                        "f_info": field[1],
-                        "signUpNumLimit": field[2],
-                        "t_tel": field[3],
-                        "t_name": field[4],
-                    }))
-                $.ajax({
-                    type: "POST",
-                    dataType: "json",
-                    url: "http://101.200.32.54:8080/NetHDDK-1.0/teacher/addField",
-                    contentType : "application/json",
-                    data: JSON.stringify({
-                        "activity_id": field[0],
-                        "f_info": field[1],
-                        "signUpNumLimit": field[2],
-                        "t_tel": field[3],
-                        "t_name": field[4],
-                    }),
-                    success: function (data) {
-                        alert("保存成功")
-                        window.location.reload()
-                    },
-                    error: function (XMLHttpRequest, textStatus, errorThrown) {
-                        console.log(XMLHttpRequest.status)
-                        console.log(XMLHttpRequest.readyState)
-                        console.log(textStatus)
-                    }
-                });
-            },
-            //显示学生列表
-            showStuList(a,b,c){
-                console.log(a)
-                console.log(b)
-                console.log(c)
-                if (c == 0 ||c == 1 ) {
-                    alert("暂时未开始报名")
-                    return false;
-                }
-                let self = this;
-                self.shade = true;
-                self.visible4 = true;
-                self.visible2 = false;
-                $.ajax({
-                    type: "GET",
-                    url: "http://101.200.32.54:8080/NetHDDK-1.0/teacher/getSignUpStu?a_id="+b,
-                    data: "",
-                    dataType: "json",
-                    success: function (data) {
-                        self.stu_info = data.Data;
-                        console.log(data.Data)
-                        console.log(self.stu_info)
-
-                        if (data.Data.length == 0) {
-                            alert("无人报名，无法查看")
-                            self.shade = false;
-                            return false;
-                        }
-
-                        let stuData = self.stu_info;
-                        for (let i = 0; i < stuData.length; i++) {
-                            let stuStatus = stuData[i].personState
-                            if (stuStatus == 0) {
-                                self.stu_info[i].personState = '成员';
-                            }else if (stuStatus == 1){
-                                self.stu_info[i].personState = '负责人';
-                                console.log(this)
-                                self.visible6[i] = true;
-                                console.log(self.visible6)
-                            }
-                        self.stu_info[i].theme = a;
-                        self.stu_info[i].aId = b;
-                        }
-
-                    }
-                });
-            },
-
-            //设为管理员
-            setManager(sId,aId,atheme){
-                let self = this;
-                console.log(atheme)
-                $("#stu_State").html("");
-                $.ajax({
-                    type: "GET",
-                    url: "http://101.200.32.54:8080/NetHDDK-1.0/teacher/setPersonState",
-                    data: {
-                        a_id:aId,
-                        s_id:sId
-                    },
-                    dataType: "json",
-                    success: function (data) {
-                        $.ajax({
-                            type: "GET",
-                            url: "http://101.200.32.54:8080/NetHDDK-1.0/teacher/getSignUpStu?a_id="+aId,
-                            data: "",
-                            dataType: "json",
-                            success: function (data) {
-                                self.stu_info = data.Data;
-                                console.log(data.Data)
-                                console.log(self.stu_info)
-
-                                if (data.Data.length == 0) {
-                                    alert("无人报名，无法查看")
-                                    self.shade = false;
-                                    return false;
-                                }
-
-                                let stuData = self.stu_info;
-                                for (let i = 0; i < stuData.length; i++) {
-                                    let stuStatus = stuData[i].personState
-                                    if (stuStatus == 0) {
-                                        self.stu_info[i].personState = '成员';
-                                    }else if (stuStatus == 1){
-                                        self.stu_info[i].personState = '负责人';
-                                    }
-                                self.stu_info[i].theme = atheme;
-                                self.stu_info[i].aId = aId;
-                                }
-
-                            }
-                        });
-
-                        }
-                });
-            },
-            //取消管理员
-            delManager(sId,aId,atheme){
-                let self = this;
-                console.log(atheme)
-                $("#stu_State").html("");
-                $.ajax({
-                    type: "GET",
-                    url: "http://101.200.32.54:8080/NetHDDK-1.0/teacher/setPersonState0 ",
-                    data: {
-                        a_id:aId,
-                        s_id:sId
-                    },
-                    dataType: "json",
-                    success: function (data) {
-                        $.ajax({
-                            type: "GET",
-                            url: "http://101.200.32.54:8080/NetHDDK-1.0/teacher/getSignUpStu?a_id="+aId,
-                            data: "",
-                            dataType: "json",
-                            success: function (data) {
-                                self.stu_info = data.Data;
-                                console.log(data.Data)
-                                console.log(self.stu_info)
-
-                                if (data.Data.length == 0) {
-                                    alert("无人报名，无法查看")
-                                    self.shade = false;
-                                    return false;
-                                }
-
-                                let stuData = self.stu_info;
-                                for (let i = 0; i < stuData.length; i++) {
-                                    let stuStatus = stuData[i].personState
-                                    if (stuStatus == 0) {
-                                        self.stu_info[i].personState = '成员';
-                                    }else if (stuStatus == 1){
-                                        self.stu_info[i].personState = '负责人';
-                                    }
-                                self.stu_info[i].theme = atheme;
-                                self.stu_info[i].aId = aId;
-                                }
-
-                            }
-                        });
-
-                        }
-                });
-            },
-
-
-            //删除功能！！！！
-            deleAction(a_id) {
-                console.log(a_id)
-                alert("del")
-                let self = this;
-                $.ajax({
-                    type: "GET",
-                    url: "http://101.200.32.54:8080/NetHDDK-1.0/teacher/deleteActivity",
-                    data: {
-                        "a_id": a_id
-                    },
-                    dataType: "json",
-                    success: function (data) {
-
-                    },
-                    error: function (XMLHttpRequest, textStatus, errorThrown) {
-                        console.log(XMLHttpRequest.status)
-                        console.log(XMLHttpRequest.readyState)
-                        console.log(textStatus)
-                    }
-                });
-                location.reload();
-            },
-
-            addItem() {
-                let self = this;
-                self.visible = true;
-                self.shade = true;
-            },
-
-            closeItem() {
-                let self = this;
-                self.visible = false;
-                self.shade = false;
-                location.reload();
-            },
+        selectBySth:function (){
+            let self = this;
+            console.log(self)
+            if (this.state == 1) {
+                this.whatInput = this.beginTime+','+this.endTime;
+            }
+            if (this.state == 2) {
+                this.whatInput =this.myVal;
+            }
+            console.log(this.whatInput)
+            self.$parent.selectBy(this.state,this.whatInput,self.$parent.page)            
+            self.$parent.state = this.state;
+            self.$parent.whatInput = this.whatInput;
         },
-        created: function () {
-            this.getData();
-            console.log("success");
+    },
+});
+new Vue({
+    el: "#content",
+    data: {
+        info_list: '',
+        all_info: '',
+        change_info: '',
+        stu_info: '',
+        shade: false,
+        shade2: false,
+        visible: false,
+        visible2: false,
+        visible3: false,
+        visible4: false,
+        visible5: false,
+        visible6: []|false,
+        data1:{},
+        this_a_id: '',
+        nowData: '',
+        message: '查询条件',
+        page:1,
+        totalPage:'',
+        pageList:[],
+        pageNumber:1,
+        pageDIV1:true,
+        pageDIV2:false,
+        state:'',
+        whatInput:'',
+    },
+    methods: {
+        jumpTo(){
+            let self = this;
+            var aa = document.getElementById("nowpage").value;
+            console.log(aa)
+            self.page = aa;
+            self.getData()
         },
-        mounted: function () {
+        selectBy(a,b,c){
+            let self = this;
+            console.log(a)
+            console.log(b)
+            console.log(c)
+           $.ajax({
+                // async : true,   
+                type: "GET",
+                url: "http://101.200.32.54:8080/NetHDDK-1.0/teacher/search",
+                data: {
+                    state:a,
+                    content:b,
+                    page:c,
+                },
+                dataType: 'json',
+                success: function (data) {
+                    console.log(data)
+                    if (data.Data.activity.length == 0) {
+                        alert("未查找到活动")
+                        return false;
+                    }
+                    console.log(data.Data.activity)
+                    self.selectEnd(data.Data.activity);
+                    self.pageDIV1 = false;
+                    self.pageDIV2 = true;
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    console.log(XMLHttpRequest.status)
+                    console.log(XMLHttpRequest.readyState)
+                    console.log(textStatus)
+                }
+            });            
+        },
+        nowChange:function(str){
+          this.message = str;
+          // select(str);
+        },
+        selectEnd:function(str){
+            let self = this;
+            self.info_list = str;
+            var mydata = self.info_list;
+                for (let i = 0; i < mydata.length; i++) {
+                    let myStatus = mydata[i].a_state
+                    if (myStatus == 0) {
+                        self.info_list[i].a_state = '草稿';
+                    }else if (myStatus == 1){
+                        self.info_list[i].a_state = '发布';
+                    }else if (myStatus == 2){
+                        self.info_list[i].a_state = '报名中';
+                    }else if (myStatus == 3){
+                        self.info_list[i].a_state = '报名结束';
+                    }else if (myStatus == 4){
+                        self.info_list[i].a_state = '正在进行';
+                    }else if (myStatus == 5){
+                        self.info_list[i].a_state = '结束';
+                    }
+                }
+        },
+        thisPage(aaa,ev){
+            let self = this;
+            self.page = aaa;
+            self.getData()
+        },
+        thisPage1(aaa){
+            let self = this;
+            console.log(aaa)
+            self.page = aaa;
+            self.selectBy(self.state,self.whatInput,self.page)
+        },
+        next(){
+            let self = this;
+            self.page++
+            if (self.page>self.totalPage) {
+                alert("已到最后一页")
+                self.page--;
+                return false;
+            }
+            self.getData()
+        },
+        last(){
+            let self = this;
+            self.page--;
+            if (self.page<1) {
+                alert("已到最后一页")
+                self.page++;
+                return false;
+            }
+            self.getData()
+        },
+        next1(){
+            let self = this;
+            self.page++
+            if (self.page>self.totalPage) {
+                alert("已到最后一页")
+                self.page--;
+                return false;
+            }
+            self.selectBy(self.state,self.whatInput,self.page)
+        },
+        last1(){
+            let self = this;
+            self.page--;
+            if (self.page<1) {
+                alert("已到最后一页")
+                self.page++;
+                return false;
+            }   
+            self.selectBy(self.state,self.whatInput,self.page)
+        },
+        //页面加载查询所有活动
+        getData() {
+            let self = this;
+            $.ajax({
+                // async : true,   
+                type: "GET",
+                url: "http://101.200.32.54:8080/NetHDDK-1.0/teacher/getAllActivity",
+                data: {
+                    page:self.page
+                },
+                dataType: 'json',
+                success: function (data) {
+                    self.changePageColor()
+                    self.totalPage = data.Data.totalPage;
+                    var pageList = [];
+                    let temp = 1;
+                    for (var i = 0; i < self.totalPage; i++) {
+                        pageList.push(temp);
+                        temp++;
+                    }
+                    self.pageList = pageList;
+                    self.info_list = data.Data.activity;
+                    var mydata = self.info_list;
 
-        }
+                    for (let i = 0; i < mydata.length; i++) {
+                        let myStatus = mydata[i].a_state
+                        if (myStatus == 0) {
+                            self.info_list[i].a_state = '草稿';
+                        }else if (myStatus == 1){
+                            self.info_list[i].a_state = '发布';
+                        }else if (myStatus == 2){
+                            self.info_list[i].a_state = '报名中';
+                        }else if (myStatus == 3){
+                            self.info_list[i].a_state = '报名结束';
+                        }else if (myStatus == 4){
+                            self.info_list[i].a_state = '正在进行';
+                        }else if (myStatus == 5){
+                            self.info_list[i].a_state = '结束';
+                        }
+                    }
+                    // var aa=[]
+                    // aa= $(".aa11");
+                    // console.log(aa)
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    console.log(XMLHttpRequest.status)
+                    console.log(XMLHttpRequest.readyState)
+                    console.log(textStatus)
+                }
+            });
+
+        },
+        changePageColor() {
+            let self = this;
+            console.log(self)
+        },
+        addAct() {
+            var flag = 1;
+            let self = this;
+            var action1 = []
+            var fields = []
+            var checked = $('input[name="radio"]:checked').val();
+            var description = $(".textarea").val();
+            $("input[name='aaa']").each(function () {
+                action1.push($(this).val())
+            });
+            var thisDate = DateFunction();
+            var Flag1=DataCompaire(thisDate,flag);
+            if(Flag1==0){
+                alert("截止日期必须大于开始日期")
+                return false;
+            }
+            flag = 1;
+
+            for (var i = 0; i < thisDate.length; i++) {
+                action1.push(thisDate[i])
+            }
+            action1.push(checked)
+            action1.push(description)
+            console.log(action1)
+
+            var Flag=valdate(flag);
+            if(Flag==0){
+                alert("请将信息填写完整")
+                return false;
+            }
+            flag = 1;
+
+            var aaa = $(".group4 input");
+            switch (aaa.length) {
+                case 4:
+                    var fields111 = {
+                        f_info: aaa[0].value,
+                        signUpNumLimit: aaa[1].value,
+                        t_name: aaa[2].value,
+                        t_tel: aaa[3].value
+                    };
+                    fields.push(fields111)
+                    break;
+                case 8:
+                    var fields111 = {
+                        f_info: aaa[0].value,
+                        signUpNumLimit: aaa[1].value,
+                        t_name: aaa[2].value,
+                        t_tel: aaa[3].value
+                    };
+                    var fields222 = {
+                        f_info: aaa[4].value,
+                        signUpNumLimit: aaa[5].value,
+                        t_name: aaa[6].value,
+                        t_tel: aaa[7].value
+                    };
+                    fields.push(fields111,fields222)
+                    break;
+                case 12:
+                    var fields111 = {
+                        f_info: aaa[0].value,
+                        signUpNumLimit: aaa[1].value,
+                        t_name: aaa[2].value,
+                        t_tel: aaa[3].value
+                    };
+                    var fields222 = {
+                        f_info: aaa[4].value,
+                        signUpNumLimit: aaa[5].value,
+                        t_name: aaa[6].value,
+                        t_tel: aaa[7].value
+                    };
+                    var fields333 = {
+                        f_info: aaa[8].value,
+                        signUpNumLimit: aaa[9].value,
+                        t_name: aaa[10].value,
+                        t_tel: aaa[11].value
+                    };
+                    fields.push(fields111,fields222,fields333)
+                    break;
+            }
+            console.log(fields)
+            var Flag2=checkNum()
+            if(Flag2==0){
+                alert("请填写正确的联系方式")
+                return false;
+            }
+            flag = 1;
+            $.ajax({
+                type: "POST",
+                dataType: "json",
+                url: "http://101.200.32.54:8080/NetHDDK-1.0/teacher/addActivity",
+                contentType : "application/json",
+                data: JSON.stringify({
+                    "theme": action1[0],
+                    "score": action1[1],
+                    "description": action1[9],
+                    "tips": action1[2],
+                    "releaseState": action1[8],
+                    "releaseTime": action1[3],
+                    "signUpStartTime": action1[4],
+                    "signUpEndTime": action1[5],
+                    "startTime": action1[6],
+                    "endTime": action1[7],
+                    "fields" : fields
+                }),
+                success: function (data) {
+                    alert("保存成功")
+                    window.location.reload()
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    console.log(XMLHttpRequest.status)
+                    console.log(XMLHttpRequest.readyState)
+                    console.log(textStatus)
+                }
+            });
+
+        },
+
+        showAllInfo(a_id) {
+            console.log(a_id)
+            let self = this;
+            self.visible2 = true;
+            self.shade = true;
+            $.ajax({
+                type: "GET",
+                url: "http://101.200.32.54:8080/NetHDDK-1.0/teacher/getActivityField?a_id="+a_id,
+                data: '',
+                dataType: "json",
+                success: function (data) {
+                    console.log(data)
+                    for (var k in data) {
+                        if(k=='ErrorCode'){
+                            delete data[k];
+                        }
+                         if(k=='Message'){
+                            delete data[k];
+                        }
+                    }
+                    self.all_info = data;
+
+                }
+            });
+        },
+
+        //修改功能
+        changeInfo(a_id,a_state) {
+            console.log(a_id)
+            console.log(a_state)
+            if (a_state!='草稿') {
+                alert(a_state+'无法编辑')
+                return false;
+
+            }
+            let self = this;
+            self.shade = true;
+            self.visible3 = true;
+
+            $.ajax({
+                type: "GET",
+                url: "http://101.200.32.54:8080/NetHDDK-1.0/teacher/getActivityField",
+                data: {
+                    "a_id": a_id
+                },
+                dataType: "json",
+                success: function (data) {
+                    for (var k in data) {
+                        if(k=='ErrorCode'){
+                            delete data[k];
+                        }
+                         if(k=='Message'){
+                            delete data[k];
+                        }
+                    }
+                    console.log(data.Data)
+                    var temp = []
+                    temp.push(data.Data.startTime)
+                    temp.push(data.Data.endTime) 
+                    temp.push(data.Data.signUpStartTime) 
+                    temp.push(data.Data.signUpEndTime) 
+                    temp.push(data.Data.releaseTime) 
+
+                    var newtime = DateFunction2(temp)
+                    console.log(newtime)
+                    data.Data.startTime = newtime[0];
+                    data.Data.endTime = newtime[1];
+                    data.Data.signUpStartTime = newtime[2];
+                    data.Data.signUpEndTime = newtime[3];
+                    data.Data.releaseTime = newtime[4];
+                    self.change_info = data;
+                    self.data1 = data.Data;
+
+                   
+                }
+            });
+        },
+        change_baseInfo() {
+            var flag;
+            let self = this;
+            var activity = []
+            var inpv = $("input[name='iii']")
+            for (var i = 0; i < inpv.length; i++) {
+                activity.push(inpv[i].value)
+            }
+            var thisDate = UpdateDateFunction();
+            var Flag1=DataCompaire2(thisDate,flag);
+            if(Flag1==0){
+                alert("截止日期必须大于开始日期")
+                return false;
+            }
+            flag = 1;
+            for (var i = 0; i < thisDate.length; i++) {
+                activity.push(thisDate[i])
+            }
+            var Flag=valdate2(flag);
+            if(Flag==0){
+                alert("请将信息填写完整")
+                return false;
+            }
+            flag = 1;
+            var textareav =$(".a4")[0].value;
+            var aaaid = $("#aaaid").text();
+            var temem = $("#temem").text();
+            activity.push(textareav)
+            activity.push(aaaid)
+            activity.push(temem)
+            console.log(activity)
+            console.log(JSON.stringify({
+                    "a_id": activity[11],
+                    "theme": activity[12],
+                    "score": activity[0],
+                    "a_state": activity[1],
+                    'signInState': activity[2],
+                    'signInTimes': activity[3],
+                    "tips": activity[4],
+                    "description": activity[10],
+                    "releaseState":'1',
+                    "releaseTime":activity[7],
+                    "startTime": activity[5],
+                    "signUpStartTime": activity[6],
+                    "endTime": activity[8],
+                    "signUpEndTime": activity[9],
+                }))
+            $.ajax({
+                type: "POST",
+                dataType: "json",
+                url: "http://101.200.32.54:8080/NetHDDK-1.0/teacher/updateActivity",
+                contentType : "application/json",
+                data: JSON.stringify({
+                   "a_id": activity[11],
+                    "theme": activity[12],
+                    "score": activity[0],
+                    "a_state": activity[1],
+                    'signInState': activity[2],
+                    'signInTimes': activity[3],
+                    "tips": activity[4],
+                    "description": activity[10],
+                    "releaseState":'1',
+                    "releaseTime":activity[7],
+                    "startTime": activity[5],
+                    "signUpStartTime": activity[6],
+                    "endTime": activity[8],
+                    "signUpEndTime": activity[9],
+                }),
+                success: function (data) {
+                    alert("保存成功")
+                    window.location.reload()
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    console.log(XMLHttpRequest.status)
+                    console.log(XMLHttpRequest.readyState)
+                    console.log(textStatus)
+                }
+            });
+        },
+
+        //删除场地
+        del_fields(f_id){
+            let self = this;
+            console.log(f_id)
+            $("h4[data-fieldId="+f_id+"]").parent().remove()
+            $.ajax({
+                type: "GET",
+                url: "http://101.200.32.54:8080/NetHDDK-1.0/teacher/deleteFiled?f_id="+f_id,
+                data: "",
+                dataType: "json",
+                success: function (data) {
+                    console.log(this)
+                }
+            });
+        },
+
+        //添加场地
+        addFields(aid){
+            let self = this;
+            self.visible3 = true;
+            self.shade2 = true;
+            self.visible5 = true;
+            console.log(self.this_a_id)
+            self.this_a_id = aid;
+        },
+        saveFields(){
+            var flag;
+            var field = [];
+            let a_id = $(".add_fields").data("thisid");
+            field.push(a_id)
+            var temp = $(".add_a2")
+            for (var i = 0; i < temp.length; i++) {
+                field.push(temp[i].value)
+            }
+            var Flag2=checkNum2()
+            if(Flag2==0){
+                alert("请填写正确的联系方式")
+                return false;
+            }
+            flag = 1;
+            console.log(field)
+            console.log(JSON.stringify({
+                    "activity_id": field[0],
+                    "f_info": field[1],
+                    "signUpNumLimit": field[2],
+                    "t_tel": field[3],
+                    "t_name": field[4],
+                }))
+            $.ajax({
+                type: "POST",
+                dataType: "json",
+                url: "http://101.200.32.54:8080/NetHDDK-1.0/teacher/addField",
+                contentType : "application/json",
+                data: JSON.stringify({
+                    "activity_id": field[0],
+                    "f_info": field[1],
+                    "signUpNumLimit": field[2],
+                    "t_tel": field[3],
+                    "t_name": field[4],
+                }),
+                success: function (data) {
+                    alert("保存成功")
+                    window.location.reload()
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    console.log(XMLHttpRequest.status)
+                    console.log(XMLHttpRequest.readyState)
+                    console.log(textStatus)
+                }
+            });
+        },
+        //显示学生列表
+        showStuList(a,b,c){
+            console.log(a)
+            console.log(b)
+            console.log(c)
+            if (c == 0 ||c == 1 ) {
+                alert("暂时未开始报名")
+                return false;
+            }
+            let self = this;
+            self.shade = true;
+            self.visible4 = true;
+            self.visible2 = false;
+            $.ajax({
+                type: "GET",
+                url: "http://101.200.32.54:8080/NetHDDK-1.0/teacher/getSignUpStu?a_id="+b,
+                data: "",
+                dataType: "json",
+                success: function (data) {
+                    self.stu_info = data.Data;
+                    console.log(data.Data)
+                    console.log(self.stu_info)
+
+                    if (data.Data.length == 0) {
+                        alert("无人报名，无法查看")
+                        self.shade = false;
+                        return false;
+                    }
+
+                    let stuData = self.stu_info;
+                    for (let i = 0; i < stuData.length; i++) {
+                        let stuStatus = stuData[i].personState
+                        if (stuStatus == 0) {
+                            self.stu_info[i].personState = '成员';
+                        }else if (stuStatus == 1){
+                            self.stu_info[i].personState = '负责人';
+                            console.log(this)
+                            self.visible6[i] = true;
+                            console.log(self.visible6)
+                        }
+                    self.stu_info[i].theme = a;
+                    self.stu_info[i].aId = b;
+                    }
+
+                }
+            });
+        },
+
+        //设为管理员
+        setManager(sId,aId,atheme){
+            let self = this;
+            console.log(atheme)
+            $("#stu_State").html("");
+            $.ajax({
+                type: "GET",
+                url: "http://101.200.32.54:8080/NetHDDK-1.0/teacher/setPersonState",
+                data: {
+                    a_id:aId,
+                    s_id:sId
+                },
+                dataType: "json",
+                success: function (data) {
+                    $.ajax({
+                        type: "GET",
+                        url: "http://101.200.32.54:8080/NetHDDK-1.0/teacher/getSignUpStu?a_id="+aId,
+                        data: "",
+                        dataType: "json",
+                        success: function (data) {
+                            self.stu_info = data.Data;
+                            console.log(data.Data)
+                            console.log(self.stu_info)
+
+                            if (data.Data.length == 0) {
+                                alert("无人报名，无法查看")
+                                self.shade = false;
+                                return false;
+                            }
+
+                            let stuData = self.stu_info;
+                            for (let i = 0; i < stuData.length; i++) {
+                                let stuStatus = stuData[i].personState
+                                if (stuStatus == 0) {
+                                    self.stu_info[i].personState = '成员';
+                                }else if (stuStatus == 1){
+                                    self.stu_info[i].personState = '负责人';
+                                }
+                            self.stu_info[i].theme = atheme;
+                            self.stu_info[i].aId = aId;
+                            }
+
+                        }
+                    });
+
+                    }
+            });
+        },
+        //取消管理员
+        delManager(sId,aId,atheme){
+            let self = this;
+            console.log(atheme)
+            $("#stu_State").html("");
+            $.ajax({
+                type: "GET",
+                url: "http://101.200.32.54:8080/NetHDDK-1.0/teacher/setPersonState0 ",
+                data: {
+                    a_id:aId,
+                    s_id:sId
+                },
+                dataType: "json",
+                success: function (data) {
+                    $.ajax({
+                        type: "GET",
+                        url: "http://101.200.32.54:8080/NetHDDK-1.0/teacher/getSignUpStu?a_id="+aId,
+                        data: "",
+                        dataType: "json",
+                        success: function (data) {
+                            self.stu_info = data.Data;
+                            console.log(data.Data)
+                            console.log(self.stu_info)
+
+                            if (data.Data.length == 0) {
+                                alert("无人报名，无法查看")
+                                self.shade = false;
+                                return false;
+                            }
+
+                            let stuData = self.stu_info;
+                            for (let i = 0; i < stuData.length; i++) {
+                                let stuStatus = stuData[i].personState
+                                if (stuStatus == 0) {
+                                    self.stu_info[i].personState = '成员';
+                                }else if (stuStatus == 1){
+                                    self.stu_info[i].personState = '负责人';
+                                }
+                            self.stu_info[i].theme = atheme;
+                            self.stu_info[i].aId = aId;
+                            }
+
+                        }
+                    });
+
+                    }
+            });
+        },
 
 
-    });
+        //删除功能！！！！
+        deleAction(a_id) {
+            console.log(a_id)
+            alert("del")
+            let self = this;
+            $.ajax({
+                type: "GET",
+                url: "http://101.200.32.54:8080/NetHDDK-1.0/teacher/deleteActivity",
+                data: {
+                    "a_id": a_id
+                },
+                dataType: "json",
+                success: function (data) {
+
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    console.log(XMLHttpRequest.status)
+                    console.log(XMLHttpRequest.readyState)
+                    console.log(textStatus)
+                }
+            });
+            location.reload();
+        },
+
+        addItem() {
+            let self = this;
+            self.visible = true;
+            self.shade = true;
+        },
+
+        closeItem() {
+            let self = this;
+            self.visible = false;
+            self.shade = false;
+            location.reload();
+        },
+    },
+    created: function () {
+        this.getData();
+        console.log("success");
+    },
+    mounted: function () {
+
+    }
+
+
+});
+
     function DateFunction(){
         var format=[];
         $(".timeInp").each(function(){
@@ -1304,7 +1539,4 @@
         }) 
         return flag;
     }
-    
-
-
 </script>
